@@ -6,6 +6,8 @@
 /*     */ import drzhark.mocreatures.entity.MoCEntityAnimal;
 /*     */ import drzhark.mocreatures.entity.MoCEntityTameableAnimal;
 /*     */ import drzhark.mocreatures.entity.ai.EntityAIWanderMoC2;
+/*     */ import drzhark.mocreatures.entity.ai.EntityAINearestAttackableTargetMoC;
+/*     */ import drzhark.mocreatures.entity.ai.EntityAIHunt;
 /*     */ import drzhark.mocreatures.entity.item.MoCEntityEgg;
 /*     */ import drzhark.mocreatures.init.MoCItems;
 /*     */ import drzhark.mocreatures.init.MoCSoundEvents;
@@ -19,11 +21,12 @@
 /*     */ import net.minecraft.entity.EntityLivingBase;
 /*     */ import net.minecraft.entity.EnumCreatureAttribute;
 /*     */ import net.minecraft.entity.SharedMonsterAttributes;
+/*     */ import net.minecraft.entity.passive.EntityAnimal;
 /*     */ import net.minecraft.entity.ai.EntityAIAttackMelee;
 /*     */ import net.minecraft.entity.ai.EntityAIBase;
+/*     */ import net.minecraft.entity.ai.EntityAISwimming;
 /*     */ import net.minecraft.entity.ai.EntityAIWatchClosest;
 /*     */ import net.minecraft.entity.item.EntityItem;
-/*     */ import net.minecraft.entity.passive.EntityAnimal;
 /*     */ import net.minecraft.entity.player.EntityPlayer;
 /*     */ import net.minecraft.init.Blocks;
 /*     */ import net.minecraft.init.Items;
@@ -46,7 +49,7 @@
 /*     */ import net.minecraft.world.World;
 /*     */ import net.minecraftforge.fml.common.network.NetworkRegistry;
 /*     */ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-/*     */ 
+/*     */
 /*     */ public class MoCEntityWyvern extends MoCEntityTameableAnimal {
 /*     */   public MoCAnimalChest localchest;
 /*  52 */   public static final String[] wyvernNames = new String[] { "Jungle", "Swamp", "Savanna", "Sand", "Mother", "Undead", "Light", "Dark", "Arctic", "Cave", "Mountain", "Sea" }; public ItemStack localstack; public int mouthCounter;
@@ -63,23 +66,23 @@
 /*  63 */   private static final DataParameter<Boolean> GHOST = EntityDataManager.createKey(MoCEntityWyvern.class, DataSerializers.BOOLEAN);
 /*  64 */   private static final DataParameter<Boolean> FLYING = EntityDataManager.createKey(MoCEntityWyvern.class, DataSerializers.BOOLEAN);
 /*  65 */   private static final DataParameter<Integer> ARMOR_TYPE = EntityDataManager.createKey(MoCEntityWyvern.class, DataSerializers.VARINT);
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public MoCEntityWyvern(World world) {
 /*  69 */     super(world);
 /*  70 */     setSize(1.9F, 1.7F);
 /*  71 */     setAdult(false);
 /*  72 */     setTamed(false);
 /*  73 */     this.stepHeight = 1.0F;
-/*     */     
+/*     */
 /*  75 */     if (this.rand.nextInt(6) == 0) {
 /*  76 */       setEdad(50 + this.rand.nextInt(50));
 /*     */     } else {
 /*  78 */       setEdad(80 + this.rand.nextInt(20));
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void initEntityAI() {
 /*  84 */     this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
 /*  85 */     this.tasks.addTask(5, (EntityAIBase)new EntityAIAttackMelee((EntityCreature)this, 1.0D, true));
@@ -88,8 +91,8 @@
 /*  88 */     this.targetTasks.addTask(1, (EntityAIBase)new EntityAINearestAttackableTargetMoC((EntityCreature)this, EntityPlayer.class, true));
 /*  89 */     this.targetTasks.addTask(2, (EntityAIBase)new EntityAIHunt((EntityCreature)this, EntityAnimal.class, true));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void applyEntityAttributes() {
 /*  94 */     super.applyEntityAttributes();
 /*  95 */     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
@@ -97,8 +100,8 @@
 /*  97 */     getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 /*  98 */     getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void entityInit() {
 /* 103 */     super.entityInit();
 /* 104 */     this.dataManager.register(RIDEABLE, Boolean.valueOf(false));
@@ -108,61 +111,61 @@
 /* 108 */     this.dataManager.register(GHOST, Boolean.valueOf(false));
 /* 109 */     this.dataManager.register(ARMOR_TYPE, Integer.valueOf(0));
 /*     */   }
-/*     */   
+/*     */
 /*     */   public boolean getIsFlying() {
 /* 113 */     return ((Boolean)this.dataManager.get(FLYING)).booleanValue();
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void setIsFlying(boolean flag) {
 /* 117 */     this.dataManager.set(FLYING, Boolean.valueOf(flag));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int getArmorType() {
 /* 122 */     return ((Integer)this.dataManager.get(ARMOR_TYPE)).intValue();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void setArmorType(int i) {
 /* 127 */     this.dataManager.set(ARMOR_TYPE, Integer.valueOf(i));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean getIsRideable() {
 /* 132 */     return ((Boolean)this.dataManager.get(RIDEABLE)).booleanValue();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void setRideable(boolean flag) {
 /* 137 */     this.dataManager.set(RIDEABLE, Boolean.valueOf(flag));
 /*     */   }
-/*     */   
+/*     */
 /*     */   public boolean getIsChested() {
 /* 141 */     return ((Boolean)this.dataManager.get(CHESTED)).booleanValue();
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void setIsChested(boolean flag) {
 /* 145 */     this.dataManager.set(CHESTED, Boolean.valueOf(flag));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean getIsSitting() {
 /* 150 */     return ((Boolean)this.dataManager.get(SITTING)).booleanValue();
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void setSitting(boolean flag) {
 /* 154 */     this.dataManager.set(SITTING, Boolean.valueOf(flag));
 /*     */   }
-/*     */   
+/*     */
 /*     */   public boolean getIsGhost() {
 /* 158 */     return ((Boolean)this.dataManager.get(GHOST)).booleanValue();
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void setIsGhost(boolean flag) {
 /* 162 */     this.dataManager.set(GHOST, Boolean.valueOf(flag));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void selectType() {
 /* 167 */     if (getType() == 0) {
 /* 168 */       if (this.rand.nextInt(5) == 0) {
@@ -187,19 +190,19 @@
 /* 187 */           setType(12);
 /*     */         } else {
 /* 189 */           setType(5);
-/*     */         } 
-/*     */       } 
+/*     */         }
+/*     */       }
 /*     */     }
 /* 193 */     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(calculateMaxHealth());
 /* 194 */     setHealth(getMaxHealth());
 /* 195 */     getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(calculateAttackDmg());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isNotScared() {
 /* 200 */     return true;
 /*     */   }
-/*     */   
+/*     */
 /*     */   public double calculateMaxHealth() {
 /* 204 */     if (getType() == 6 || getType() == 7 || getType() == 8) {
 /* 205 */       return 60.0D;
@@ -212,7 +215,7 @@
 /*     */     }
 /* 213 */     return 40.0D;
 /*     */   }
-/*     */   
+/*     */
 /*     */   public double calculateAttackDmg() {
 /* 217 */     if (getType() == 6 || getType() == 7 || getType() == 8 || getType() == 13) {
 /* 218 */       return 8.0D;
@@ -222,16 +225,16 @@
 /*     */     }
 /* 223 */     return 5.0D;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   public ResourceLocation getTexture() {
 /* 236 */     if (this.transformCounter != 0 && this.transformType > 5) {
 /* 237 */       String newText = "wyverndark.png";
@@ -244,19 +247,19 @@
 /* 244 */       if (this.transformType == 8) {
 /* 245 */         newText = "wyverndark.png";
 /*     */       }
-/*     */       
+/*     */
 /* 248 */       if (this.transformCounter % 5 == 0) {
 /* 249 */         return MoCreatures.proxy.getTexture(newText);
 /*     */       }
 /* 251 */       if (this.transformCounter > 50 && this.transformCounter % 3 == 0) {
 /* 252 */         return MoCreatures.proxy.getTexture(newText);
 /*     */       }
-/*     */       
+/*     */
 /* 255 */       if (this.transformCounter > 75 && this.transformCounter % 4 == 0) {
 /* 256 */         return MoCreatures.proxy.getTexture(newText);
 /*     */       }
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 260 */     switch (getType()) {
 /*     */       case 1:
 /* 262 */         return MoCreatures.proxy.getTexture("wyvernjungle.png");
@@ -282,13 +285,13 @@
 /* 282 */         return MoCreatures.proxy.getTexture("wyvernmountain.png");
 /*     */       case 12:
 /* 284 */         return MoCreatures.proxy.getTexture("wyvernsea.png");
-/*     */     } 
-/*     */ 
-/*     */     
+/*     */     }
+/*     */
+/*     */
 /* 288 */     return MoCreatures.proxy.getTexture("wyvernsun.png");
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void transform(int tType) {
 /* 293 */     if (!this.world.isRemote) {
 /* 294 */       MoCMessageHandler.INSTANCE.sendToAllAround((IMessage)new MoCMessageAnimation(getEntityId(), tType), new NetworkRegistry.TargetPoint(this.world.provider
@@ -297,9 +300,9 @@
 /* 297 */     this.transformType = tType;
 /* 298 */     this.transformCounter = 1;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public void onLivingUpdate() {
 /* 304 */     if (this.wingFlapCounter > 0 && ++this.wingFlapCounter > 20) {
 /* 305 */       this.wingFlapCounter = 0;
@@ -307,21 +310,21 @@
 /* 307 */     if (this.wingFlapCounter == 5 && !this.world.isRemote) {
 /* 308 */       MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_WYVERN_WINGFLAP);
 /*     */     }
-/*     */     
+/*     */
 /* 311 */     if (this.transformCounter > 0) {
 /* 312 */       if (this.transformCounter == 40) {
 /* 313 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_TRANSFORM);
 /*     */       }
-/*     */       
+/*     */
 /* 316 */       if (++this.transformCounter > 100) {
 /* 317 */         this.transformCounter = 0;
 /* 318 */         if (this.transformType != 0) {
 /* 319 */           setType(this.transformType);
 /* 320 */           selectType();
-/*     */         } 
-/*     */       } 
-/*     */     } 
-/*     */     
+/*     */         }
+/*     */       }
+/*     */     }
+/*     */
 /* 325 */     if (!this.world.isRemote) {
 /* 326 */       if (!isMovementCeased() && !getIsTamed() && this.rand.nextInt(300) == 0) {
 /* 327 */         setIsFlying(!getIsFlying());
@@ -329,23 +332,23 @@
 /* 329 */       if (isMovementCeased() && getIsFlying()) {
 /* 330 */         setIsFlying(false);
 /*     */       }
-/*     */       
+/*     */
 /* 333 */       if (getAttackTarget() != null && (!getIsTamed() || getRidingEntity() != null) && !isMovementCeased() && this.rand.nextInt(20) == 0) {
 /* 334 */         setIsFlying(true);
 /*     */       }
 /* 336 */       if (!getIsTamed() && this.dimension == MoCreatures.WyvernLairDimensionID && this.rand.nextInt(50) == 0 && this.posY < 10.0D) {
 /* 337 */         setDead();
 /*     */       }
-/*     */       
+/*     */
 /* 340 */       if (getIsFlying() && getNavigator().noPath() && !isMovementCeased() && getAttackTarget() == null && this.rand.nextInt(30) == 0) {
 /* 341 */         this.wander.makeUpdate();
 /*     */       }
-/*     */       
+/*     */
 /* 344 */       if (this.motionY > 0.5D)
 /*     */       {
 /* 346 */         this.motionY = 0.5D;
 /*     */       }
-/*     */       
+/*     */
 /* 349 */       if (isOnAir()) {
 /* 350 */         float myFlyingSpeed = MoCTools.getMyMovementSpeed((Entity)this);
 /* 351 */         int wingFlapFreq = (int)(25.0F - myFlyingSpeed * 10.0F);
@@ -355,29 +358,29 @@
 /* 355 */         if (this.rand.nextInt(wingFlapFreq) == 0) {
 /* 356 */           wingFlap();
 /*     */         }
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 360 */       if (getIsGhost() && getEdad() > 0 && getEdad() < 10 && this.rand.nextInt(5) == 0) {
 /* 361 */         setEdad(getEdad() + 1);
 /* 362 */         if (getEdad() == 9) {
 /* 363 */           setEdad(140);
 /* 364 */           setAdult(true);
 /*     */         }
-/*     */       
-/*     */       } 
+/*     */
+/*     */       }
 /*     */     } else {
-/*     */       
+/*     */
 /* 370 */       if (this.mouthCounter > 0 && ++this.mouthCounter > 30) {
 /* 371 */         this.mouthCounter = 0;
 /*     */       }
-/*     */       
+/*     */
 /* 374 */       if (this.diveCounter > 0 && ++this.diveCounter > 5) {
 /* 375 */         this.diveCounter = 0;
 /*     */       }
-/*     */     } 
+/*     */     }
 /* 378 */     super.onLivingUpdate();
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void wingFlap() {
 /* 382 */     if (this.wingFlapCounter == 0) {
 /* 383 */       this.wingFlapCounter = 1;
@@ -385,44 +388,44 @@
 /* 385 */         MoCMessageHandler.INSTANCE.sendToAllAround((IMessage)new MoCMessageAnimation(getEntityId(), 3), new NetworkRegistry.TargetPoint(this.world.provider
 /* 386 */               .getDimensionType().getId(), this.posX, this.posY, this.posZ, 64.0D));
 /*     */       }
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public float getSizeFactor() {
 /* 393 */     return getEdad() * 0.01F;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isFlyingAlone() {
 /* 398 */     return (getIsFlying() && !isBeingRidden());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int maxFlyingHeight() {
 /* 403 */     if (getIsTamed())
-/* 404 */       return 5; 
+/* 404 */       return 5;
 /* 405 */     return 18;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int minFlyingHeight() {
 /* 410 */     return 1;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean processInteract(EntityPlayer player, EnumHand hand) {
 /* 415 */     Boolean tameResult = processTameInteract(player, hand);
 /* 416 */     if (tameResult != null) {
 /* 417 */       return tameResult.booleanValue();
 /*     */     }
-/*     */     
+/*     */
 /* 420 */     ItemStack stack = player.getHeldItem(hand);
 /* 421 */     if (!stack.isEmpty() && stack.getItem() == MoCItems.whip && getIsTamed() && !isBeingRidden()) {
 /* 422 */       setSitting(!getIsSitting());
 /* 423 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 426 */     if (!stack.isEmpty() && !getIsRideable() && getEdad() > 90 && getIsTamed() && (stack
 /* 427 */       .getItem() == Items.SADDLE || stack.getItem() == MoCItems.horsesaddle)) {
 /* 428 */       stack.shrink(1);
@@ -431,8 +434,8 @@
 /*     */       }
 /* 432 */       setRideable(true);
 /* 433 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 436 */     if (!stack.isEmpty() && getIsTamed() && getEdad() > 90 && stack.getItem() == Items.IRON_HORSE_ARMOR) {
 /* 437 */       if (getArmorType() == 0) {
 /* 438 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_ARMOR_ON);
@@ -443,10 +446,10 @@
 /* 443 */       if (stack.isEmpty()) {
 /* 444 */         player.setHeldItem(hand, ItemStack.EMPTY);
 /*     */       }
-/*     */       
+/*     */
 /* 447 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 450 */     if (!stack.isEmpty() && getIsTamed() && getEdad() > 90 && stack.getItem() == Items.GOLDEN_HORSE_ARMOR) {
 /* 451 */       if (getArmorType() == 0) {
 /* 452 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_ARMOR_ON);
@@ -458,8 +461,8 @@
 /* 458 */         player.setHeldItem(hand, ItemStack.EMPTY);
 /*     */       }
 /* 460 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 463 */     if (!stack.isEmpty() && getIsTamed() && getEdad() > 90 && stack.getItem() == Items.DIAMOND_HORSE_ARMOR) {
 /* 464 */       if (getArmorType() == 0) {
 /* 465 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_ARMOR_ON);
@@ -471,8 +474,8 @@
 /* 471 */         player.setHeldItem(hand, ItemStack.EMPTY);
 /*     */       }
 /* 473 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 476 */     if (!stack.isEmpty() && getIsTamed() && getEdad() > 90 && !getIsChested() && stack.getItem() == Item.getItemFromBlock((Block)Blocks.CHEST)) {
 /* 477 */       stack.shrink(1);
 /* 478 */       if (stack.isEmpty()) {
@@ -481,8 +484,8 @@
 /* 481 */       setIsChested(true);
 /* 482 */       MoCTools.playCustomSound((Entity)this, SoundEvents.ENTITY_CHICKEN_EGG);
 /* 483 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 486 */     if (getIsChested() && player.isSneaking()) {
 /* 487 */       if (this.localchest == null) {
 /* 488 */         this.localchest = new MoCAnimalChest("WyvernChest", 9);
@@ -491,10 +494,10 @@
 /* 491 */         player.displayGUIChest((IInventory)this.localchest);
 /*     */       }
 /* 493 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 496 */     if (!stack.isEmpty() && getIsGhost() && getIsTamed() && stack.getItem() == MoCItems.amuletghost) {
-/*     */       
+/*     */
 /* 498 */       player.setHeldItem(hand, ItemStack.EMPTY);
 /* 499 */       if (!this.world.isRemote) {
 /* 500 */         MoCPetData petData = MoCreatures.instance.mapData.getPetData(getOwnerId());
@@ -502,23 +505,23 @@
 /* 502 */           petData.setInAmulet(getOwnerPetId(), true);
 /*     */         }
 /* 504 */         dropMyStuff();
-/* 505 */         MoCTools.dropAmulet((IMoCEntity)this, 3, player);
+/* 505 */         MoCTools.dropAmulet(this, 3, player);
 /* 506 */         this.isDead = true;
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 509 */       return true;
-/*     */     } 
-/*     */ 
-/*     */     
-/* 513 */     if (!stack.isEmpty() && !getIsGhost() && stack.getItem() == MoCItems.essencelight && getIsTamed() && getEdad() > 90 && 
+/*     */     }
+/*     */
+/*     */
+/* 513 */     if (!stack.isEmpty() && !getIsGhost() && stack.getItem() == MoCItems.essencelight && getIsTamed() && getEdad() > 90 &&
 /* 514 */       getType() < 5) {
 /* 515 */       stack.shrink(1);
 /* 516 */       if (stack.isEmpty()) {
 /* 517 */         player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
 /*     */       } else {
 /* 519 */         player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 522 */       if (!this.world.isRemote) {
 /* 523 */         int i = getType() + 49;
 /* 524 */         MoCEntityEgg entityegg = new MoCEntityEgg(this.world, i);
@@ -527,10 +530,10 @@
 /* 527 */         entityegg.motionY += (this.world.rand.nextFloat() * 0.05F);
 /* 528 */         entityegg.motionX += ((this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.3F);
 /* 529 */         entityegg.motionZ += ((this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.3F);
-/*     */       } 
+/*     */       }
 /* 531 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 534 */     if (!stack.isEmpty() && this.transformCounter == 0 && !getIsGhost() && getType() == 5 && stack
 /* 535 */       .getItem() == MoCItems.essenceundead && getIsTamed()) {
 /* 536 */       stack.shrink(1);
@@ -538,14 +541,14 @@
 /* 538 */         player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
 /*     */       } else {
 /* 540 */         player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 543 */       if (!this.world.isRemote) {
 /* 544 */         transform(6);
 /*     */       }
 /* 546 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 549 */     if (!stack.isEmpty() && this.transformCounter == 0 && !getIsGhost() && getType() == 5 && stack
 /* 550 */       .getItem() == MoCItems.essencelight && getIsTamed()) {
 /* 551 */       stack.shrink(1);
@@ -553,14 +556,14 @@
 /* 553 */         player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
 /*     */       } else {
 /* 555 */         player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 558 */       if (!this.world.isRemote) {
 /* 559 */         transform(7);
 /*     */       }
 /* 561 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 564 */     if (!stack.isEmpty() && this.transformCounter == 0 && !getIsGhost() && getType() == 5 && stack
 /* 565 */       .getItem() == MoCItems.essencedarkness && getIsTamed()) {
 /* 566 */       stack.shrink(1);
@@ -568,112 +571,112 @@
 /* 568 */         player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
 /*     */       } else {
 /* 570 */         player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 573 */       if (!this.world.isRemote) {
 /* 574 */         transform(8);
 /*     */       }
 /* 576 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 579 */     if (getIsRideable() && getEdad() > 90 && (!getIsChested() || !player.isSneaking()) && !isBeingRidden()) {
 /* 580 */       if (!this.world.isRemote && player.startRiding((Entity)this)) {
 /* 581 */         player.rotationYaw = this.rotationYaw;
 /* 582 */         player.rotationPitch = this.rotationPitch;
 /* 583 */         setSitting(false);
-/*     */       } 
-/*     */       
+/*     */       }
+/*     */
 /* 586 */       return true;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 589 */     return super.processInteract(player, hand);
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   public void dropArmor() {
 /* 597 */     if (!this.world.isRemote) {
 /* 598 */       int i = getArmorType();
 /* 599 */       if (i != 0) {
 /* 600 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_ARMOR_OFF);
 /*     */       }
-/*     */       
+/*     */
 /* 603 */       if (i == 1) {
 /* 604 */         EntityItem entityitem = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(Items.IRON_HORSE_ARMOR, 1));
 /* 605 */         entityitem.setPickupDelay(10);
 /* 606 */         this.world.spawnEntity((Entity)entityitem);
-/*     */       } 
+/*     */       }
 /* 608 */       if (i == 2) {
 /* 609 */         EntityItem entityitem = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(Items.GOLDEN_HORSE_ARMOR, 1));
 /* 610 */         entityitem.setPickupDelay(10);
 /* 611 */         this.world.spawnEntity((Entity)entityitem);
-/*     */       } 
+/*     */       }
 /* 613 */       if (i == 3) {
 /* 614 */         EntityItem entityitem = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(Items.DIAMOND_HORSE_ARMOR, 1));
 /* 615 */         entityitem.setPickupDelay(10);
 /* 616 */         this.world.spawnEntity((Entity)entityitem);
-/*     */       } 
+/*     */       }
 /* 618 */       setArmorType(0);
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean rideableEntity() {
 /* 624 */     return true;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getDeathSound() {
 /* 629 */     return MoCSoundEvents.ENTITY_WYVERN_DEATH;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getHurtSound(DamageSource source) {
 /* 634 */     openMouth();
 /* 635 */     return MoCSoundEvents.ENTITY_WYVERN_HURT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getAmbientSound() {
 /* 640 */     openMouth();
 /* 641 */     return MoCSoundEvents.ENTITY_WYVERN_AMBIENT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int getTalkInterval() {
 /* 646 */     return 400;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isMovementCeased() {
 /* 651 */     return (isBeingRidden() || getIsSitting());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isFlyer() {
 /* 656 */     return true;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public void fall(float f, float f1) {}
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public double getMountedYOffset() {
 /* 665 */     return this.height * 0.85D * getSizeFactor();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void updatePassenger(Entity passenger) {
 /* 670 */     double dist = getSizeFactor() * 0.3D;
 /* 671 */     double newPosX = this.posX - dist * Math.cos((MoCTools.realAngle(this.renderYawOffset - 90.0F) / 57.29578F));
 /* 672 */     double newPosZ = this.posZ - dist * Math.sin((MoCTools.realAngle(this.renderYawOffset - 90.0F) / 57.29578F));
 /* 673 */     passenger.setPosition(newPosX, this.posY + getMountedYOffset() + passenger.getYOffset(), newPosZ);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean attackEntityAsMob(Entity entityIn) {
 /* 678 */     if (entityIn instanceof EntityPlayer && !shouldAttackPlayers()) {
 /* 679 */       return false;
@@ -681,18 +684,18 @@
 /* 681 */     openMouth();
 /* 682 */     return super.attackEntityAsMob(entityIn);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void applyEnchantments(EntityLivingBase entityLivingBaseIn, Entity entityIn) {
 /* 687 */     if (entityIn instanceof EntityPlayer && this.rand.nextInt(3) == 0) {
 /* 688 */       MoCreatures.poisonPlayer((EntityPlayer)entityIn);
 /* 689 */       ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 0));
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 692 */     super.applyEnchantments(entityLivingBaseIn, entityIn);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean attackEntityFrom(DamageSource damagesource, float i) {
 /* 697 */     Entity entity = damagesource.getTrueSource();
 /* 698 */     if (isRidingOrBeingRiddenBy(entity)) {
@@ -702,21 +705,21 @@
 /* 702 */       if (entity != null && getIsTamed() && entity instanceof EntityPlayer) {
 /* 703 */         return false;
 /*     */       }
-/*     */       
+/*     */
 /* 706 */       if (entity != this && super.shouldAttackPlayers()) {
 /* 707 */         setAttackTarget((EntityLivingBase)entity);
 /*     */       }
 /* 709 */       return true;
-/*     */     } 
+/*     */     }
 /* 711 */     return false;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
 /* 721 */     super.writeEntityToNBT(nbttagcompound);
 /* 722 */     nbttagcompound.setBoolean("Saddle", getIsRideable());
@@ -733,13 +736,13 @@
 /* 733 */           nbttagcompound1.setByte("Slot", (byte)i);
 /* 734 */           this.localstack.writeToNBT(nbttagcompound1);
 /* 735 */           nbttaglist.appendTag((NBTBase)nbttagcompound1);
-/*     */         } 
-/*     */       } 
+/*     */         }
+/*     */       }
 /* 738 */       nbttagcompound.setTag("Items", (NBTBase)nbttaglist);
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
 /* 744 */     super.readEntityFromNBT(nbttagcompound);
 /* 745 */     setRideable(nbttagcompound.getBoolean("Saddle"));
@@ -756,36 +759,36 @@
 /* 756 */         if (j >= 0 && j < this.localchest.getSizeInventory()) {
 /* 757 */           this.localchest.setInventorySlotContents(j, new ItemStack(nbttagcompound1));
 /*     */         }
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int nameYOffset() {
 /* 765 */     int yOff = getEdad() * -1;
 /* 766 */     if (yOff < -120) {
 /* 767 */       yOff = -120;
 /*     */     }
 /* 769 */     if (getIsSitting())
-/* 770 */       yOff += 25; 
+/* 770 */       yOff += 25;
 /* 771 */     return yOff;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isMyHealFood(ItemStack stack) {
 /* 776 */     return (!stack.isEmpty() && (stack.getItem() == MoCItems.ratRaw || stack.getItem() == MoCItems.rawTurkey));
 /*     */   }
-/*     */   
+/*     */
 /*     */   private void openMouth() {
 /* 780 */     if (!this.world.isRemote) {
 /* 781 */       this.mouthCounter = 1;
 /* 782 */       MoCMessageHandler.INSTANCE.sendToAllAround((IMessage)new MoCMessageAnimation(getEntityId(), 1), new NetworkRegistry.TargetPoint(this.world.provider
 /* 783 */             .getDimensionType().getId(), this.posX, this.posY, this.posZ, 64.0D));
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public void performAnimation(int animationType) {
 /* 790 */     if (animationType == 1)
 /*     */     {
@@ -799,13 +802,13 @@
 /* 799 */       this.wingFlapCounter = 1;
 /*     */     }
 /* 801 */     if (animationType > 5 && animationType < 9) {
-/*     */       
+/*     */
 /* 803 */       this.transformType = animationType;
 /* 804 */       this.transformCounter = 1;
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void makeEntityDive() {
 /* 810 */     if (!this.world.isRemote) {
 /* 811 */       MoCMessageHandler.INSTANCE.sendToAllAround((IMessage)new MoCMessageAnimation(getEntityId(), 2), new NetworkRegistry.TargetPoint(this.world.provider
@@ -813,8 +816,8 @@
 /*     */     }
 /* 814 */     super.makeEntityDive();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void dropFewItems(boolean flag, int x) {
 /* 819 */     int chance = MoCreatures.proxy.wyvernEggDropChance;
 /* 820 */     if (getType() == 5) {
@@ -824,43 +827,43 @@
 /* 824 */       entityDropItem(new ItemStack((Item)MoCItems.mocegg, 1, getType() + 49), 0.0F);
 /*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean canBeCollidedWith() {
 /* 830 */     return !isBeingRidden();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void dropMyStuff() {
 /* 835 */     if (!this.world.isRemote) {
 /* 836 */       dropArmor();
 /* 837 */       MoCTools.dropSaddle((MoCEntityAnimal)this, this.world);
-/*     */       
+/*     */
 /* 839 */       if (getIsChested()) {
 /* 840 */         MoCTools.dropInventory((Entity)this, this.localchest);
 /* 841 */         MoCTools.dropCustomItem((Entity)this, this.world, new ItemStack((Block)Blocks.CHEST, 1));
 /* 842 */         setIsChested(false);
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public float getAdjustedYOffset() {
 /* 849 */     if (getIsSitting()) {
 /* 850 */       return 0.4F;
 /*     */     }
 /* 852 */     return 0.0F;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public double getCustomSpeed() {
 /* 857 */     if (isBeingRidden()) {
 /* 858 */       return 1.0D;
 /*     */     }
 /* 860 */     return 0.8D;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public int getMaxEdad() {
 /* 865 */     if (getType() == 5) {
 /* 866 */       return 180;
@@ -870,39 +873,39 @@
 /*     */     }
 /* 871 */     return 120;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public EnumCreatureAttribute getCreatureAttribute() {
 /* 876 */     if (getType() == 6 || getIsGhost()) {
 /* 877 */       return EnumCreatureAttribute.UNDEAD;
 /*     */     }
 /* 879 */     return super.getCreatureAttribute();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isReadyToHunt() {
 /* 884 */     return (!isMovementCeased() && !isBeingRidden());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean canAttackTarget(EntityLivingBase entity) {
 /* 889 */     return (!(entity instanceof MoCEntityWyvern) && entity.height <= 1.0D && entity.width <= 1.0D);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected double flyerThrust() {
 /* 894 */     return 0.6D;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public float getAIMoveSpeed() {
 /* 899 */     if (getIsFlying()) {
 /* 900 */       return 0.4F;
 /*     */     }
 /* 902 */     return super.getAIMoveSpeed();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected float flyerFriction() {
 /* 907 */     if (getType() == 5) {
 /* 908 */       return 0.96F;
@@ -912,64 +915,64 @@
 /*     */     }
 /* 913 */     return 0.94F;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void makeEntityJump() {
 /* 918 */     wingFlap();
 /* 919 */     super.makeEntityJump();
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean shouldAttackPlayers() {
 /* 924 */     return (!getIsTamed() && super.shouldAttackPlayers());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void onDeath(DamageSource damagesource) {
 /* 929 */     if (!this.world.isRemote) {
 /* 930 */       if (getType() == 6) {
 /* 931 */         MoCTools.spawnMaggots(this.world, (Entity)this);
 /*     */       }
-/*     */       
+/*     */
 /* 934 */       if (!getIsGhost() && getIsTamed() && this.rand.nextInt(4) == 0) {
 /* 935 */         MoCEntityWyvern entitywyvern = new MoCEntityWyvern(this.world);
 /* 936 */         entitywyvern.setPosition(this.posX, this.posY, this.posZ);
 /* 937 */         this.world.spawnEntity((Entity)entitywyvern);
 /* 938 */         MoCTools.playCustomSound((Entity)this, MoCSoundEvents.ENTITY_GENERIC_MAGIC_APPEAR);
-/*     */         
+/*     */
 /* 940 */         entitywyvern.setOwnerId(getOwnerId());
 /* 941 */         entitywyvern.setTamed(true);
 /* 942 */         EntityPlayer entityplayer = this.world.getClosestPlayerToEntity((Entity)this, 24.0D);
 /* 943 */         if (entityplayer != null) {
 /* 944 */           MoCTools.tameWithName(entityplayer, (IMoCTameable)entitywyvern);
 /*     */         }
-/*     */         
+/*     */
 /* 947 */         entitywyvern.setAdult(false);
 /* 948 */         entitywyvern.setEdad(1);
 /* 949 */         entitywyvern.setType(getType());
 /* 950 */         entitywyvern.selectType();
 /* 951 */         entitywyvern.setIsGhost(true);
-/*     */       } 
-/*     */     } 
-/*     */     
+/*     */       }
+/*     */     }
+/*     */
 /* 955 */     super.onDeath(damagesource);
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public float tFloat() {
 /* 961 */     if (++this.tCounter > 30) {
 /* 962 */       this.tCounter = 0;
 /* 963 */       this.fTransparency = this.rand.nextFloat() * 0.2F + 0.15F;
-/*     */     } 
-/*     */     
+/*     */     }
+/*     */
 /* 966 */     if (getEdad() < 10) {
 /* 967 */       return 0.0F;
 /*     */     }
 /* 969 */     return this.fTransparency;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected boolean canBeTrappedInNet() {
 /* 974 */     return (getIsTamed() && !getIsGhost());
 /*     */   }

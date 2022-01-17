@@ -12,17 +12,18 @@
 /*     */ import net.minecraft.entity.EntityLivingBase;
 /*     */ import net.minecraft.util.ResourceLocation;
 /*     */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*     */ import net.minecraftforge.fml.relauncher.Side;
 /*     */ import org.lwjgl.opengl.GL11;
-/*     */ 
+/*     */
 /*     */ @SideOnly(Side.CLIENT)
 /*     */ public class MoCRenderShark extends RenderLiving<MoCEntityShark> {
 /*     */   public MoCRenderShark(ModelBase modelbase, float f) {
 /*  20 */     super(MoCClientProxy.mc.getRenderManager(), modelbase, f);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void doRender(MoCEntityShark entityshark, double d, double d1, double d2, float f, float f1) {
-/*  25 */     super.doRender((EntityLiving)entityshark, d, d1, d2, f, f1);
+/*  25 */     super.doRender(entityshark, d, d1, d2, f, f1);
 /*  26 */     boolean flag = (MoCreatures.proxy.getDisplayPetName() && !entityshark.getPetName().isEmpty());
 /*  27 */     boolean flag1 = MoCreatures.proxy.getDisplayPetHealth();
 /*  28 */     if (entityshark.renderName()) {
@@ -48,7 +49,7 @@
 /*  48 */             byte0 = (byte)(byte0 + 8);
 /*     */           }
 /*  50 */           tessellator.getBuffer().begin(7, DefaultVertexFormats.POSITION_COLOR);
-/*     */           
+/*     */
 /*  52 */           float f6 = entityshark.getHealth();
 /*  53 */           float f7 = entityshark.getMaxHealth();
 /*  54 */           float f8 = f6 / f7;
@@ -63,7 +64,7 @@
 /*  63 */           tessellator.getBuffer().pos((f9 - 20.0F), (-10 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /*  64 */           tessellator.draw();
 /*  65 */           GL11.glEnable(3553);
-/*     */         } 
+/*     */         }
 /*  67 */         if (flag) {
 /*  68 */           GL11.glDepthMask(false);
 /*  69 */           GL11.glDisable(2929);
@@ -84,15 +85,15 @@
 /*  84 */           fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, byte0, -1);
 /*  85 */           GL11.glDisable(3042);
 /*  86 */           GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-/*     */         } 
+/*     */         }
 /*  88 */         GL11.glEnable(2896);
 /*  89 */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void doRender2(MoCEntityShark entityshark, double d, double d1, double d2, float f, float f1) {
-/*  95 */     super.doRender((EntityLiving)entityshark, d, d1, d2, f, f1);
+/*  95 */     super.doRender(entityshark, d, d1, d2, f, f1);
 /*  96 */     if (entityshark.renderName()) {
 /*  97 */       float f2 = 1.6F;
 /*  98 */       float f3 = 0.01666667F * f2;
@@ -133,7 +134,7 @@
 /* 133 */           tessellator.getBuffer().pos(-20.0D, (-6 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /* 134 */           tessellator.getBuffer().pos((f8 - 20.0F), (-6 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /* 135 */           tessellator.getBuffer().pos((f8 - 20.0F), (-10 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
-/*     */         } 
+/*     */         }
 /* 137 */         tessellator.draw();
 /* 138 */         GL11.glEnable(3553);
 /* 139 */         fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, byte0, 553648127);
@@ -144,21 +145,21 @@
 /* 144 */         GL11.glDisable(3042);
 /* 145 */         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 /* 146 */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected float handleRotationFloat(MoCEntityShark entityshark, float f) {
 /* 153 */     stretch(entityshark);
 /* 154 */     return entityshark.ticksExisted + f;
 /*     */   }
-/*     */   
+/*     */
 /*     */   protected void stretch(MoCEntityShark entityshark) {
 /* 158 */     GL11.glScalef(entityshark.getEdad() * 0.01F, entityshark.getEdad() * 0.01F, entityshark.getEdad() * 0.01F);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected ResourceLocation getEntityTexture(MoCEntityShark entityshark) {
 /* 163 */     return entityshark.getTexture();
 /*     */   }

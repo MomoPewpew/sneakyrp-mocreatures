@@ -12,20 +12,21 @@
 /*     */ import net.minecraft.entity.EntityLivingBase;
 /*     */ import net.minecraft.util.ResourceLocation;
 /*     */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*     */ import net.minecraftforge.fml.relauncher.Side;
 /*     */ import org.lwjgl.opengl.GL11;
-/*     */ 
+/*     */
 /*     */ @SideOnly(Side.CLIENT)
 /*     */ public class MoCRenderDolphin extends RenderLiving<MoCEntityDolphin> {
 /*     */   public MoCRenderDolphin(ModelBase modelbase, float f) {
 /*  20 */     super(MoCClientProxy.mc.getRenderManager(), modelbase, f);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void doRender(MoCEntityDolphin entitydolphin, double d, double d1, double d2, float f, float f1) {
-/*  25 */     super.doRender((EntityLiving)entitydolphin, d, d1, d2, f, f1);
+/*  25 */     super.doRender(entitydolphin, d, d1, d2, f, f1);
 /*  26 */     boolean flag = (MoCreatures.proxy.getDisplayPetName() && !entitydolphin.getPetName().isEmpty());
 /*  27 */     boolean flag1 = MoCreatures.proxy.getDisplayPetHealth();
-/*     */     
+/*     */
 /*  29 */     if (entitydolphin.renderName()) {
 /*  30 */       float f2 = 1.6F;
 /*  31 */       float f3 = 0.01666667F * f2;
@@ -49,9 +50,9 @@
 /*  49 */             byte0 = (byte)(byte0 + 8);
 /*     */           }
 /*  51 */           tessellator.getBuffer().begin(7, DefaultVertexFormats.POSITION_COLOR);
-/*     */           
+/*     */
 /*  53 */           float f6 = entitydolphin.getHealth();
-/*     */           
+/*     */
 /*  55 */           float f7 = entitydolphin.getMaxHealth();
 /*  56 */           float f8 = f6 / f7;
 /*  57 */           float f9 = 40.0F * f8;
@@ -65,7 +66,7 @@
 /*  65 */           tessellator.getBuffer().pos((f9 - 20.0F), (-10 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /*  66 */           tessellator.draw();
 /*  67 */           GL11.glEnable(3553);
-/*     */         } 
+/*     */         }
 /*  69 */         if (flag) {
 /*  70 */           GL11.glDepthMask(false);
 /*  71 */           GL11.glDisable(2929);
@@ -86,15 +87,15 @@
 /*  86 */           fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, byte0, -1);
 /*  87 */           GL11.glDisable(3042);
 /*  88 */           GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-/*     */         } 
+/*     */         }
 /*  90 */         GL11.glEnable(2896);
 /*  91 */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void doRender2(MoCEntityDolphin entitydolphin, double d, double d1, double d2, float f, float f1) {
-/*  97 */     super.doRender((EntityLiving)entitydolphin, d, d1, d2, f, f1);
+/*  97 */     super.doRender(entitydolphin, d, d1, d2, f, f1);
 /*  98 */     if (entitydolphin.renderName()) {
 /*  99 */       float f2 = 1.6F;
 /* 100 */       float f3 = 0.01666667F * f2;
@@ -135,7 +136,7 @@
 /* 135 */           tessellator.getBuffer().pos(-20.0D, (-6 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /* 136 */           tessellator.getBuffer().pos((f8 - 20.0F), (-6 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /* 137 */           tessellator.getBuffer().pos((f8 - 20.0F), (-10 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
-/*     */         } 
+/*     */         }
 /* 139 */         tessellator.draw();
 /* 140 */         GL11.glEnable(3553);
 /* 141 */         fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, byte0, 553648127);
@@ -146,21 +147,21 @@
 /* 146 */         GL11.glDisable(3042);
 /* 147 */         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 /* 148 */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected float handleRotationFloat(MoCEntityDolphin entitydolphin, float f) {
 /* 155 */     stretch(entitydolphin);
 /* 156 */     return entitydolphin.ticksExisted + f;
 /*     */   }
-/*     */   
+/*     */
 /*     */   protected void stretch(MoCEntityDolphin entitydolphin) {
 /* 160 */     GL11.glScalef(entitydolphin.getEdad() * 0.01F, entitydolphin.getEdad() * 0.01F, entitydolphin.getEdad() * 0.01F);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected ResourceLocation getEntityTexture(MoCEntityDolphin entitydolphin) {
 /* 165 */     return entitydolphin.getTexture();
 /*     */   }

@@ -1,5 +1,5 @@
 /*      */ package drzhark.mocreatures.entity.passive;
-/*      */ 
+/*      */
 /*      */ import drzhark.mocreatures.MoCTools;
 /*      */ import drzhark.mocreatures.MoCreatures;
 /*      */ import drzhark.mocreatures.entity.IMoCTameable;
@@ -39,13 +39,13 @@
 /*      */ import net.minecraft.world.World;
 /*      */ import net.minecraftforge.fml.common.network.NetworkRegistry;
 /*      */ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ public class MoCEntityKitty
 /*      */   extends MoCEntityTameableAnimal
 /*      */ {
@@ -53,7 +53,7 @@
 /*      */   private int madtimer;
 /*      */   private boolean foundTree;
 /*   55 */   private final int[] treeCoord = new int[] { -1, -1, -1 };
-/*      */   
+/*      */
 /*      */   private boolean isSwinging;
 /*      */   private boolean onTree;
 /*      */   private EntityItem itemAttackTarget;
@@ -61,7 +61,7 @@
 /*   61 */   private static final DataParameter<Boolean> HUNGRY = EntityDataManager.createKey(MoCEntityKitty.class, DataSerializers.BOOLEAN);
 /*   62 */   private static final DataParameter<Boolean> EMO = EntityDataManager.createKey(MoCEntityKitty.class, DataSerializers.BOOLEAN);
 /*   63 */   private static final DataParameter<Integer> KITTY_STATE = EntityDataManager.createKey(MoCEntityKitty.class, DataSerializers.VARINT);
-/*      */   
+/*      */
 /*      */   public MoCEntityKitty(World world) {
 /*   66 */     super(world);
 /*   67 */     setSize(0.7F, 0.5F);
@@ -72,8 +72,8 @@
 /*   72 */     this.madtimer = this.rand.nextInt(5);
 /*   73 */     this.foundTree = false;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   protected void initEntityAI() {
 /*   78 */     this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
 /*   79 */     this.tasks.addTask(2, (EntityAIBase)new EntityAIPanicMoC((EntityCreature)this, 1.0D));
@@ -82,8 +82,8 @@
 /*   82 */     this.tasks.addTask(6, (EntityAIBase)new EntityAIWanderMoC2((EntityCreature)this, 1.0D));
 /*   83 */     this.tasks.addTask(7, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0F));
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   protected void applyEntityAttributes() {
 /*   88 */     super.applyEntityAttributes();
 /*   89 */     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
@@ -91,16 +91,16 @@
 /*   91 */     getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
 /*   92 */     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void selectType() {
 /*   97 */     if (getType() == 0) {
 /*   98 */       setType(this.rand.nextInt(8) + 1);
 /*      */     }
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   public ResourceLocation getTexture() {
 /*  105 */     switch (getType()) {
 /*      */       case 1:
@@ -119,13 +119,13 @@
 /*  119 */         return MoCreatures.proxy.getTexture("pussycatg.png");
 /*      */       case 8:
 /*  121 */         return MoCreatures.proxy.getTexture("pussycath.png");
-/*      */     } 
-/*      */     
+/*      */     }
+/*      */
 /*  124 */     return MoCreatures.proxy.getTexture("pussycata.png");
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   protected void entityInit() {
 /*  130 */     super.entityInit();
 /*  131 */     this.dataManager.register(SITTING, Boolean.valueOf(false));
@@ -133,57 +133,57 @@
 /*  133 */     this.dataManager.register(EMO, Boolean.valueOf(false));
 /*  134 */     this.dataManager.register(KITTY_STATE, Integer.valueOf(0));
 /*      */   }
-/*      */   
+/*      */
 /*      */   public int getKittyState() {
 /*  138 */     return ((Integer)this.dataManager.get(KITTY_STATE)).intValue();
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean getIsSitting() {
 /*  143 */     return ((Boolean)this.dataManager.get(SITTING)).booleanValue();
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean getIsHungry() {
 /*  147 */     return ((Boolean)this.dataManager.get(HUNGRY)).booleanValue();
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean getIsEmo() {
 /*  151 */     return ((Boolean)this.dataManager.get(EMO)).booleanValue();
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean getIsSwinging() {
 /*  155 */     return this.isSwinging;
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean getOnTree() {
 /*  159 */     return this.onTree;
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setKittyState(int i) {
 /*  163 */     this.dataManager.set(KITTY_STATE, Integer.valueOf(i));
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setSitting(boolean flag) {
 /*  167 */     this.dataManager.set(SITTING, Boolean.valueOf(flag));
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setHungry(boolean flag) {
 /*  171 */     this.dataManager.set(HUNGRY, Boolean.valueOf(flag));
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setIsEmo(boolean flag) {
 /*  175 */     this.dataManager.set(EMO, Boolean.valueOf(flag));
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setOnTree(boolean var1) {
 /*  179 */     this.onTree = var1;
 /*      */   }
-/*      */   
+/*      */
 /*      */   public void setSwinging(boolean var1) {
 /*  183 */     this.isSwinging = var1;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean attackEntityAsMob(Entity entityIn) {
 /*  188 */     if (getKittyState() != 18 && getKittyState() != 10) {
 /*  189 */       swingArm();
@@ -194,8 +194,8 @@
 /*      */     }
 /*  195 */     return super.attackEntityAsMob(entityIn);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean attackEntityFrom(DamageSource damagesource, float i) {
 /*  200 */     if (super.attackEntityFrom(damagesource, i)) {
 /*  201 */       Entity entity = damagesource.getTrueSource();
@@ -208,45 +208,45 @@
 /*  208 */             if (entity1 instanceof MoCEntityKitty && ((MoCEntityKitty)entity1).getKittyState() == 21) {
 /*  209 */               ((MoCEntityKitty)entity1).setAttackTarget(entityliving);
 /*  210 */               return true;
-/*      */             } 
-/*      */           } 
-/*      */           
+/*      */             }
+/*      */           }
+/*      */
 /*  214 */           return true;
-/*      */         } 
+/*      */         }
 /*  216 */         if (entityliving instanceof EntityPlayer && shouldAttackPlayers()) {
 /*  217 */           if (getKittyState() < 2) {
 /*  218 */             setAttackTarget(entityliving);
 /*  219 */             setKittyState(-1);
-/*      */           } 
+/*      */           }
 /*  221 */           if (getKittyState() == 19 || getKittyState() == 20 || getKittyState() == 21) {
 /*  222 */             setAttackTarget(entityliving);
 /*  223 */             setSitting(false);
 /*  224 */             return true;
-/*      */           } 
-/*  226 */           if (getKittyState() > 1 && getKittyState() != 10 && getKittyState() != 19 && getKittyState() != 20 && 
+/*      */           }
+/*  226 */           if (getKittyState() > 1 && getKittyState() != 10 && getKittyState() != 19 && getKittyState() != 20 &&
 /*  227 */             getKittyState() != 21) {
 /*  228 */             setKittyState(13);
 /*  229 */             setSitting(false);
-/*      */           } 
+/*      */           }
 /*  231 */           return true;
-/*      */         } 
+/*      */         }
 /*  233 */         setAttackTarget(entityliving);
-/*      */       } 
+/*      */       }
 /*  235 */       return true;
-/*      */     } 
+/*      */     }
 /*  237 */     return false;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   protected boolean canDespawn() {
 /*  243 */     if (MoCreatures.proxy.forceDespawns) {
 /*  244 */       return (getKittyState() < 3);
 /*      */     }
 /*  246 */     return false;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   private void changeKittyState(int i) {
 /*  251 */     setKittyState(i);
 /*  252 */     setSitting(false);
@@ -256,28 +256,28 @@
 /*  256 */     setAttackTarget(null);
 /*  257 */     this.itemAttackTarget = null;
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean climbingTree() {
 /*  261 */     return (getKittyState() == 16 && isOnLadder());
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   public void fall(float f, float f1) {}
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   protected Entity findPlayerToAttack() {
-/*  270 */     if (this.world.getDifficulty().getId() > 0 && getKittyState() != 8 && getKittyState() != 10 && getKittyState() != 15 && 
+/*  270 */     if (this.world.getDifficulty().getDifficultyId()  > 0 && getKittyState() != 8 && getKittyState() != 10 && getKittyState() != 15 &&
 /*  271 */       getKittyState() != 18 && getKittyState() != 19 && !isMovementCeased() && getIsHungry()) {
 /*  272 */       return (Entity)getClosestTarget((Entity)this, 10.0D);
 /*      */     }
-/*      */     
+/*      */
 /*  275 */     return null;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public EntityLivingBase getBoogey(double d, boolean flag) {
 /*  282 */     EntityLivingBase entityliving = null;
 /*  283 */     List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity((Entity)this, getEntityBoundingBox().expand(d, 4.0D, d));
@@ -287,13 +287,13 @@
 /*      */       {
 /*  288 */         entityliving = (EntityLivingBase)entity;
 /*      */       }
-/*      */     } 
-/*      */     
+/*      */     }
+/*      */
 /*  292 */     return entityliving;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   public EntityLiving getClosestTarget(Entity entity, double d) {
 /*  298 */     double d1 = -1.0D;
 /*  299 */     EntityLiving entityliving = null;
@@ -301,108 +301,108 @@
 /*  301 */     for (int i = 0; i < list.size(); i++) {
 /*  302 */       Entity entity1 = list.get(i);
 /*  303 */       if (entity1 instanceof EntityLiving && !(entity1 instanceof MoCEntityKitty) && !(entity1 instanceof EntityPlayer) && !(entity1 instanceof net.minecraft.entity.monster.EntityMob) && !(entity1 instanceof MoCEntityKittyBed) && !(entity1 instanceof MoCEntityLitterBox) && (entity1.width <= 0.5D || entity1.height <= 0.5D) && (!(entity instanceof drzhark.mocreatures.entity.IMoCEntity) || MoCreatures.proxy.enableHunters)) {
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */         
+/*      */
+/*      */
+/*      */
+/*      */
 /*  308 */         double d2 = entity1.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 /*  309 */         if ((d < 0.0D || d2 < d * d) && (d1 == -1.0D || d2 < d1) && ((EntityLiving)entity1).canEntityBeSeen(entity)) {
 /*  310 */           d1 = d2;
 /*  311 */           entityliving = (EntityLiving)entity1;
-/*      */         } 
-/*      */       } 
-/*      */     } 
+/*      */         }
+/*      */       }
+/*      */     }
 /*  315 */     return entityliving;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   protected Item getDropItem() {
 /*  320 */     return null;
 /*      */   }
-/*      */   
+/*      */
 /*      */   public ResourceLocation getEmoteIcon() {
 /*  324 */     switch (getKittyState()) {
 /*      */       case -1:
 /*  326 */         return MoCreatures.proxy.getTexture("emoticon2.png");
-/*      */       
+/*      */
 /*      */       case 3:
 /*  329 */         return MoCreatures.proxy.getTexture("emoticon3.png");
-/*      */       
+/*      */
 /*      */       case 4:
 /*  332 */         return MoCreatures.proxy.getTexture("emoticon4.png");
-/*      */       
+/*      */
 /*      */       case 5:
 /*  335 */         return MoCreatures.proxy.getTexture("emoticon5.png");
-/*      */       
+/*      */
 /*      */       case 7:
 /*  338 */         return MoCreatures.proxy.getTexture("emoticon7.png");
-/*      */       
+/*      */
 /*      */       case 8:
 /*  341 */         return MoCreatures.proxy.getTexture("emoticon8.png");
-/*      */       
+/*      */
 /*      */       case 9:
 /*  344 */         return MoCreatures.proxy.getTexture("emoticon9.png");
-/*      */       
+/*      */
 /*      */       case 10:
 /*  347 */         return MoCreatures.proxy.getTexture("emoticon10.png");
-/*      */       
+/*      */
 /*      */       case 11:
 /*  350 */         return MoCreatures.proxy.getTexture("emoticon11.png");
-/*      */       
+/*      */
 /*      */       case 12:
 /*  353 */         return MoCreatures.proxy.getTexture("emoticon12.png");
-/*      */       
+/*      */
 /*      */       case 13:
 /*  356 */         return MoCreatures.proxy.getTexture("emoticon13.png");
-/*      */       
+/*      */
 /*      */       case 16:
 /*  359 */         return MoCreatures.proxy.getTexture("emoticon16.png");
-/*      */       
+/*      */
 /*      */       case 17:
 /*  362 */         return MoCreatures.proxy.getTexture("emoticon17.png");
-/*      */       
+/*      */
 /*      */       case 18:
 /*  365 */         return MoCreatures.proxy.getTexture("emoticon9.png");
-/*      */       
+/*      */
 /*      */       case 19:
 /*  368 */         return MoCreatures.proxy.getTexture("emoticon19.png");
-/*      */       
+/*      */
 /*      */       case 20:
 /*  371 */         return MoCreatures.proxy.getTexture("emoticon19.png");
-/*      */       
+/*      */
 /*      */       case 21:
 /*  374 */         return MoCreatures.proxy.getTexture("emoticon10.png");
-/*      */     } 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */     
+/*      */     }
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*  383 */     return MoCreatures.proxy.getTexture("emoticon1.png");
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   protected SoundEvent getDeathSound() {
 /*  389 */     if (getKittyState() == 10) {
 /*  390 */       return MoCSoundEvents.ENTITY_KITTY_DEATH_BABY;
 /*      */     }
 /*  392 */     return MoCSoundEvents.ENTITY_KITTY_DEATH;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   protected SoundEvent getHurtSound(DamageSource source) {
 /*  398 */     if (getKittyState() == 10) {
 /*  399 */       return MoCSoundEvents.ENTITY_KITTY_HURT_BABY;
 /*      */     }
 /*  401 */     return MoCSoundEvents.ENTITY_KITTY_HURT;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
 /*      */   protected SoundEvent getAmbientSound() {
 /*  407 */     if (getKittyState() == 4) {
 /*  408 */       if (getRidingEntity() != null) {
@@ -413,9 +413,9 @@
 /*  413 */         if (entitykittybed != null && !entitykittybed.getHasFood()) {
 /*  414 */           return MoCSoundEvents.ENTITY_KITTY_EATING;
 /*      */         }
-/*      */       } 
+/*      */       }
 /*  417 */       return null;
-/*      */     } 
+/*      */     }
 /*  419 */     if (getKittyState() == 6) {
 /*  420 */       return MoCSoundEvents.ENTITY_KITTY_LITTER;
 /*      */     }
@@ -436,8 +436,8 @@
 /*      */     }
 /*  437 */     return MoCSoundEvents.ENTITY_KITTY_AMBIENT;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public EntityLiving getKittyStuff(Entity entity, double d, boolean flag) {
 /*  442 */     double d1 = -1.0D;
 /*  443 */     Object obj = null;
@@ -446,70 +446,70 @@
 /*  446 */       Entity entity1 = list.get(i);
 /*  447 */       if (flag) {
 /*  448 */         if (entity1 instanceof MoCEntityLitterBox) {
-/*      */ 
-/*      */           
+/*      */
+/*      */
 /*  451 */           MoCEntityLitterBox entitylitterbox = (MoCEntityLitterBox)entity1;
 /*  452 */           if (!entitylitterbox.getUsedLitter()) {
-/*      */ 
-/*      */             
+/*      */
+/*      */
 /*  455 */             double d2 = entity1.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 /*  456 */             if ((d < 0.0D || d2 < d * d) && (d1 == -1.0D || d2 < d1) && entitylitterbox.canEntityBeSeen(entity)) {
 /*  457 */               d1 = d2;
 /*  458 */               obj = entitylitterbox;
-/*      */             } 
-/*      */           } 
-/*      */         } 
+/*      */             }
+/*      */           }
+/*      */         }
 /*  462 */       } else if (entity1 instanceof MoCEntityKittyBed) {
-/*      */ 
-/*      */         
+/*      */
+/*      */
 /*  465 */         MoCEntityKittyBed entitykittybed = (MoCEntityKittyBed)entity1;
 /*  466 */         double d3 = entity1.getDistanceSq(entity.posX, entity.posY, entity.posZ);
 /*  467 */         if ((d < 0.0D || d3 < d * d) && (d1 == -1.0D || d3 < d1) && entitykittybed.canEntityBeSeen(entity)) {
 /*  468 */           d1 = d3;
 /*  469 */           obj = entitykittybed;
-/*      */         } 
-/*      */       } 
-/*      */     } 
+/*      */         }
+/*      */       }
+/*      */     }
 /*  473 */     return (EntityLiving)obj;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public boolean processInteract(EntityPlayer player, EnumHand hand) {
 /*  508 */     Boolean tameResult = processTameInteract(player, hand);
 /*  509 */     if (tameResult != null) {
 /*  510 */       return tameResult.booleanValue();
 /*      */     }
-/*      */     
+/*      */
 /*  513 */     ItemStack stack = player.getHeldItem(hand);
 /*  514 */     if (getKittyState() == 2 && !stack.isEmpty() && stack.getItem() == MoCItems.medallion) {
 /*  515 */       if (!this.world.isRemote) {
@@ -523,9 +523,9 @@
 /*  523 */         changeKittyState(3);
 /*  524 */         setHealth(getMaxHealth());
 /*  525 */         return true;
-/*      */       } 
+/*      */       }
 /*  527 */       return false;
-/*      */     } 
+/*      */     }
 /*  529 */     if (getKittyState() == 7 && !stack.isEmpty() && (stack
 /*  530 */       .getItem() == Items.CAKE || stack.getItem() == Items.FISH || stack.getItem() == Items.COOKED_FISH)) {
 /*  531 */       stack.shrink(1);
@@ -536,7 +536,7 @@
 /*  536 */       setHealth(getMaxHealth());
 /*  537 */       changeKittyState(9);
 /*  538 */       return true;
-/*      */     } 
+/*      */     }
 /*  540 */     if (getKittyState() == 11 && !stack.isEmpty() && stack.getItem() == MoCItems.woolball) {
 /*  541 */       stack.shrink(1);
 /*  542 */       if (stack.isEmpty()) {
@@ -552,9 +552,9 @@
 /*  552 */         entityitem.motionX += ((this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.3F);
 /*  553 */         entityitem.motionZ += ((this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.3F);
 /*  554 */         this.itemAttackTarget = entityitem;
-/*      */       } 
+/*      */       }
 /*  556 */       return true;
-/*      */     } 
+/*      */     }
 /*  558 */     if (getKittyState() == 13 && !stack.isEmpty() && (stack.getItem() == Items.FISH || stack.getItem() == Items.COOKED_FISH)) {
 /*  559 */       stack.shrink(1);
 /*  560 */       if (stack.isEmpty()) {
@@ -564,341 +564,341 @@
 /*  564 */       setHealth(getMaxHealth());
 /*  565 */       changeKittyState(7);
 /*  566 */       return true;
-/*      */     } 
+/*      */     }
 /*  568 */     if (!stack.isEmpty() && getKittyState() > 2 && (stack.getItem() == MoCItems.medallion || stack.getItem() == Items.BOOK)) {
 /*  569 */       if (!this.world.isRemote) {
 /*  570 */         MoCTools.tameWithName(player, (IMoCTameable)this);
 /*      */       }
-/*      */       
+/*      */
 /*  573 */       return true;
-/*      */     } 
+/*      */     }
 /*  575 */     if (!stack.isEmpty() && getKittyState() > 2 && pickable() && stack.getItem() == Items.LEAD) {
 /*  576 */       if (startRiding((Entity)player)) {
 /*  577 */         changeKittyState(14);
 /*      */       }
 /*  579 */       return true;
-/*      */     } 
+/*      */     }
 /*  581 */     if (!stack.isEmpty() && getKittyState() > 2 && whipeable() && stack.getItem() == MoCItems.whip) {
 /*  582 */       setSitting(!getIsSitting());
 /*  583 */       return true;
-/*      */     } 
-/*      */     
+/*      */     }
+/*      */
 /*  586 */     if (stack.isEmpty() && getKittyState() > 2 && pickable()) {
 /*  587 */       if (startRiding((Entity)player)) {
 /*  588 */         changeKittyState(15);
 /*      */       }
 /*  590 */       return true;
-/*      */     } 
+/*      */     }
 /*  592 */     if (stack.isEmpty() && getKittyState() == 15) {
 /*  593 */       changeKittyState(7);
 /*  594 */       return true;
-/*      */     } 
+/*      */     }
 /*  596 */     if (getKittyState() == 14 && getRidingEntity() != null) {
 /*  597 */       changeKittyState(7);
 /*  598 */       return true;
-/*      */     } 
-/*      */     
+/*      */     }
+/*      */
 /*  601 */     return super.processInteract(player, hand);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean isMovementCeased() {
-/*  606 */     return (getIsSitting() || getKittyState() == 6 || (getKittyState() == 16 && getOnTree()) || getKittyState() == 12 || 
+/*  606 */     return (getIsSitting() || getKittyState() == 6 || (getKittyState() == 16 && getOnTree()) || getKittyState() == 12 ||
 /*  607 */       getKittyState() == 17 || getKittyState() == 14 || getKittyState() == 20 || getKittyState() == 23);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean isOnLadder() {
 /*  612 */     if (getKittyState() == 16) {
 /*  613 */       return (this.collidedHorizontally && getOnTree());
 /*      */     }
 /*  615 */     return super.isOnLadder();
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public void onLivingUpdate() {
 /*      */     // Byte code:
 /*      */     //   0: aload_0
@@ -2915,295 +2915,295 @@
 /*      */     //   1451	85	9	list1	Ljava/util/List<Lnet/minecraft/entity/Entity;>;
 /*      */     //   3421	84	24	list2	Ljava/util/List<Lnet/minecraft/entity/Entity;>;
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public boolean onMaBack() {
 /* 1190 */     return (getKittyState() == 15);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void onUpdate() {
 /* 1195 */     super.onUpdate();
 /* 1196 */     if (getIsSwinging()) {
@@ -3211,100 +3211,100 @@
 /* 1198 */       if (this.swingProgress > 2.0F) {
 /* 1199 */         setSwinging(false);
 /* 1200 */         this.swingProgress = 0.0F;
-/*      */       } 
-/*      */     } 
+/*      */       }
+/*      */     }
 /*      */   }
-/*      */   
+/*      */
 /*      */   private boolean pickable() {
-/* 1206 */     return (getKittyState() != 13 && getKittyState() != 14 && getKittyState() != 15 && getKittyState() != 19 && getKittyState() != 20 && 
+/* 1206 */     return (getKittyState() != 13 && getKittyState() != 14 && getKittyState() != 15 && getKittyState() != 19 && getKittyState() != 20 &&
 /* 1207 */       getKittyState() != 21);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean renderName() {
 /* 1212 */     return (getKittyState() != 14 && getKittyState() != 15 && getKittyState() > 1 && super.renderName());
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void setDead() {
 /* 1217 */     if (!this.world.isRemote && getKittyState() > 2 && getHealth() > 0.0F) {
 /*      */       return;
 /*      */     }
 /* 1220 */     super.setDead();
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public void swingArm() {
 /* 1227 */     if (!this.world.isRemote) {
 /* 1228 */       MoCMessageHandler.INSTANCE.sendToAllAround((IMessage)new MoCMessageAnimation(getEntityId(), 0), new NetworkRegistry.TargetPoint(this.world.provider
 /* 1229 */             .getDimensionType().getId(), this.posX, this.posY, this.posZ, 64.0D));
 /*      */     }
-/*      */     
+/*      */
 /* 1232 */     if (!getIsSwinging()) {
 /* 1233 */       setSwinging(true);
 /* 1234 */       this.swingProgress = 0.0F;
-/*      */     } 
+/*      */     }
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void performAnimation(int i) {
 /* 1240 */     swingArm();
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean upsideDown() {
 /* 1244 */     return (getKittyState() == 14);
 /*      */   }
-/*      */   
+/*      */
 /*      */   public boolean whipeable() {
 /* 1248 */     return (getKittyState() != 13);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void readEntityFromNBT(NBTTagCompound nbttagcompound) {
 /* 1253 */     super.readEntityFromNBT(nbttagcompound);
 /* 1254 */     setSitting(nbttagcompound.getBoolean("Sitting"));
 /* 1255 */     setKittyState(nbttagcompound.getInteger("KittyState"));
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
 /* 1260 */     super.writeEntityToNBT(nbttagcompound);
 /* 1261 */     nbttagcompound.setBoolean("Sitting", getIsSitting());
 /* 1262 */     nbttagcompound.setInteger("KittyState", getKittyState());
 /*      */   }
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */ 
-/*      */   
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */   public void onDeath(DamageSource damagesource) {
-/* 1278 */     if (!this.world.isRemote && 
+/* 1278 */     if (!this.world.isRemote &&
 /* 1279 */       getIsTamed()) {
 /* 1280 */       MoCTools.dropCustomItem((Entity)this, this.world, new ItemStack((Item)MoCItems.medallion, 1));
 /*      */     }
-/*      */     
+/*      */
 /* 1283 */     super.onDeath(damagesource);
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public boolean swimmerEntity() {
 /* 1288 */     return true;
 /*      */   }
-/*      */ 
-/*      */   
+/*      */
+/*      */
 /*      */   public int nameYOffset() {
 /* 1293 */     if (getIsSitting())
-/* 1294 */       return -30; 
+/* 1294 */       return -30;
 /* 1295 */     return -40;
 /*      */   }
 /*      */ }

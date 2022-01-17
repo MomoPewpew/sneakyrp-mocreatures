@@ -19,7 +19,6 @@
 /*    */ public class MoCKeyHandler {
 /*    */   int keyCount;
 /* 24 */   static KeyBinding diveBinding = new KeyBinding("MoCreatures Dive", 44, "key.categories.movement");
-/* 25 */   static KeyBinding guiBinding = new KeyBinding("MoCreatures GUI", 100, "key.categories.misc");
 /*    */
 /*    */
 /*    */
@@ -28,7 +27,6 @@
 /*    */
 /*    */   public MoCKeyHandler() {
 /* 33 */     ClientRegistry.registerKeyBinding(diveBinding);
-/* 34 */     ClientRegistry.registerKeyBinding(guiBinding);
 /*    */   }
 /*    */
 /*    */   @SubscribeEvent
@@ -50,18 +48,8 @@
 /*    */     }
 /*    */
 /*    */
-/* 57 */     boolean kbJump = (MoCClientProxy.mc.gameSettings.keyBindJump.getKeyCode() >= 0) ? Keyboard.isKeyDown(MoCClientProxy.mc.gameSettings.keyBindJump.getKeyCode()) : ((keyPressed == MoCClientProxy.mc.gameSettings.keyBindJump.getKeyCode()));
-/* 58 */     boolean kbDive = (diveBinding.getKeyCode() >= 0) ? Keyboard.isKeyDown(diveBinding.getKeyCode()) : ((keyPressed == diveBinding.getKeyCode()));
-// /* 59 */     boolean kbGui = (guiBinding.getKeyCode() >= 0) ? Keyboard.isKeyDown(guiBinding.getKeyCode()) : ((keyPressed == guiBinding.getKeyCode()));
-/*    */
-/*    */
-// /* 62 */     if (kbGui && ((EntityPlayer)entityPlayerSP).world.isRemote) {
-// /* 63 */       if (MoCClientProxy.mc.inGameHasFocus && true) {
-// /* 64 */         GuiModScreen.show(MoCClientProxy.instance.MoCScreen.theWidget);
-// /*    */       } else {
-// /* 66 */         this.localScreen = null;
-// /*    */       }
-// /*    */     }
+/* 57 */     boolean kbJump = MoCClientProxy.mc.gameSettings.keyBindJump.isKeyDown();
+/* 58 */     boolean kbDive = diveBinding.isKeyDown();
 /*    */
 /*    */
 /*    */

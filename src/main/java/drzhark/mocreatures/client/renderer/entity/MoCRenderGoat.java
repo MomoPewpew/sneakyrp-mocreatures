@@ -1,4 +1,5 @@
 /*     */ package drzhark.mocreatures.client.renderer.entity;
+/*     */ import drzhark.mocreatures.client.MoCClientProxy;
 /*     */ import drzhark.mocreatures.MoCreatures;
 /*     */ import drzhark.mocreatures.client.model.MoCModelGoat;
 /*     */ import drzhark.mocreatures.entity.passive.MoCEntityGoat;
@@ -12,124 +13,125 @@
 /*     */ import net.minecraft.entity.EntityLivingBase;
 /*     */ import net.minecraft.util.ResourceLocation;
 /*     */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*     */ import net.minecraftforge.fml.relauncher.Side;
 /*     */ import org.lwjgl.opengl.GL11;
-/*     */ 
+/*     */
 /*     */ @SideOnly(Side.CLIENT)
 /*     */ public class MoCRenderGoat extends RenderLiving<MoCEntityGoat> {
 /*     */   private final MoCModelGoat tempGoat;
-/*     */   
+/*     */
 /*     */   protected ResourceLocation getEntityTexture(MoCEntityGoat entitygoat) {
 /*  22 */     return entitygoat.getTexture();
 /*     */   }
 /*     */   float depth;
 /*     */   public MoCRenderGoat(ModelBase modelbase, float f) {
 /*  26 */     super(MoCClientProxy.mc.getRenderManager(), modelbase, f);
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */     
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /* 124 */     this.depth = 0.0F;
 /*     */     this.tempGoat = (MoCModelGoat)modelbase;
 /*     */   }
-/*     */   
+/*     */
 /*     */   protected void preRenderCallback(MoCEntityGoat entitygoat, float f) {
 /*     */     GL11.glTranslatef(0.0F, this.depth, 0.0F);
 /*     */     stretch(entitygoat);
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void doRender(MoCEntityGoat entitygoat, double d, double d1, double d2, float f, float f1) {
 /*     */     this.tempGoat.typeInt = entitygoat.getType();
 /*     */     this.tempGoat.edad = entitygoat.getEdad() * 0.01F;
@@ -139,7 +141,7 @@
 /*     */     this.tempGoat.earMov = entitygoat.earMovement();
 /*     */     this.tempGoat.tailMov = entitygoat.tailMovement();
 /*     */     this.tempGoat.eatMov = entitygoat.mouthMovement();
-/*     */     super.doRender((EntityLiving)entitygoat, d, d1, d2, f, f1);
+/*     */     super.doRender(entitygoat, d, d1, d2, f, f1);
 /*     */     boolean flag = (MoCreatures.proxy.getDisplayPetName() && !entitygoat.getPetName().isEmpty());
 /*     */     boolean flag1 = MoCreatures.proxy.getDisplayPetHealth();
 /*     */     if (entitygoat.renderName()) {
@@ -162,7 +164,7 @@
 /*     */         if (flag1) {
 /*     */           GL11.glDisable(3553);
 /*     */           if (!flag)
-/*     */             byte0 = (byte)(byte0 + 8); 
+/*     */             byte0 = (byte)(byte0 + 8);
 /*     */           tessellator.getBuffer().begin(7, DefaultVertexFormats.POSITION_COLOR);
 /*     */           float f6 = entitygoat.getHealth();
 /*     */           float f7 = entitygoat.getMaxHealth();
@@ -178,7 +180,7 @@
 /*     */           tessellator.getBuffer().pos((f9 - 20.0F), (-10 + byte0), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /*     */           tessellator.draw();
 /*     */           GL11.glEnable(3553);
-/*     */         } 
+/*     */         }
 /*     */         if (flag) {
 /*     */           GL11.glDepthMask(false);
 /*     */           GL11.glDisable(2929);
@@ -199,13 +201,13 @@
 /*     */           fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, byte0, -1);
 /*     */           GL11.glDisable(3042);
 /*     */           GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-/*     */         } 
+/*     */         }
 /*     */         GL11.glEnable(2896);
 /*     */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   protected void stretch(MoCEntityGoat entitygoat) {
 /*     */     GL11.glScalef(entitygoat.getEdad() * 0.01F, entitygoat.getEdad() * 0.01F, entitygoat.getEdad() * 0.01F);
 /*     */   }

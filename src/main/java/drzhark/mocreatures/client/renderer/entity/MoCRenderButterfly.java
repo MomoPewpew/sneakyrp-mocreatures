@@ -7,15 +7,17 @@
 /*    */ import net.minecraft.entity.EntityLivingBase;
 /*    */ import net.minecraft.util.ResourceLocation;
 /*    */ import org.lwjgl.opengl.GL11;
-/*    */ 
+/*    */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*    */ import net.minecraftforge.fml.relauncher.Side;
+/*    */
 /*    */ @SideOnly(Side.CLIENT)
 /*    */ public class MoCRenderButterfly extends MoCRenderInsect<MoCEntityButterfly> {
 /*    */   public MoCRenderButterfly(ModelBase modelbase) {
 /* 14 */     super(modelbase);
 /*    */   }
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
 /*    */   protected void preRenderCallback(MoCEntityButterfly entitybutterfly, float par2) {
 /* 20 */     if (entitybutterfly.isOnAir() || !entitybutterfly.onGround) {
 /* 21 */       adjustHeight(entitybutterfly, entitybutterfly.tFloat());
@@ -25,12 +27,12 @@
 /*    */     }
 /* 26 */     stretch(entitybutterfly);
 /*    */   }
-/*    */   
+/*    */
 /*    */   protected void adjustHeight(MoCEntityButterfly entitybutterfly, float FHeight) {
 /* 30 */     GL11.glTranslatef(0.0F, FHeight, 0.0F);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected ResourceLocation getEntityTexture(MoCEntityButterfly entitybutterfly) {
 /* 35 */     return entitybutterfly.getTexture();
 /*    */   }

@@ -10,6 +10,7 @@
 /*     */ import net.minecraft.entity.EntityCreature;
 /*     */ import net.minecraft.entity.EntityLiving;
 /*     */ import net.minecraft.entity.EntityLivingBase;
+/*     */ import net.minecraft.entity.passive.EntityAnimal;
 /*     */ import net.minecraft.entity.SharedMonsterAttributes;
 /*     */ import net.minecraft.entity.ai.EntityAIAttackMelee;
 /*     */ import net.minecraft.entity.ai.EntityAIBase;
@@ -23,7 +24,7 @@
 /*     */ import net.minecraft.util.ResourceLocation;
 /*     */ import net.minecraft.util.SoundEvent;
 /*     */ import net.minecraft.world.World;
-/*     */ 
+/*     */
 /*     */ public class MoCEntityBoar extends MoCEntityAnimal {
 /*     */   public MoCEntityBoar(World world) {
 /*  29 */     super(world);
@@ -32,12 +33,12 @@
 /*  32 */     if (this.rand.nextInt(4) == 0) {
 /*  33 */       setAdult(false);
 /*     */     } else {
-/*     */       
+/*     */
 /*  36 */       setAdult(true);
-/*     */     } 
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void initEntityAI() {
 /*  42 */     this.tasks.addTask(1, (EntityAIBase)new EntityAISwimming((EntityLiving)this));
 /*  43 */     this.tasks.addTask(2, (EntityAIBase)new EntityAIFleeFromPlayer((EntityCreature)this, 1.0D, 4.0D));
@@ -47,8 +48,8 @@
 /*  47 */     this.tasks.addTask(9, (EntityAIBase)new EntityAIWatchClosest((EntityLiving)this, EntityPlayer.class, 8.0F));
 /*  48 */     this.targetTasks.addTask(1, (EntityAIBase)new EntityAIHunt((EntityCreature)this, EntityAnimal.class, true));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void applyEntityAttributes() {
 /*  53 */     super.applyEntityAttributes();
 /*  54 */     getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0D);
@@ -56,26 +57,26 @@
 /*  56 */     getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
 /*  57 */     getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public ResourceLocation getTexture() {
 /*  62 */     if (getIsAdult()) {
 /*  63 */       return MoCreatures.proxy.getTexture("boara.png");
 /*     */     }
 /*  65 */     return MoCreatures.proxy.getTexture("boarb.png");
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   protected boolean canDespawn() {
 /*  71 */     if (MoCreatures.proxy.forceDespawns) {
 /*  72 */       return !getIsTamed();
 /*     */     }
 /*  74 */     return false;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public boolean attackEntityFrom(DamageSource damagesource, float i) {
 /*  80 */     if (super.attackEntityFrom(damagesource, i)) {
 /*  81 */       Entity entity = damagesource.getTrueSource();
@@ -86,52 +87,52 @@
 /*  86 */         setAttackTarget((EntityLivingBase)entity);
 /*     */       }
 /*  88 */       return true;
-/*     */     } 
+/*     */     }
 /*  90 */     return false;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public boolean isNotScared() {
 /*  96 */     return getIsAdult();
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   protected Item getDropItem() {
 /* 102 */     if (this.rand.nextInt(2) == 0) {
 /* 103 */       return Items.PORKCHOP;
 /*     */     }
-/*     */     
+/*     */
 /* 106 */     return (Item)MoCItems.animalHide;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getAmbientSound() {
 /* 111 */     return SoundEvents.ENTITY_PIG_AMBIENT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getHurtSound(DamageSource source) {
 /* 116 */     return SoundEvents.ENTITY_PIG_HURT;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected SoundEvent getDeathSound() {
 /* 121 */     return SoundEvents.ENTITY_PIG_DEATH;
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean canAttackTarget(EntityLivingBase entity) {
 /* 126 */     return (!(entity instanceof MoCEntityBoar) && super.canAttackTarget(entity));
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isReadyToHunt() {
 /* 131 */     return (getIsAdult() && !isMovementCeased());
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public float getSizeFactor() {
 /* 136 */     if (getIsAdult()) {
 /* 137 */       return 1.0F;

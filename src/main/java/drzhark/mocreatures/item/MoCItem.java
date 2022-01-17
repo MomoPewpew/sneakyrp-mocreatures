@@ -1,22 +1,22 @@
 /*    */ package drzhark.mocreatures.item;
-/*    */ 
+/*    */
 /*    */ import drzhark.mocreatures.MoCreatures;
 /*    */ import net.minecraft.item.Item;
-/*    */ 
-/*    */ 
+/*    */
+/*    */
 /*    */ public class MoCItem
 /*    */   extends Item
 /*    */ {
 /*    */   public MoCItem() {}
-/*    */   
+/*    */
 /*    */   public MoCItem(String name) {
 /* 13 */     this(name, 0);
 /*    */   }
-/*    */   
+/*    */
 /*    */   public MoCItem(String name, int meta) {
 /* 17 */     setCreativeTab(MoCreatures.tabMoC);
 /* 18 */     setRegistryName("mocreatures", name);
-/* 19 */     setTranslationKey(name);
+/* 19 */     setUnlocalizedName(name);
 /*    */   }
 /*    */ }
 

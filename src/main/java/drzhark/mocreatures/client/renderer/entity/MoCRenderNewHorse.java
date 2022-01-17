@@ -6,24 +6,25 @@
 /*    */ import net.minecraft.entity.EntityLivingBase;
 /*    */ import net.minecraft.util.ResourceLocation;
 /*    */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*    */ import net.minecraftforge.fml.relauncher.Side;
 /*    */ import org.lwjgl.opengl.GL11;
-/*    */ 
+/*    */
 /*    */ @SideOnly(Side.CLIENT)
 /*    */ public class MoCRenderNewHorse extends MoCRenderMoC<MoCEntityHorse> {
 /*    */   public MoCRenderNewHorse(MoCModelNewHorse modelbase) {
-/* 14 */     super((ModelBase)modelbase, 0.5F);
+/* 14 */     super(modelbase, 0.5F);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected ResourceLocation getEntityTexture(MoCEntityHorse entityhorse) {
 /* 19 */     return entityhorse.getTexture();
 /*    */   }
-/*    */   
+/*    */
 /*    */   protected void adjustHeight(MoCEntityHorse entityhorse, float FHeight) {
 /* 23 */     GL11.glTranslatef(0.0F, FHeight, 0.0F);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void preRenderCallback(MoCEntityHorse entityhorse, float f) {
 /* 28 */     if (!entityhorse.getIsAdult() || entityhorse.getType() > 64) {
 /* 29 */       stretch(entityhorse);
@@ -33,7 +34,7 @@
 /*    */     }
 /* 34 */     super.preRenderCallback(entityhorse, f);
 /*    */   }
-/*    */   
+/*    */
 /*    */   protected void stretch(MoCEntityHorse entityhorse) {
 /* 38 */     float sizeFactor = entityhorse.getEdad() * 0.01F;
 /* 39 */     if (entityhorse.getIsAdult()) {

@@ -10,9 +10,10 @@
 /*    */ import net.minecraft.util.ResourceLocation;
 /*    */ import net.minecraft.util.math.MathHelper;
 /*    */ import net.minecraftforge.fml.relauncher.Side;
+/*    */ import net.minecraft.block.material.Material;
 /*    */ import net.minecraftforge.fml.relauncher.SideOnly;
 /*    */ import org.lwjgl.opengl.GL11;
-/*    */ 
+/*    */
 /*    */ @SideOnly(Side.CLIENT)
 /*    */ public class MoCRenderCrocodile extends RenderLiving<MoCEntityCrocodile> {
 /*    */   public MoCRenderCrocodile(MoCModelCrocodile modelbase, float f) {
@@ -20,17 +21,17 @@
 /* 20 */     this.croc = modelbase;
 /*    */   }
 /*    */   public MoCModelCrocodile croc;
-/*    */   
+/*    */
 /*    */   protected ResourceLocation getEntityTexture(MoCEntityCrocodile entitycrocodile) {
 /* 25 */     return entitycrocodile.getTexture();
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   public void doRender(MoCEntityCrocodile entitycrocodile, double d, double d1, double d2, float f, float f1) {
-/* 30 */     super.doRender((EntityLiving)entitycrocodile, d, d1, d2, f, f1);
+/* 30 */     super.doRender(entitycrocodile, d, d1, d2, f, f1);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void preRenderCallback(MoCEntityCrocodile entitycrocodile, float f) {
 /* 35 */     this.croc.biteProgress = entitycrocodile.biteProgress;
 /* 36 */     this.croc.swimming = entitycrocodile.isSwimming();
@@ -39,36 +40,36 @@
 /* 39 */       spinCroc(entitycrocodile, (EntityLiving)entitycrocodile.getRidingEntity());
 /*    */     }
 /* 41 */     stretch(entitycrocodile);
-/* 42 */     if (entitycrocodile.getIsSitting() && 
+/* 42 */     if (entitycrocodile.getIsSitting() &&
 /* 43 */       !entitycrocodile.isInsideOfMaterial(Material.WATER)) {
 /* 44 */       adjustHeight(entitycrocodile, 0.2F);
 /*    */     }
 /*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
 /*    */   protected void rotateAnimal(MoCEntityCrocodile entitycrocodile) {}
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
 /*    */   protected void adjustHeight(MoCEntityCrocodile entitycrocodile, float FHeight) {
 /* 62 */     GL11.glTranslatef(0.0F, FHeight, 0.0F);
 /*    */   }
-/*    */   
+/*    */
 /*    */   protected void spinCroc(MoCEntityCrocodile entitycrocodile, EntityLiving prey) {
 /* 66 */     int intSpin = entitycrocodile.spinInt;
 /* 67 */     int direction = 1;
 /* 68 */     if (intSpin > 40) {
 /* 69 */       intSpin -= 40;
 /* 70 */       direction = -1;
-/*    */     } 
+/*    */     }
 /* 72 */     int intEndSpin = intSpin;
 /* 73 */     if (intSpin >= 20) {
 /* 74 */       intEndSpin = 20 - intSpin - 20;
@@ -83,16 +84,16 @@
 /*    */     }
 /* 84 */     f3 *= direction;
 /* 85 */     GL11.glRotatef(f3 * 90.0F, 0.0F, 0.0F, 1.0F);
-/*    */     
+/*    */
 /* 87 */     if (prey != null) {
 /* 88 */       prey.deathTime = intEndSpin;
 /*    */     }
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void stretch(MoCEntityCrocodile entitycrocodile) {
 /* 94 */     float f = entitycrocodile.getEdad() * 0.01F;
-/*    */     
+/*    */
 /* 96 */     GL11.glScalef(f, f, f);
 /*    */   }
 /*    */ }

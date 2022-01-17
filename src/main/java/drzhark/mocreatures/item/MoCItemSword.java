@@ -1,5 +1,5 @@
 /*    */ package drzhark.mocreatures.item;
-/*    */ 
+/*    */
 /*    */ import drzhark.mocreatures.MoCreatures;
 /*    */ import net.minecraft.entity.EntityLivingBase;
 /*    */ import net.minecraft.init.MobEffects;
@@ -7,38 +7,38 @@
 /*    */ import net.minecraft.item.ItemStack;
 /*    */ import net.minecraft.item.ItemSword;
 /*    */ import net.minecraft.potion.PotionEffect;
-/*    */ 
+/*    */
 /*    */ public class MoCItemSword
 /*    */   extends ItemSword
 /*    */ {
 /* 14 */   private int specialWeaponType = 0;
 /*    */   private boolean breakable = false;
-/*    */   
+/*    */
 /*    */   public MoCItemSword(String name, Item.ToolMaterial material) {
 /* 18 */     this(name, 0, material);
 /*    */   }
-/*    */   
+/*    */
 /*    */   public MoCItemSword(String name, int meta, Item.ToolMaterial material) {
 /* 22 */     super(material);
 /* 23 */     setCreativeTab(MoCreatures.tabMoC);
 /* 24 */     setRegistryName("mocreatures", name);
-/* 25 */     setTranslationKey(name);
+/* 25 */     setUnlocalizedName(name);
 /*    */   }
-/*    */   
+/*    */
 /*    */   public MoCItemSword(String name, Item.ToolMaterial material, int damageType, boolean fragile) {
 /* 29 */     this(name, material);
 /* 30 */     this.specialWeaponType = damageType;
 /* 31 */     this.breakable = fragile;
 /*    */   }
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
 /*    */   public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase target, EntityLivingBase attacker) {
 /* 43 */     int i = 1;
 /* 44 */     if (this.breakable) {
@@ -62,10 +62,10 @@
 /*    */       case 5:
 /* 63 */         target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, potionTime, 0));
 /*    */         break;
-/*    */     } 
-/*    */ 
-/*    */ 
-/*    */     
+/*    */     }
+/*    */
+/*    */
+/*    */
 /* 69 */     return true;
 /*    */   }
 /*    */ }

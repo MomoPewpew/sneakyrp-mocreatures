@@ -1,5 +1,5 @@
 /*    */ package drzhark.mocreatures.item;
-/*    */ 
+/*    */
 /*    */ import drzhark.mocreatures.entity.aquatic.MoCEntityFishy;
 /*    */ import drzhark.mocreatures.entity.aquatic.MoCEntityMediumFish;
 /*    */ import drzhark.mocreatures.entity.aquatic.MoCEntitySmallFish;
@@ -15,15 +15,15 @@
 /*    */ import net.minecraft.world.World;
 /*    */ import net.minecraftforge.fml.relauncher.Side;
 /*    */ import net.minecraftforge.fml.relauncher.SideOnly;
-/*    */ 
+/*    */
 /*    */ public class MoCItemEgg extends MoCItem {
 /*    */   public MoCItemEgg(String name) {
 /* 21 */     super(name);
 /* 22 */     this.maxStackSize = 16;
 /* 23 */     setHasSubtypes(true);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 /* 28 */     ItemStack stack = player.getHeldItem(hand);
 /* 29 */     stack.shrink(1);
@@ -38,18 +38,18 @@
 /* 38 */       entityegg.motionY += (world.rand.nextFloat() * 0.05F);
 /* 39 */       entityegg.motionX += ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.3F);
 /* 40 */       entityegg.motionZ += ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.3F);
-/*    */     } 
+/*    */     }
 /* 42 */     return new ActionResult(EnumActionResult.SUCCESS, stack);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   @SideOnly(Side.CLIENT)
 /*    */   public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 /* 48 */     if (!isInCreativeTab(tab)) {
 /*    */       return;
 /*    */     }
-/*    */ 
-/*    */     
+/*    */
+/*    */
 /* 53 */     int length = MoCEntityFishy.fishNames.length; int i;
 /* 54 */     for (i = 0; i < length; i++) {
 /* 55 */       items.add(new ItemStack(this, 1, i));
@@ -77,10 +77,10 @@
 /* 77 */       items.add(new ItemStack(this, 1, i));
 /*    */     }
 /*    */   }
-/*    */ 
-/*    */   
-/*    */   public String getTranslationKey(ItemStack itemstack) {
-/* 83 */     return getTranslationKey() + "." + itemstack.getItemDamage();
+/*    */
+/*    */
+/*    */   public String getUnlocalizedName(ItemStack itemstack) {
+/* 83 */     return getUnlocalizedName() + "." + itemstack.getItemDamage();
 /*    */   }
 /*    */ }
 

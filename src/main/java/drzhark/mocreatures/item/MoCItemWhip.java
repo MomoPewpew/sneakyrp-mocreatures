@@ -1,5 +1,5 @@
 /*     */ package drzhark.mocreatures.item;
-/*     */ 
+/*     */
 /*     */ import drzhark.mocreatures.MoCTools;
 /*     */ import drzhark.mocreatures.MoCreatures;
 /*     */ import drzhark.mocreatures.entity.MoCEntityAnimal;
@@ -26,7 +26,7 @@
 /*     */ import net.minecraft.util.SoundCategory;
 /*     */ import net.minecraft.util.math.BlockPos;
 /*     */ import net.minecraft.world.World;
-/*     */ 
+/*     */
 /*     */ public class MoCItemWhip
 /*     */   extends MoCItem {
 /*     */   public MoCItemWhip(String name) {
@@ -34,18 +34,18 @@
 /*  34 */     this.maxStackSize = 1;
 /*  35 */     setMaxDamage(24);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public boolean isFull3D() {
 /*  40 */     return true;
 /*     */   }
-/*     */   
+/*     */
 /*     */   public ItemStack onItemRightClick2(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 /*  44 */     return itemstack;
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
 /*     */   public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 /*  50 */     ItemStack stack = player.getHeldItem(hand);
 /*  51 */     int i1 = 0;
@@ -58,24 +58,24 @@
 /*  58 */       List<Entity> list = worldIn.getEntitiesWithinAABBExcludingEntity((Entity)player, player.getEntityBoundingBox().expand(12.0D, 12.0D, 12.0D));
 /*  59 */       for (int l1 = 0; l1 < list.size(); l1++) {
 /*  60 */         Entity entity = list.get(l1);
-/*     */         
+/*     */
 /*  62 */         if (entity instanceof MoCEntityAnimal) {
 /*  63 */           MoCEntityAnimal animal = (MoCEntityAnimal)entity;
-/*  64 */           if (MoCreatures.proxy.enableOwnership && animal.getOwnerId() != null && 
+/*  64 */           if (MoCreatures.proxy.enableOwnership && animal.getOwnerId() != null &&
 /*  65 */             !player.getName().equals(animal.getOwnerId()) && !MoCTools.isThisPlayerAnOP(player)) {
 /*     */             continue;
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /*  70 */         if (entity instanceof MoCEntityBigCat) {
 /*  71 */           MoCEntityBigCat entitybigcat = (MoCEntityBigCat)entity;
 /*  72 */           if (entitybigcat.getIsTamed()) {
 /*  73 */             entitybigcat.setSitting(!entitybigcat.getIsSitting());
 /*  74 */             i1++;
-/*  75 */           } else if (worldIn.getDifficulty().getId() > 0 && entitybigcat.getIsAdult()) {
+/*  75 */           } else if (worldIn.getDifficulty().getDifficultyId()  > 0 && entitybigcat.getIsAdult()) {
 /*  76 */             entitybigcat.setAttackTarget((EntityLivingBase)player);
-/*     */           } 
-/*     */         } 
+/*     */           }
+/*     */         }
 /*  79 */         if (entity instanceof MoCEntityHorse) {
 /*  80 */           MoCEntityHorse entityhorse = (MoCEntityHorse)entity;
 /*  81 */           if (entityhorse.getIsTamed()) {
@@ -85,74 +85,74 @@
 /*  85 */               entityhorse.setNightmareInt(100);
 /*  86 */             } else if (entityhorse.sprintCounter == 0) {
 /*  87 */               entityhorse.sprintCounter = 1;
-/*     */             } 
+/*     */             }
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /*  92 */         if (entity instanceof MoCEntityKitty) {
 /*  93 */           MoCEntityKitty entitykitty = (MoCEntityKitty)entity;
 /*  94 */           if (entitykitty.getKittyState() > 2 && entitykitty.whipeable()) {
 /*  95 */             entitykitty.setSitting(!entitykitty.getIsSitting());
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /*  99 */         if (entity instanceof MoCEntityWyvern) {
 /* 100 */           MoCEntityWyvern entitywyvern = (MoCEntityWyvern)entity;
 /* 101 */           if (entitywyvern.getIsTamed() && entitywyvern.getRidingEntity() == null && !entitywyvern.isOnAir()) {
 /* 102 */             entitywyvern.setSitting(!entitywyvern.getIsSitting());
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /* 106 */         if (entity instanceof MoCEntityPetScorpion) {
 /* 107 */           MoCEntityPetScorpion petscorpion = (MoCEntityPetScorpion)entity;
 /* 108 */           if (petscorpion.getIsTamed() && petscorpion.getRidingEntity() == null) {
 /* 109 */             petscorpion.setSitting(!petscorpion.getIsSitting());
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /* 113 */         if (entity instanceof MoCEntityOstrich) {
 /* 114 */           MoCEntityOstrich entityostrich = (MoCEntityOstrich)entity;
-/*     */ 
-/*     */           
+/*     */
+/*     */
 /* 117 */           if (entityostrich.isBeingRidden() && entityostrich.sprintCounter == 0) {
 /* 118 */             entityostrich.sprintCounter = 1;
 /*     */           }
-/*     */ 
-/*     */           
+/*     */
+/*     */
 /* 122 */           if (entityostrich.getIsTamed() && entityostrich.getRidingEntity() == null) {
 /* 123 */             entityostrich.setHiding(!entityostrich.getHiding());
 /*     */           }
-/*     */         } 
+/*     */         }
 /* 126 */         if (entity instanceof MoCEntityElephant) {
 /* 127 */           MoCEntityElephant entityelephant = (MoCEntityElephant)entity;
-/*     */ 
-/*     */           
+/*     */
+/*     */
 /* 130 */           if (entityelephant.isBeingRidden() && entityelephant.sprintCounter == 0) {
 /* 131 */             entityelephant.sprintCounter = 1;
 /*     */           }
-/*     */         } 
-/*     */         
+/*     */         }
+/*     */
 /* 135 */         if (entity instanceof MoCEntityBear) {
 /* 136 */           MoCEntityBear entitybear = (MoCEntityBear)entity;
-/*     */           
+/*     */
 /* 138 */           if (entitybear.getIsTamed()) {
 /* 139 */             if (entitybear.getBearState() == 0) {
 /* 140 */               entitybear.setBearState(2);
 /*     */             } else {
 /* 142 */               entitybear.setBearState(0);
-/*     */             } 
+/*     */             }
 /*     */           }
-/*     */         } 
+/*     */         }
 /*     */         continue;
-/*     */       } 
+/*     */       }
 /* 148 */       if (i1 > 6);
-/*     */ 
-/*     */       
+/*     */
+/*     */
 /* 151 */       return EnumActionResult.SUCCESS;
-/*     */     } 
+/*     */     }
 /* 153 */     return EnumActionResult.FAIL;
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void whipFX(World world, BlockPos pos) {
 /* 157 */     double d = (pos.getX() + 0.5F);
 /* 158 */     double d1 = (pos.getY() + 1.0F);

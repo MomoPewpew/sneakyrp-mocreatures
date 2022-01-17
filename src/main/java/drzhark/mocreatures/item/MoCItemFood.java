@@ -1,8 +1,8 @@
 /*    */ package drzhark.mocreatures.item;
-/*    */ 
+/*    */
 /*    */ import drzhark.mocreatures.MoCreatures;
 /*    */ import net.minecraft.item.ItemFood;
-/*    */ 
+/*    */
 /*    */ public class MoCItemFood
 /*    */   extends ItemFood
 /*    */ {
@@ -10,15 +10,15 @@
 /* 10 */     super(j, 0.6F, false);
 /* 11 */     setCreativeTab(MoCreatures.tabMoC);
 /* 12 */     setRegistryName("mocreatures", name);
-/* 13 */     setTranslationKey(name);
+/* 13 */     setUnlocalizedName(name);
 /* 14 */     this.maxStackSize = 32;
 /*    */   }
-/*    */   
+/*    */
 /*    */   public MoCItemFood(String name, int j, float f, boolean flag) {
 /* 18 */     super(j, f, flag);
 /* 19 */     setCreativeTab(MoCreatures.tabMoC);
 /* 20 */     setRegistryName("mocreatures", name);
-/* 21 */     setTranslationKey(name);
+/* 21 */     setUnlocalizedName(name);
 /*    */   }
 /*    */ }
 

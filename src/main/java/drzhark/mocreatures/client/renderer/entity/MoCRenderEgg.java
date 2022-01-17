@@ -9,26 +9,26 @@
 /*    */ import net.minecraftforge.fml.relauncher.Side;
 /*    */ import net.minecraftforge.fml.relauncher.SideOnly;
 /*    */ import org.lwjgl.opengl.GL11;
-/*    */ 
+/*    */
 /*    */ @SideOnly(Side.CLIENT)
 /*    */ public class MoCRenderEgg extends RenderLiving<MoCEntityEgg> {
 /*    */   public MoCRenderEgg(ModelBase modelbase, float f) {
 /* 16 */     super(MoCClientProxy.mc.getRenderManager(), modelbase, f);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void preRenderCallback(MoCEntityEgg entityegg, float f) {
 /* 21 */     stretch(entityegg);
-/* 22 */     super.preRenderCallback((EntityLivingBase)entityegg, f);
+/* 22 */     super.preRenderCallback(entityegg, f);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void stretch(MoCEntityEgg entityegg) {
 /* 27 */     float f = entityegg.getSize() * 0.01F;
 /* 28 */     GL11.glScalef(f, f, f);
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected ResourceLocation getEntityTexture(MoCEntityEgg entityegg) {
 /* 33 */     return entityegg.getTexture();
 /*    */   }

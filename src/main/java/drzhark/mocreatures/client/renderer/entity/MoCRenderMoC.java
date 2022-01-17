@@ -1,5 +1,5 @@
 /*     */ package drzhark.mocreatures.client.renderer.entity;
-/*     */ 
+/*     */
 /*     */ import drzhark.mocreatures.MoCreatures;
 /*     */ import drzhark.mocreatures.client.MoCClientProxy;
 /*     */ import drzhark.mocreatures.entity.IMoCEntity;
@@ -15,20 +15,20 @@
 /*     */ import net.minecraftforge.fml.relauncher.Side;
 /*     */ import net.minecraftforge.fml.relauncher.SideOnly;
 /*     */ import org.lwjgl.opengl.GL11;
-/*     */ 
+/*     */
 /*     */ @SideOnly(Side.CLIENT)
 /*     */ public class MoCRenderMoC<T extends EntityLiving> extends RenderLiving<T> {
 /*     */   public MoCRenderMoC(ModelBase modelbase, float f) {
 /*  22 */     super(MoCClientProxy.mc.getRenderManager(), modelbase, f);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   public void doRender(T entity, double d, double d1, double d2, float f, float f1) {
 /*  27 */     doRenderMoC(entity, d, d1, d2, f, f1);
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void doRenderMoC(T entity, double d, double d1, double d2, float f, float f1) {
-/*  31 */     super.doRender((EntityLiving)entity, d, d1, d2, f, f1);
+/*  31 */     super.doRender(entity, d, d1, d2, f, f1);
 /*  32 */     IMoCEntity entityMoC = (IMoCEntity)entity;
 /*  33 */     boolean flag = (MoCreatures.proxy.getDisplayPetName() && !entityMoC.getPetName().isEmpty());
 /*  34 */     boolean flag1 = MoCreatures.proxy.getDisplayPetHealth();
@@ -55,7 +55,7 @@
 /*  55 */             yOff += 8;
 /*     */           }
 /*  57 */           tessellator1.getBuffer().begin(7, DefaultVertexFormats.POSITION_COLOR);
-/*     */           
+/*     */
 /*  59 */           float f8 = ((EntityLiving)entityMoC).getHealth();
 /*  60 */           float f9 = ((EntityLiving)entityMoC).getMaxHealth();
 /*  61 */           float f10 = f8 / f9;
@@ -70,7 +70,7 @@
 /*  70 */           tessellator1.getBuffer().pos((f11 - 20.0F), (-10 + yOff), 0.0D).color(0.0F, 0.7F, 0.0F, 1.0F).endVertex();
 /*  71 */           tessellator1.draw();
 /*  72 */           GL11.glEnable(3553);
-/*     */         } 
+/*     */         }
 /*  74 */         if (flag) {
 /*  75 */           GL11.glDepthMask(false);
 /*  76 */           GL11.glDisable(2929);
@@ -91,76 +91,76 @@
 /*  91 */           fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, yOff, -1);
 /*  92 */           GL11.glDisable(3042);
 /*  93 */           GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-/*     */         } 
+/*     */         }
 /*  95 */         GL11.glEnable(2896);
 /*  96 */         GL11.glPopMatrix();
-/*     */       } 
-/*     */     } 
+/*     */       }
+/*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void stretch(IMoCEntity mocreature) {
 /* 103 */     float f = mocreature.getSizeFactor();
 /* 104 */     if (f != 0.0F) {
 /* 105 */       GL11.glScalef(f, f, f);
 /*     */     }
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected void preRenderCallback(T entityliving, float f) {
 /* 111 */     IMoCEntity mocreature = (IMoCEntity)entityliving;
-/* 112 */     super.preRenderCallback((EntityLivingBase)entityliving, f);
-/*     */ 
-/*     */     
+/* 112 */     super.preRenderCallback(entityliving, f);
+/*     */
+/*     */
 /* 115 */     adjustPitch(mocreature);
 /* 116 */     adjustRoll(mocreature);
 /* 117 */     adjustYaw(mocreature);
 /* 118 */     stretch(mocreature);
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   protected void adjustPitch(IMoCEntity mocreature) {
 /* 128 */     float f = mocreature.pitchRotationOffset();
-/*     */     
+/*     */
 /* 130 */     if (f != 0.0F) {
 /* 131 */       GL11.glRotatef(f, -1.0F, 0.0F, 0.0F);
 /*     */     }
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   protected void adjustRoll(IMoCEntity mocreature) {
 /* 141 */     float f = mocreature.rollRotationOffset();
-/*     */     
+/*     */
 /* 143 */     if (f != 0.0F) {
 /* 144 */       GL11.glRotatef(f, 0.0F, 0.0F, -1.0F);
 /*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   protected void adjustYaw(IMoCEntity mocreature) {
 /* 149 */     float f = mocreature.yawRotationOffset();
 /* 150 */     if (f != 0.0F) {
 /* 151 */       GL11.glRotatef(f, 0.0F, -1.0F, 0.0F);
 /*     */     }
 /*     */   }
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */   protected void adjustOffsets(float xOffset, float yOffset, float zOffset) {
 /* 160 */     GL11.glTranslatef(xOffset, yOffset, zOffset);
 /*     */   }
-/*     */ 
-/*     */   
+/*     */
+/*     */
 /*     */   protected ResourceLocation getEntityTexture(EntityLiving entity) {
 /* 165 */     return ((IMoCEntity)entity).getTexture();
 /*     */   }

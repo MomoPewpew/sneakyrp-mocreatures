@@ -7,30 +7,32 @@
 /*    */ import net.minecraft.entity.EntityLivingBase;
 /*    */ import net.minecraft.util.ResourceLocation;
 /*    */ import org.lwjgl.opengl.GL11;
-/*    */ 
+/*    */ import net.minecraftforge.fml.relauncher.SideOnly;
+/*    */ import net.minecraftforge.fml.relauncher.Side;
+/*    */
 /*    */ @SideOnly(Side.CLIENT)
 /*    */ public class MoCRenderFirefly extends MoCRenderInsect<MoCEntityFirefly> {
 /*    */   public MoCRenderFirefly(ModelBase modelbase) {
 /* 14 */     super(modelbase);
 /*    */   }
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
 /*    */   protected void preRenderCallback(MoCEntityFirefly entityfirefly, float par2) {
 /* 20 */     if (entityfirefly.getIsFlying()) {
 /* 21 */       rotateFirefly(entityfirefly);
 /* 22 */     } else if (entityfirefly.climbing()) {
 /* 23 */       rotateAnimal(entityfirefly);
-/*    */     } 
+/*    */     }
 /*    */   }
-/*    */ 
-/*    */   
+/*    */
+/*    */
 /*    */   protected void rotateFirefly(MoCEntityFirefly entityfirefly) {
 /* 29 */     GL11.glRotatef(40.0F, -1.0F, 0.0F, 0.0F);
 /*    */   }
-/*    */ 
-/*    */ 
-/*    */   
+/*    */
+/*    */
+/*    */
 /*    */   protected ResourceLocation getEntityTexture(MoCEntityFirefly entityfirefly) {
 /* 35 */     return entityfirefly.getTexture();
 /*    */   }
