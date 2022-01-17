@@ -1,0 +1,619 @@
+[12.0.5]
+- Added offhand support for all moc items.
+- Fixed Ostrich not storing helmet data when equipped.
+- Fixed feeding goat milk replacing empty bucket stacks.
+- Fixed mouse not being picked up as intended.
+- Fixed client crash when mounting bunny.
+- Fixed ant dupe.
+- Fixed NPE when setting owner UUID for amulet.
+- Fixed leads on tamed creatures.
+
+[12.0.4]
+- Fixed inability to open chested pets with mounts.
+- Fixed fishnets not working for some aquatics.
+- Fixed rendering on client when an entity rides a player.
+- Added missing AT for biomeName and underlyingIntegerMap
+- Temporarily disabled jellyfish glowing effect until player transparency is resolved.
+
+[12.0.3]
+- Fixed pet and horse amulets not spawning creatures.
+- Fixed fishnets not spawning creatures.
+- Fixed various mounting de-sync issues.
+- Fixed various interact issues.
+
+[12.0.2]
+- Update all recipes to new json system.
+- Add eggs and kitty beds to creative tab.
+- Remove wyvern staff portal if mending or unbreaking enchantment is detected.
+- Prevent all enchantments on wyvern staff portal.
+
+[12.0.1]
+- Fix PolarBears not spawning from amulets.
+- Fix MoCBlockBush storing wrong data in creative tab.
+- Move entity registration to Forge's EntityEntry event.
+
+[12.0.0]
+- Update to 1.12.1
+- Fix baby animals not maturing fully.
+- Fix ghost big cat's not being able to be stored in ghost amulets.
+- Fix kitty emote icons not being displayed.
+- Fix small and medium fish not hatching.
+- Fix horse breeding.
+- Fix /mocpets command
+- Fix various issues with ownership.
+- Fix various issues with mounted chests.
+
+[10.0.6]
+-fixed bug when equipping MoCreatures armour on multiplayer
+-fixed PetScorpion taming bug
+
+[10.0.5]
+-fixed crashing bug when hitting werewolves with a tool
+-another attempt to fix aquatic animals crashing bugs
+
+[10.0.4]
+-fixed hybrid bigCats and pet amulet bug
+-animals can be tamed by riding them again
+-fixed Jellyfish crashing bug
+-fixed bug that made wyverns revert back to mother wyvern
+-exorcised Aquatic animals crashing bugs
+-Tamed Ligers can obtain wings by receiving an essence of light
+
+[10.0.3]
+-another attempt to fix game crashing bug with Aquatic animals getIsTamed / getPetName
+
+[10.0.2]
+-positively fixed game crashing bug on Aquatic animals. or not?
+-fixed game crashing bug with aquatic.getPetName function
+-fixed tiny creatures appearing with the summon command
+
+[10.0.1]
+-fixed game crashing bug when Ents were planting flowers
+-fixed game crashing bug with MoCPetNames
+-fixed game crashing bug with PetAmulets
+-fixed MoCreatures tab name
+-fixed Mammoth Platform name
+-bunnies can be tamed again
+-small creatures can be picked up again
+-fixed light blue kitty bed icon
+-fixed amulets and fish nets
+-BigCats move faster
+-fixed bug with inventories of BigCats, Horses
+-fixed bug with entities moving sideways
+-fixed duplicating item bug when using item on off hand
+-fixed animation bug with aquatic entities receiving damage
+-Bears can now be tamed by giving meats to cubs
+-Bears can now be ridden and given chests
+-Split bears into separate entities
+-Split ogres into separate entities
+-medium fish were split into separate entities
+-small fish were split into separate entities
+-hybrid big cats are now separate entities
+-sorted eggs
+
+
+
+
+[10.0.0]
+-Updated for Minecraft 1.10.2
+-Beta release
+
+[8.1.3] and [8.2.2]
+-tamed animals will no longer attack the player
+-tamed bears can be commanded to sit with the whip
+-fixed invisible kittybeds
+
+[8.1.2] and [8.2.1]
+-fixed bug where ghost big cats will revert to normal cats after reloading game
+-fixed bug where amulets will disappear from tamed big cats
+-fixed bug with wyvern lair spawnings (the default mocreatures and customspawner .cfg files need to be erased for the fix to take place)
+-tigers and leopards now show chests
+-added more big cat hybrids (thanks to Cybercat5555): Leoger (between leopard and tiger), Panthger (between Panther and tiger), liard (between male lion and leopard) and lither (between panther and male lion)
+
+[8.1.1]
+-BigCat overhaul, split the bigcats into their own categories: lions, tigers, panthers, leopards
+-added Manticores
+-split stingRays and MantaRays
+-BigCats can be tamed by giving pork or raw fish to a cub
+-big cats can mate by giving them pork or raw fish and keeping them in an enclosed space
+-white lions and white tigers are a rare spawn with a 1/20 chance
+-ligers are obtained by breeding a male lion with a Tiger
+-there is a hybrid between panther and regular leopards
+-giving a dark essence to a panther gives it wings
+-giving a light essence to a male lion, white male lion or liger will give it wings
+-Manticores are a new mob, red manticores are found in the Nether, blue manticores in snowy biomes and dark and green manticores elsewhere
+-Manticores can drop an egg, that can be hatched to obtain a pet manticore. Pet manticores can be ridden once they turn into adults
+-There are ghost versions of the big cats that can be obtained randomly when a tamed big cat dies
+-winged big cats, ghost big cats, hybrid big cats and manticore pets are sterile (they can't breed)
+
+[8.0.0] devA - Note this is not a release ready version, for testing purposes only
+-werewolves will receive higher damage from items / weapons with 'silver' in the unlocalized name or name of the material. They won't receive extra damage from gold weapons
+-werewolves won't complain as much when transforming from human to werewolf form
+-improved werewolves moving speed when hunched
+-improved dolphin riding code
+-turtle swimmimg animation improved
+-piranhas move as a herd and attack differently
+-deers will jump when fleeing from entities
+-horses can also get ready to breed by feeding them a golden carrot
+-turtles / bunnies will not receive damage when riding a player
+-updated ogre attack animations
+-improved minigolem / golem throwing stone accuracy
+-added three more crab textures
+-foxes now spawn cubs that follow adults and flee from players
+-improved maggot animation
+-improved ant food picking behavior
+-added female turkeys
+-ents now plant all the flower varieties
+-added bear attack animation
+-decreased frequency of goat bleets
+-wraiths do not collide with entities, added attack animation
+-skeletons, silver skeletons and zombies can now ride scorpions and wild wolves as well as mob horses
+-MoCreature inventories can be opened by interacting with the creature while sneaking (right click while pressing shift). The MoCreatures 'keys' are no longer obtained by adding a chest to a creature and the crafting recipe was removed.
+-Improved elephant animations
+-Synchronized wyvern wing flapping animations / sounds. The wing flap depending on the flight speed when ridden.
+-Added transform animation to Wyverns
+-Changed wyvern speed, health, attack damage so the 2nd tier wyverns are significantly better
+-Sharkteeh can now be converted into bonemeal
+-fixed weapon damage and enchanteability
+-added Pet scorpion sitting behavior / animation
+-added transform animation to scorpions
+-Pet scorpion health boosted to 40 (from 18)
+-added wyvern ghosts
+-increased Horse health, Horse speed
+-Tamed Zebras shuffle again
+-The nightmare burning effect last less than before
+
+****KNOWN BUGS*******
+-the server version of the mod is not yet functional
+-some sounds are not being played
+-creatures are sometimes moving sideways
+-horse animations have to be synchronized
+-crocodile death roll animation needs to be fixed it has been deactivated for now
+-cat beds, litters and fish bowls need to be fixed.
+-wyvern lair grass / trees need saplings and seeds implemented.
+
+[6.3.1]
+- Fixed client crash when using fishnet on water animals.
+- Fixed ostriches not laying eggs.
+- Fixed zebra shuffle sound.
+- Fixed pet deaths not always being removed from pet list.
+- Fixed horse amulet glitch if player inventory became filled during vanish animation.
+- Fixed dolphin upset sound.
+- Fixed incorrect pet positions being stored in map data.
+- Added configurable egg drop chance for ostriches.
+- Added some missing egg drop command options in /moc help
+- Bunnies now require golden carrots in order to breed.
+- Female Ostriches now require a melon seed in order to have the ability to lay a single egg. Only untamed female ostriches can lay eggs with a male ostrich closeby.
+
+[6.3.0]
+- Updated for MC 1.7.10
+
+[6.2.1 hotfix1]
+- Fixed KomodoDragon's not leaving pet amulets
+- Fixed ostrich eggs not hatching
+- Fixed moctp error when entering no params
+
+[6.2.1]
+- Female Ostriches eggs are no longer sterile. Players must now pick up the eggs in order to hatch them.
+- Bunnies no longer breed in the wild. In order to breed a bunny, players need to feed it a carrot at full health.
+- Fixed Wyverns not laying eggs
+- Fixed Pet Amulet glitch with mcMMO
+- Fixed Pet Amulet glitch with nametags
+- Fixed Ray grow glitch
+- Fixed BigGolem dupe glitch
+- Fixed BigGolems not collecting blocks on flat surfaces
+- Fixed wyverns, small fish, and medium fish not dropping the correct egg type
+- Fixed possible client crash with Ent's attacking tamed animals
+- Added new server '/mocspawn' admin command which allows you to spawn any type of horse/wyvern instantly.
+  This command should help server admins replace pets that go missing.
+
+  Valid Horse types :
+  Tier 1  : 1-5
+  Tier 2  : 6-9
+  Tier 3  : 11-13
+  Tier 4  : 16-17
+  Special : 21-28, 30, 32, 36, 38-40, 48-61, 65-67
+
+  Valid Wyvern types :
+  Normal : 1-4, 6-12
+  Mother : 5
+
+  An example of spawning a Zorse would be
+  '/mocspawn horse 61'
+  An example of spawning a mother wyvern would be 
+  '/mocspawn wyvern 5'
+
+[6.2.0.dev.R3]
+- Reworked Network messages to support latest Forge.
+- Fixed many unnecessary packets being sent to all players in dimension.
+- Fixed medallions being used when unable to tame animal.
+- Fixed packet leak when naming an animal.
+- Fixed pet amulets going empty when no pet spawns.
+- Fixed fish eggs not hatching when placed in water.
+- Fixed fish dupe with fishbowls.
+- Fixed Red Fish eggs appearing as 'item.mocegg.9.name'.
+- Fixed Scorpion eggs checking for more than 5 types.
+- Added ability to name baby dolphins after bred.
+- Added new config option 'ostrichEggThreshold' which controls how many ostriches there
+can be in world before ostriches can no longer lay eggs.
+- Added new config option 'bunnyBreedThreshold' which controls how many bunnies there can be
+in world before bunnies stop breeding.
+- Added location for egg hatch notifications.
+
+
+[6.2.0.dev.R2]
+- fixed flying key not being able to be held.
+- fixed many characters not being entered properly when trying to name a pet.
+- fixed Komodo Dragons not spawning from pet amulets.
+- fixed Komodo Dragon pet names showing up too high.
+- refactored some canspawn check code.
+
+[6.2.0.dev.R1 hotfix3]
+- fixed new wyvern egg types not hatching.
+- fixed pet scorpions not spawning from pet amulets.
+- added PetScorpion to en_US lang file.
+
+[6.2.0.dev.R1 hotfix2]
+- fixed kittybed/fishbowl crash.
+
+[6.2.0.dev.R1 hotfix1]
+- fixed client crash when taming.
+
+[6.2.0.dev.R1]
+- update to MC 1.7.2
+
+[6.1.0 release]
+- fixed canspawn.
+- fixed ostrich/wyvern flying.
+- fixed various sounds.
+- fixed mocreatures spawning in unintended biomes.
+- fixed enablehunters option not working properly when disabled.
+- fixed creativetab.
+
+[6.1.0.dev.R1b]
+- fixed ogre explosion NPE with TNT
+- added item ids to config.
+
+[6.1.0.dev.R1a]
+- fixed mocreatures invading other biome dimensions such as TF. MoCreatures will now dynamically be added to biomes from ONLY BiomesOPlenty, BWG, Highlands, ExtraBiomesXL, and Vanilla.
+Wipe configs so the new changes take effect.
+- fixed canspawn not functioning.
+
+[6.1.0.dev.R1]
+-added new creature 'Mole'
+-added new creature 'Ent'
+-added BiomeDictionary compatibility.
+-added BlockBreakEvent compatibility.
+-added en_US lang file support. Should fix name issues on servers.
+-added new personal command '/moctp <petid>' used for teleporting your own pets.
+-added new personal command '/mocpets <page>' used for listing all pets you own.
+-added new canspawn command to help assist with enable/disable of entity spawns
+-added enableHunters option to control whether or not Hunters attack other creatures or not.
+-added new wyvern textures.
+-fixed dupe exploit with Big Golems.
+-fixed pet amulets on servers.
+-fixed pet amulets not working with kittens.
+-fixed fairy horse breeding.
+-fixed client-side heart animation lasting longer than normal when taming a creature.
+-fixed debug logging showing up during startup.
+-fixed chunk command not being set properly in configs
+-fixed canspawn not functioning properly.
+-fixed ducks taking fall damage.
+-fixed various bugs with commands.
+-fixed golems picking up bedrock.
+-fixed scorpion poison crash with non-living entities.
+-fixed tp command not teleporting pets in unloaded chunks.
+-fixed shuffling sound with juke boxes.
+-fixed ray taming with fishnet.
+-fixed inability to stay mounted on water creatures when tamed.
+-changed taming requirements by forcing a name to be set for pet.
+-removed all CMS reliant code from MoCreatures which means it can now be run without CMS
+-GuiAPI has been integrated into MoCreatures and has been modified to support Forge configuration.
+Note: If you have GuiAPI installed, remove it as this may cause issues
+-mocreatures will no longer despawn by default to be more compatible with vanilla. 
+ -if despawner is enabled, it will force despawns on all creatures including vanilla for a more dynamic experience while exploring world. 
+ Note: if you experience issues with farm animals despawning, adjust despawn min/max lightlevels. 
+ -if despawner if disabled, all passive mocreatures will not despawn to prevent other creatures from taking over.
+Note: If CMS is installed and you want mocreatures to despawn, make sure despawner is enabled.
+
+[6.0.1]
+Release version
+
+[6.0.0] - DEV R6
+-fixed health was set to 20
+-fixed crashing bug when disabling customMobSpawner
+
+[6.0.0] - DEV R5
+-fixed null pointer exception caused by attacking mobs while riding mounts
+-fixed birds, certain insects, deers not being afraid of player
+-fixed textures of blocks used by golems
+-fixed wraiths and deers not moving
+-fixed attributes given to subtypes of creatures (i.e. different bigcat speeds)
+-some improvements on mount / riding code
+
+[6.0.0] - DEV R4
+- Fixed crash when interacting with creatures with no item in hand.
+
+[6.0.0] - DEV R3
+- Fixed Ostrich crash
+- Fixed migrated Pet Amulets containing Horses not spawning correctly in 1.6.
+Note: You will need to remigrate any pet amulet that contained a horse back to 1.6.
+- Fixed horse jumping bug showing damage animation.
+- Changed pet amulet to be stored in player inventory rather than dropping to floor after capturing pet.
+- Name tags can now be used to change pet names.
+
+[6.0.0] - DEV R2
+- Fixed BigGolem crash.
+- Fixed crashes related to EntityLiving.
+
+[6.0.0] - DEV R1
+-Updated for Minecraft 1.6.2
+-Mo'Creatures Horses renamed as wild horses
+-MoCreatures spawn only as tier 2 horses. Tier2 Mo'Creatures horses can inbreed with Vanilla Horses to obtain tier3 and rarer horses (keeping the old breeding rules)
+-removed old rope code
+-Name tags are now used to rename MoCreature pets
+-removed horse armors, using the 'new' Minecraft horse armors instead
+-removed rope, replaced it with the new Minecraft leach
+-removed Donkeys from Mo'Creatures 
+
+[5.2.5] - DEV R2
+- Added support to killall for other mod tamed entities such as Thaumcraft's Golems. 
+Note: Killall will no longer kill these entities as long as the "Owner" string is found in NBT
+with a valid name.
+- Added lightLevel support for killall.
+- Added new 'killallUseLightLevel' config option to control whether or not killall should check lightlevels for creatures and ambients.
+- Added new 'killallVillagers' config option to control whether or not killall should affect villagers.
+- Added spawn event for worldgen spawning.
+- Added BWG4 mod check to prevent biomegroups from being generated if not installed.
+- Fixed canSpawn checks.
+- Fixed pet teleport not checking all dimensions. 
+- Fixed '/moc list tamed' not working for offline players. 
+- Fixed '/moc tamedcount' command.
+- Fixed PetId not starting at 0 for each owner.
+- Fixed killall command not checking all dimensions.
+- Fixed bosses being killed with killall command.
+- Fixed NPE when spawning eggs.
+- Fixed CMS bug in isValidLightLevel check
+- Fixed Scorpions spawning during day.
+- Fixed config folder being generated in mods folder.
+
+[5.2.5] - DEV R1
+
+- Added brand new tamed pet saving system that uses global world storage. This new system will automatically populate
+data of existing and newly tamed pets for use with our new tracking/teleport system.
+- Added pet super amulet to facilitate transition to MoCreatures v.6
+- Added Name, Type, Owner to mouseover of new Pet Amulets
+- Added class name to amulet mouseover window
+- Added '/moc killall' command which kills all entities in loaded chunks ignoring tamed vanilla and mocreatures.
+Note: This new command will kill all entities in loaded chunks of all dimensions.
+- Added '/moc killall tamed <playername>' command which kills all tamed mocreatures in loaded chunks of given player.
+Note: This new command will kill all loaded tamed animals of player that are found in every dimension. It will not kill pets that are in unloaded chunks.
+- Added '/moc killall <modtag|entityname>' command which kills all entities of given type ignoring tamed.
+- Added '/moc tp <petname> <playername>' command to transport any entity known by our new storage system to the player.
+Note: This will only work with previous tamed entities if they have were loaded with this update.
+- Improved '/moc list tamed' command which will now display Type, Name, Owner, Location, Dimension of all tamed entities in loaded chunks.
+- Fixed imbalanced spawning with CMS/Vanilla by copying vanilla entries to CMS at game start.
+Note: This fixes the issue where 1 type of entity could appear overrun rest such as Thaumcraft's Angry Zombie.
+- Fixed bug preventing player ops from interacting or doing damage to pets they did not own.
+- Fixed Wyvern's getting stuck under Wyvern Lair. They wil now kill themselves if they end up falling under the world.
+- Removed ownership tamedcount player.dat saving since it is no longer needed. Ownership system will now count the tamed pets in the new storage system.
+
+[5.2.4]
+- Fixed BigGolem not being added to CMS after world load.
+- Fixed CMS despawner not checking for EntityMooshroom.
+- Fixed possible NPE with Birds.
+- Fixed BOP nether biomes not being generated in MoCBiomeGroups.cfg.
+- Fixed GL post render error with JellyFish. Note: this currently removes transparency.
+- Fixed possible client/server sync issue with GlobalEntityRegistration. To enable fix, you will
+need to enable the new config option "useGlobalEntityRegistration" in MoCGlobal.cfg.
+Note: Enabling this option will remove all existing tamed animals for existing worlds. Only use
+this if you are experiencing issues. This should fix issues such as invisible animals or 
+datawatcher crashes.
+- Added new config option "enforceMaxSpawnLimits".
+Note: enforceMaxSpawnLimits controls whether or not CMS should stop spawning when limits for
+a specific entity type has been reached.
+
+[5.2.3]
+- Added support for Better World Generation 4
+- Fixed Biomes O' Plenty spawning issues with latest versions.
+- Fixed Golem block duping with mobgriefing set to false.
+- Fixed file seperator issues when attempting to update player dat files offline.
+- Fixed crash when adding biome groups to default groups.
+- Fixed biomes not being added after a mismatch.
+- Fixed a potential world creation ChunkProviderServer crash with WorldProviderWyvernEnd.
+- Fixed issue with automatic mod mapping generation creating "net.cfg" for certain mods which would break spawning.
+Note: If you have issues with spawning, open up MoCGlobal.cfg and delete the following line 
+under mod-mappings if it exists "S:net <NET:net.cfg>"
+
+[5.2.2] 
+- Fixed mount dupe when a player disconnected while riding an animal.
+- Fixed an issue with config not properly being synced during world load.
+- Fixed GUI option being duped after loading world.
+- Fixed Cave spiders do not spawn by default
+- Fixed bounding box of Bears, turkeys, werewolves
+- Hard coded certain spawn conditions: Pandas will spawn on bamboo forests, Zebras on Savannas, regular horses on Prairies
+
+[5.2.1] -DEV
+- Fixed CustomMobSpawner crash with getBlockLightValue
+- Fixed wyvern crash in singleplayer
+- Fixed tamed animals being duped when reloading chunks
+- Fixed /moc min and max commands
+- removed keepVanillaOnlyWithLight config option
+- Make WorldProviderWyvernEnd inherit from WorldProviderSurface. This should fix client-side lag issue on the Wyvern Lair
+
+[5.2.0b] - DEV 
+- Fixed issue with Ocelots still spawning on vanilla side when using CMS.
+
+[5.2.0a] - DEV
+- Fixed crash when accessing Butterfly in GUI
+- Fixed crash when accessing Ozelot in GUI
+- Fixed crash when accessing SnowMan in GUI
+- Fixed bug with autogenerating config files for mods
+- Added new golemDestroyBlocks option which controls whether or not Big Golems can break blocks.
+- Added override for isCreatureOfType to MoCEntityAmbient
+
+[5.2.0] - DEV
+DrZhark
+-fixed bug with invisible ropes on goats
+-fixed bug with fire an cave ogre spawns frequencies
+-fixed bug when obtaining a white fairy horse
+-big cats now check surrounding bigcats and will try to spawn the same species
+-bears will check spawning surroundings, if within 12 blocks of bamboo / reeds, it will become a panda.  If the biome where the bear is spawning has the word bamboo on its name, it will also be a panda.
+-bunnies and mice will always spawn white on cold biomes
+-komodo dragons will not spawn near torches and can now spawn on sand (for those who want to add them to the desert biomes)
+-changed tall grass and leaves on the wyvern dimension blocks
+-improvements done for the wyvern dimension FPS
+-wyverns will drop eggs on death even if they're not spawned in the wyvern lair
+-Mother wyverns spawn 5% of the time (up from 3%)
+-insects, scorpions and crabs are now targeted by bane of the arthropods enchantment
+-undead MoCreatures are now targeted by the smite enchantment
+-fixed bug with kitten textures
+-crocodiles, komodos, sharks, big cats won't attack players on creative mode
+-partial migration of entityID use, all non tameable creatures and new creatures now use an internal entity ID number instead of global IDs.
+-vanilla creatures are now despawned on areas not illuminated by artificial lights instead of checking for nearby fences
+-aquatic creatures now avoid 'block inwall damage'
+-ostriches won't lay eggs if tamed
+-maggots turn red when hit
+-eggs notify players with chat messages when hatching, egg hatching time reduced
+-custom key bindings disabled when chatting
+-stingrays can be catched on fish nets
+-mantarays can be tamed by riding them. Tamed mantarays can be catched on fish nets.
+-crabs can be tamed by using a fishnet on them
+-added Ants
+-added Raccoons
+-added Silver Skeletons
+-added Mini Golems
+-added Small fish
+-added Medium fish (cod, salmon, bass)
+-piranhas are now a separate entity
+-Added fish nets that can be used to capture and tame fish
+-fish can be hooked with the fishing pole
+
+blood
+- Updated to 1.5.2
+- Fixed CMS verboseConsole not being set
+- Fixed many more GUI bugs
+- Fixed inMenu check in MoCClientTickHandler
+- Fixed defaults not being used properly
+- Fixed issue preventing GUI from adding biomegroups for entities that had no entries.
+- Fixed crash when using Reset to Defaults
+- Fixed issue with CMS not detecting custom entities such as Project Zulu's.
+- Fixed CMS bug with creatures spawning in homes.
+- Fixed MoCreatures not removing vanilla entries from all biomes when adding to CMS
+- Fixed duplicate entity names not being handled correctly by spawner
+- Fixed duplicate biomes not being handled correctly by spawner
+- Fixed entities not being removed from vanilla structures when disabling a specific type from spawning
+- Fixed possible NPE when calling CustomSpawner's RemoveCustomSpawn method.
+- Fixed issue with entities not being removed from vanilla spawn lists when their biomegroups were empty and frequency set to 0.
+- Fixed '/moc list <entity> biomegroups' command
+- Fixed '/moc help' command not displaying pages correctly
+- Fixed NPE's with MoC custom blocks.
+- Fixed Wyvern's flying away after being tamed.
+- Fixed potential NPE with MoCBlockGrass and MoCBlockTallGrass.
+- Fixed Mooshrooms spawning in non-Mushroom biomes
+- Fixed MoCreatures not spawning in BOP overridden vanilla biomes
+- Fixed Pet names not enabled by default
+- Fixed ownership working in singleplayer when it shouldn't.
+- Fixed certain default biomes being placed in wrong groups.
+- Added better CMS debug output
+- Added debugCMS config option
+- Added disallowMonsterSpawnDuringDay config option
+- Added despawnLightLevel config option
+- Added checkAmbientLightLevel config option
+- Added CMS lightLevel check for Monsters
+- Added comment support to MoCProperty constructors
+- Added InstaSpawner support for all entities including custom
+- Added brand new configuration for entities, biomes, structures, and global settings.
+- Added vanilla structure spawn support to CMS. All detected structures will be generated in config/MoCreatures/MoCStructures.cfg
+- Added Spigot's spawner optimizations to CMS
+- Added new config option 'lightLevel' which ignores sunlight and acts as a light threshold for whether or not to spawn a creature.
+- Added new monsterSpawnRange config option
+- Added canSpawn option to all entities
+- Added missing BOP/XL biome entries to default config
+- Added support for unknown CreatureTypes
+- Added new spawntickrates for Ambients and WaterCreatures
+- Added new maxSpawnInChunk config option to all entities.
+- Added CMS support for handling maxSpawnInChunks
+- Added new Creature Type 'UNDEFINED'. This group will get assigned entities that CMS couldn't detect a creature type for.
+- Added new teleport command '/moc tp <entityId> <playername>' which can transfer tamed pets from any dimension to their respective owners.
+- Added new tamed command '/moc tamed <playername>' which lists currently loaded tamed pets of player with their total recorded tamed count.
+- Added new tamedcount command '/moc tamedcount <playername> which displays current tamed count from player's dat file.
+- Improved performance when updating settings via commands and GUI.
+- Changed tall grass and leaves on the wyvern dimension blocks
+- Improvements done for the wyvern dimension FPS
+- Removed default resource config files since they are no longer used
+- Removed default configs from resources. All configuration will now be generated on the fly.
+
+
+5.1.5
+- fixed bug where crocodiles wouldn't attack players
+- tamed animals will not attack other tamed animals
+- mother wyverns now drop eggs 1/3 of times instead of 1/10
+- further adjustment of rider position on wyverns
+- adjusted name of T2 wyverns
+- finished crab animations
+- added crab meat and cooked crab meat
+- changed init creature settings, spawning eggs now check the environment to spawn the right subtype
+snow variants will now spawn if biome temperature is less than 0.06 instead of checking the name of biome
+- changed instaspawner code, it now adds all available creatures using a list
+- fixed bug with missing vanilla particles
+
+5.1.4
+- Added new mobSpawnerTickRate.
+- Adjusted CustomMobSpawner to use each entity's maxGroupCount instead of maxSpawnedInChunk. 
+This fixes issue where world gen was spawning too many creatures and not following our configs.
+- Fixed typo with commands.
+- Fixed bug with spawn lists not properly clearing during initial world generation.
+- Disabled DespawnVanilla option. This options is no longer required since all vanilla spawns
+are now handled by CMS.
+- Updated default MoCProperties.cfg to include new mobSpawnTickRate and worldGenCreatureSpawning.
+spawnTickRate has been renamed to animalSpawnTickRate.
+- added moths (they're attracted to torches)
+- added maggots
+- added crabs (pending animations)
+
+
+5.1.3
+- fixed bug with nightmares when animate textures was set to off
+- fixed bug when shearing ostriches
+- Fixed another bug with Reset to Defaults.
+- Fixed issue with config comments being removed after starting game
+- Fixed GUI duplication bug when issuing a command or resetting to defaults
+- Fixed static litter, static k. bed, particlefx not properly saving in GUI
+
+5.1.2  - DEV version
+- Added Tier 2 wyverns. The mother wyvern spawns rarely in the wyvern lair. It has a 10% chance of dropping eggs that can be used to obtain a tamed mother wyvern.
+essences are used on tamed mother wyverns to obtain the other tier 2 versions.
+- Added new server command '/moc' which can adjust all options in MoCProperties.cfg without restarting
+- Added biomes in GUI will now be placed alphabetically
+- Added comments to config
+- Added new Ogres
+- Added new Undead Wyvern
+- Finished overhaul of ogres, replaced models, textures and AI
+- The spawn options for cave ogres and fire ogres is slightly different. New settings are added to the config: Fire Ogre Chance (chance of spawning a fire ogre in the surface of the overworld) 
+and Cave Ogre chance (chance of spawning a Cave ogre if the Y position is less than 50).
+- Increased Wyvern's size and speed
+- Fixed issue with MoCreatures not spawning on custom blocks like the ones found in the Twilight forest dimension
+- Fixed In-Game GUI not closing/operating correctly(F9 is default)
+- Fixed indent issues with configs
+- Fixed General Settings GUI option not saving correctly
+- Fixed Reset to Defaults GUI option not properly restoring all settings
+- Fixed Male Ostrich's showing incorrect chest name
+- Biome Groups are now sorted in GUI
+- Removed legacy Ogres
+- Removed duplicate biomes from default biome groups and cleaned up code
+- Removed timestamps from configs
+
+5.1.1  - DEV version
+-added new entity spawn settings option in GUI. removed old frequency/min/group options.
+-added new biome group option in GUI.
+-added partial animation for new ogre models.
+-fixed few bugs with saving certain options in GUI.
+-cleaned up debug log output.
+
+5.0.9
+- Fixed bug with CustomSpawner being initialized before all biomes were loaded.
+- Fixed bug with MoCreatures not spawning in Twilight Forest biomes.
+- Added new biome group UNDEFINED which will be populated with any biome not defined in config but loaded in game.
+- Added debug logger for CustomSpawner.
+- Cleaned up debug code.
