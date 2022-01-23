@@ -1,26 +1,26 @@
-/*    */ package drzhark.mocreatures.block;
-/*    */ 
-/*    */ import net.minecraft.block.Block;
-/*    */ import net.minecraft.item.ItemMultiTexture;
-/*    */ import net.minecraft.item.ItemStack;
-/*    */ 
-/*    */ public class MultiItemBlock
-/*    */   extends ItemMultiTexture {
-/*    */   public MultiItemBlock(Block block) {
-/* 10 */     super(block, block, new ItemMultiTexture.Mapper()
-/*    */         {
-/*    */           public String apply(ItemStack stack) {
-/* 13 */             return MoCBlock.EnumType.byMetadata(stack.getMetadata()).getUnlocalizedName();
-/*    */           }
-/*    */         });
-/* 16 */     setHasSubtypes(true);
-/*    */   }
-/*    */ 
-/*    */   
-/*    */   public int getMetadata(int damageValue) {
-/* 21 */     return damageValue;
-/*    */   }
-/*    */ }
+package drzhark.mocreatures.block;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemMultiTexture;
+import net.minecraft.item.ItemStack;
+
+public class MultiItemBlock
+  extends ItemMultiTexture {
+  public MultiItemBlock(Block block) {
+    super(block, block, new ItemMultiTexture.Mapper()
+        {
+          public String apply(ItemStack stack) {
+            return MoCBlock.EnumType.byMetadata(stack.getMetadata()).getUnlocalizedName();
+          }
+        });
+    setHasSubtypes(true);
+  }
+
+
+  public int getMetadata(int damageValue) {
+    return damageValue;
+  }
+}
 
 
 /* Location:              C:\Users\mami\files\games\minecraft\sneakyrp\mocreatures-fix\DrZharks MoCreatures Mod-12.0.5-deobf.jar!\drzhark\mocreatures\block\MultiItemBlock.class
