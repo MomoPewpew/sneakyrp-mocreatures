@@ -103,12 +103,12 @@ public class MoCBlocks
         if (!MoCreatures.isServer()) {
           String name = item.getUnlocalizedName().replace("tile.", "").replace("MoC", "").toLowerCase();
           System.out.println("registering custom location " + name);
-          ModelBakery.registerItemVariants((Item)item, new ResourceLocation[] { new ResourceLocation("mocreatures:wyvern_" + name) });
-          ModelBakery.registerItemVariants((Item)item, new ResourceLocation[] { new ResourceLocation("mocreatures:ogre_" + name) });
-          ModelLoader.setCustomModelResourceLocation((Item)item, 0, new ModelResourceLocation("mocreatures:wyvern_" + name, "inventory"));
-          ModelLoader.setCustomModelResourceLocation((Item)item, 1, new ModelResourceLocation("mocreatures:ogre_" + name, "inventory"));
-          ModelLoader.setCustomModelResourceLocation((Item)item, 2, new ModelResourceLocation("mocreatures:wyvern_" + name, "variant=wyvern_lair"));
-          ModelLoader.setCustomModelResourceLocation((Item)item, 3, new ModelResourceLocation("mocreatures:ogre_" + name, "variant=ogre_lair"));
+          ModelBakery.registerItemVariants(item, new ResourceLocation[] { new ResourceLocation("mocreatures:wyvern_" + name) });
+          ModelBakery.registerItemVariants(item, new ResourceLocation[] { new ResourceLocation("mocreatures:ogre_" + name) });
+          ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation("mocreatures:wyvern_" + name, "inventory"));
+          ModelLoader.setCustomModelResourceLocation(item, 1, new ModelResourceLocation("mocreatures:ogre_" + name, "inventory"));
+          ModelLoader.setCustomModelResourceLocation(item, 2, new ModelResourceLocation("mocreatures:wyvern_" + name, "variant=wyvern_lair"));
+          ModelLoader.setCustomModelResourceLocation(item, 3, new ModelResourceLocation("mocreatures:ogre_" + name, "variant=ogre_lair"));
         }
       }
     }

@@ -1,4 +1,5 @@
 package drzhark.mocreatures.client;
+import drzhark.mocreatures.MoCConstants;
 import drzhark.mocreatures.MoCEntityData;
 import drzhark.mocreatures.MoCProxy;
 import drzhark.mocreatures.MoCTools;
@@ -241,15 +242,15 @@ public class MoCClientProxy extends MoCProxy {
 
 
   public void initTextures() {
-    mocTextures.loadTextures();
   }
 
 
   public ResourceLocation getTexture(String texture) {
-    return mocTextures.getTexture(texture);
+		return new ResourceLocation(MoCConstants.MOD_ID, "textures/models/" + texture);
   }
 
 
+	@SuppressWarnings({"deprecation", "unchecked", "rawtypes"})
   public void registerRenderInformation() {
     RenderingRegistry.registerEntityRenderingHandler(MoCEntityBunny.class, new MoCRenderBunny(new MoCModelBunny(), 0.3F));
     RenderingRegistry.registerEntityRenderingHandler(MoCEntityBird.class, new MoCRenderBird(new MoCModelBird(), 0.3F));

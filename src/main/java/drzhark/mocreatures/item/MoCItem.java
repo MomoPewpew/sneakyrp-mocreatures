@@ -1,5 +1,6 @@
 package drzhark.mocreatures.item;
 
+import drzhark.mocreatures.MoCConstants;
 import drzhark.mocreatures.MoCreatures;
 import net.minecraft.item.Item;
 
@@ -15,7 +16,7 @@ public class MoCItem
 
   public MoCItem(String name, int meta) {
     setCreativeTab(MoCreatures.tabMoC);
-    setRegistryName("mocreatures", name);
+    setRegistryName(MoCConstants.MOD_ID, name);
     setUnlocalizedName(name);
   }
 }

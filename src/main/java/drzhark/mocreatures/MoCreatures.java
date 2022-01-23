@@ -1,14 +1,12 @@
 package drzhark.mocreatures;
 
 import com.mojang.authlib.GameProfile;
-import drzhark.mocreatures.client.MoCClientTickHandler;
 import drzhark.mocreatures.client.MoCCreativeTabs;
 import drzhark.mocreatures.client.handlers.MoCKeyHandler;
 import drzhark.mocreatures.command.CommandMoCPets;
 import drzhark.mocreatures.command.CommandMoCSpawn;
 import drzhark.mocreatures.command.CommandMoCTP;
 import drzhark.mocreatures.command.CommandMoCreatures;
-import drzhark.mocreatures.datafixer.EntityDataWalker;
 import drzhark.mocreatures.network.MoCMessageHandler;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,10 +36,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = "mocreatures", name = "DrZhark's Mo'Creatures", version = "12.0.5", acceptableRemoteVersions = "[12.0.5]", acceptedMinecraftVersions = "[1.12.2]")
+@Mod(modid = MoCConstants.MOD_ID, name = MoCConstants.MOD_NAME, version = MoCConstants.MOD_VERSION)
+// @Mod(modid = "mocreatures", name = "DrZhark's Mo'Creatures", version = "12.0.5", acceptableRemoteVersions = "[12.0.5]", acceptedMinecraftVersions = "[1.12.2]")
 public class MoCreatures
 {
-  @Instance("mocreatures")
+	@Instance(MoCConstants.MOD_ID)
   public static MoCreatures instance;
   @SidedProxy(clientSide = "drzhark.mocreatures.client.MoCClientProxy", serverSide = "drzhark.mocreatures.MoCProxy")
   public static MoCProxy proxy;
@@ -60,15 +59,10 @@ public class MoCreatures
 
   @EventHandler
   public void preInit(FMLPreInitializationEvent event) {
-    if (isServer()) {
-      FMLCommonHandler.instance().getMinecraftServerInstance().getDataFixer().registerWalker(FixTypes.ENTITY, (IDataWalker)new EntityDataWalker());
-    }
     MoCMessageHandler.init();
     MinecraftForge.EVENT_BUS.register(new MoCEventHooks());
     proxy.ConfigInit(event);
-    proxy.initTextures();
     if (!isServer()) {
-      MinecraftForge.EVENT_BUS.register(new MoCClientTickHandler());
       MinecraftForge.EVENT_BUS.register(new MoCKeyHandler());
     }
   }
@@ -90,12 +84,12 @@ public class MoCreatures
   @EventHandler
   public void serverStarting(FMLServerStartingEvent event) {
     proxy.initGUI();
-    event.registerServerCommand((ICommand)new CommandMoCreatures());
-    event.registerServerCommand((ICommand)new CommandMoCTP());
-    event.registerServerCommand((ICommand)new CommandMoCPets());
+    event.registerServerCommand(new CommandMoCreatures());
+    event.registerServerCommand(new CommandMoCTP());
+    event.registerServerCommand(new CommandMoCPets());
     if (isServer() &&
       FMLCommonHandler.instance().getMinecraftServerInstance().isDedicatedServer()) {
-      event.registerServerCommand((ICommand)new CommandMoCSpawn());
+      event.registerServerCommand(new CommandMoCSpawn());
     }
   }
 

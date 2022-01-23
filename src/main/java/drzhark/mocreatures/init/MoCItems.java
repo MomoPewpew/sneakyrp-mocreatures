@@ -1,5 +1,6 @@
 package drzhark.mocreatures.init;
 
+import drzhark.mocreatures.MoCConstants;
 import drzhark.mocreatures.MoCreatures;
 import drzhark.mocreatures.item.ItemBuilderHammer;
 import drzhark.mocreatures.item.ItemStaffPortal;
@@ -200,127 +201,7 @@ public class MoCItems
   {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-      List<Item> items = new ArrayList<>(Arrays.asList(new Item[] { (Item)MoCItems.horsesaddle, (Item)MoCItems.sharkteeth, (Item)MoCItems.haystack, (Item)MoCItems.sugarlump, (Item)MoCItems.mocegg, (Item)MoCItems.bigcatclaw, (Item)MoCItems.whip, (Item)MoCItems.medallion, (Item)MoCItems.litterbox, (Item)MoCItems.woolball, (Item)MoCItems.petfood, (Item)MoCItems.hideCroc, (Item)MoCItems.plateCroc, (Item)MoCItems.helmetCroc, (Item)MoCItems.legsCroc, (Item)MoCItems.bootsCroc, (Item)MoCItems.fur, (Item)MoCItems.omelet, (Item)MoCItems.turtleraw, (Item)MoCItems.turtlesoup, (Item)MoCItems.staffPortal, (Item)MoCItems.staffTeleport, (Item)MoCItems.builderHammer, (Item)MoCItems.nunchaku, (Item)MoCItems.sai, (Item)MoCItems.bo, (Item)MoCItems.katana, (Item)MoCItems.sharksword, (Item)MoCItems.silversword, (Item)MoCItems.essencedarkness, (Item)MoCItems.essencefire, (Item)MoCItems.essenceundead, (Item)MoCItems.essencelight, (Item)MoCItems.amuletbone, (Item)MoCItems.amuletbonefull, (Item)MoCItems.amuletghost, (Item)MoCItems.amuletghostfull, (Item)MoCItems.amuletfairy, (Item)MoCItems.amuletfairyfull, (Item)MoCItems.amuletpegasus, (Item)MoCItems.amuletpegasusfull, (Item)MoCItems.fishnet, (Item)MoCItems.fishnetfull, (Item)MoCItems.petamulet, (Item)MoCItems.petamuletfull, (Item)MoCItems.chestFur, (Item)MoCItems.helmetFur, (Item)MoCItems.legsFur, (Item)MoCItems.bootsFur, (Item)MoCItems.heartdarkness, (Item)MoCItems.heartfire, (Item)MoCItems.heartundead, (Item)MoCItems.ostrichraw, (Item)MoCItems.ostrichcooked, (Item)MoCItems.unicornhorn, (Item)MoCItems.horsearmorcrystal, (Item)MoCItems.recordshuffle, (Item)MoCItems.animalHide, (Item)MoCItems.rawTurkey, (Item)MoCItems.cookedTurkey, (Item)MoCItems.chestHide, (Item)MoCItems.helmetHide, (Item)MoCItems.legsHide, (Item)MoCItems.bootsHide, (Item)MoCItems.ratRaw, (Item)MoCItems.ratCooked, (Item)MoCItems.ratBurger, (Item)MoCItems.chitinCave, (Item)MoCItems.chitinFrost, (Item)MoCItems.chitinNether, (Item)MoCItems.chitin, (Item)MoCItems.scorpSwordDirt, (Item)MoCItems.scorpSwordFrost, (Item)MoCItems.scorpSwordCave, (Item)MoCItems.scorpSwordNether, (Item)MoCItems.scorpPlateDirt, (Item)MoCItems.scorpHelmetDirt, (Item)MoCItems.scorpLegsDirt, (Item)MoCItems.scorpBootsDirt, (Item)MoCItems.scorpPlateFrost, (Item)MoCItems.scorpHelmetFrost, (Item)MoCItems.scorpLegsFrost, (Item)MoCItems.scorpBootsFrost, (Item)MoCItems.scorpPlateNether, (Item)MoCItems.scorpHelmetNether, (Item)MoCItems.scorpLegsNether, (Item)MoCItems.scorpBootsNether, (Item)MoCItems.scorpHelmetCave, (Item)MoCItems.scorpPlateCave, (Item)MoCItems.scorpLegsCave, (Item)MoCItems.scorpBootsCave, (Item)MoCItems.scorpStingDirt, (Item)MoCItems.scorpStingFrost, (Item)MoCItems.scorpStingCave, (Item)MoCItems.scorpStingNether, (Item)MoCItems.tusksWood, (Item)MoCItems.tusksIron, (Item)MoCItems.tusksDiamond, (Item)MoCItems.elephantChest, (Item)MoCItems.elephantGarment, (Item)MoCItems.elephantHarness, (Item)MoCItems.elephantHowdah, (Item)MoCItems.mammothPlatform, (Item)MoCItems.scrollFreedom, (Item)MoCItems.scrollOfSale, (Item)MoCItems.scrollOfOwner, (Item)MoCItems.crabraw, (Item)MoCItems.crabcooked }));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      List<Item> items = new ArrayList<>(Arrays.asList(new Item[] { MoCItems.horsesaddle, MoCItems.sharkteeth, MoCItems.haystack, MoCItems.sugarlump, MoCItems.mocegg, MoCItems.bigcatclaw, MoCItems.whip, MoCItems.medallion, MoCItems.litterbox, MoCItems.woolball, MoCItems.petfood, MoCItems.hideCroc, MoCItems.plateCroc, MoCItems.helmetCroc, MoCItems.legsCroc, MoCItems.bootsCroc, MoCItems.fur, MoCItems.omelet, MoCItems.turtleraw, MoCItems.turtlesoup, MoCItems.staffPortal, MoCItems.staffTeleport, MoCItems.builderHammer, MoCItems.nunchaku, MoCItems.sai, MoCItems.bo, MoCItems.katana, MoCItems.sharksword, MoCItems.silversword, MoCItems.essencedarkness, MoCItems.essencefire, MoCItems.essenceundead, MoCItems.essencelight, MoCItems.amuletbone, MoCItems.amuletbonefull, MoCItems.amuletghost, MoCItems.amuletghostfull, MoCItems.amuletfairy, MoCItems.amuletfairyfull, MoCItems.amuletpegasus, MoCItems.amuletpegasusfull, MoCItems.fishnet, MoCItems.fishnetfull, MoCItems.petamulet, MoCItems.petamuletfull, MoCItems.chestFur, MoCItems.helmetFur, MoCItems.legsFur, MoCItems.bootsFur, MoCItems.heartdarkness, MoCItems.heartfire, MoCItems.heartundead, MoCItems.ostrichraw, MoCItems.ostrichcooked, MoCItems.unicornhorn, MoCItems.horsearmorcrystal, MoCItems.recordshuffle, MoCItems.animalHide, MoCItems.rawTurkey, MoCItems.cookedTurkey, MoCItems.chestHide, MoCItems.helmetHide, MoCItems.legsHide, MoCItems.bootsHide, MoCItems.ratRaw, MoCItems.ratCooked, MoCItems.ratBurger, MoCItems.chitinCave, MoCItems.chitinFrost, MoCItems.chitinNether, MoCItems.chitin, MoCItems.scorpSwordDirt, MoCItems.scorpSwordFrost, MoCItems.scorpSwordCave, MoCItems.scorpSwordNether, MoCItems.scorpPlateDirt, MoCItems.scorpHelmetDirt, MoCItems.scorpLegsDirt, MoCItems.scorpBootsDirt, MoCItems.scorpPlateFrost, MoCItems.scorpHelmetFrost, MoCItems.scorpLegsFrost, MoCItems.scorpBootsFrost, MoCItems.scorpPlateNether, MoCItems.scorpHelmetNether, MoCItems.scorpLegsNether, MoCItems.scorpBootsNether, MoCItems.scorpHelmetCave, MoCItems.scorpPlateCave, MoCItems.scorpLegsCave, MoCItems.scorpBootsCave, MoCItems.scorpStingDirt, MoCItems.scorpStingFrost, MoCItems.scorpStingCave, MoCItems.scorpStingNether, MoCItems.tusksWood, MoCItems.tusksIron, MoCItems.tusksDiamond, MoCItems.elephantChest, MoCItems.elephantGarment, MoCItems.elephantHarness, MoCItems.elephantHowdah, MoCItems.mammothPlatform, MoCItems.scrollFreedom, MoCItems.scrollOfSale, MoCItems.scrollOfOwner, MoCItems.crabraw, MoCItems.crabcooked }));
 
 
       IForgeRegistry<Item> registry = event.getRegistry();
@@ -331,7 +212,7 @@ public class MoCItems
         MoCItems.kittybed[i] = new MoCItemKittyBed("kittybed_" + s, i);
         registry.register(MoCItems.kittybed[i]);
         if (!MoCreatures.isServer()) {
-          ModelLoader.setCustomModelResourceLocation((Item)MoCItems.kittybed[i], 0, new ModelResourceLocation("mocreatures:" + MoCItems.kittybed[i].getUnlocalizedName().replace("item.", ""), "inventory"));
+          ModelLoader.setCustomModelResourceLocation(MoCItems.kittybed[i], 0, new ModelResourceLocation(MoCConstants.MOD_PREFIX + MoCItems.kittybed[i].getUnlocalizedName().replace("item.", ""), "inventory"));
         }
       }
 
@@ -339,13 +220,12 @@ public class MoCItems
         registry.register(item);
         MoCItems.ITEMS.add(item);
         if (!MoCreatures.isServer()) {
-					String name = "mocreatures:" + item.getUnlocalizedName().replace("item.", "");
-          ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(name, "inventory"));
+          ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(MoCConstants.MOD_PREFIX + item.getUnlocalizedName().replace("item.",  ""), "inventory"));
         }
         if (item instanceof MoCItemEgg)
           for (int j = 0; j < 91; j++) {
             if (!MoCreatures.isServer())
-              ModelLoader.setCustomModelResourceLocation(item, j, new ModelResourceLocation("mocreatures:mocegg", "inventory"));
+              ModelLoader.setCustomModelResourceLocation(item, j, new ModelResourceLocation(MoCConstants.MOD_PREFIX + "mocegg", "inventory"));
           }
       }
     }

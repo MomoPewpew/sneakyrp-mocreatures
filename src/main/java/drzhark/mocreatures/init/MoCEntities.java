@@ -139,106 +139,106 @@ public class MoCEntities
     MoCEntityID++;
   }
 
-  public static EntityEntry BIRD = createEntityEntry((Class)MoCEntityBird.class, "Bird", 14020607, 14020607);
-  public static EntityEntry BEAR = createEntityEntry((Class)MoCEntityBlackBear.class, "BlackBear", 10, 1);
-  public static EntityEntry BOAR = createEntityEntry((Class)MoCEntityBoar.class, "Boar", 14772545, 9141102);
-  public static EntityEntry BUNNY = createEntityEntry((Class)MoCEntityBunny.class, "Bunny", 12623485, 9141102);
-  public static EntityEntry CROCODILE = createEntityEntry((Class)MoCEntityCrocodile.class, "Crocodile", 16711680, 65407);
-  public static EntityEntry DUCK = createEntityEntry((Class)MoCEntityDuck.class, "Duck", 14021607, 15656192);
-  public static EntityEntry DEER = createEntityEntry((Class)MoCEntityDeer.class, "Deer", 14021607, 33023);
-  public static EntityEntry ELEPHANT = createEntityEntry((Class)MoCEntityElephant.class, "Elephant", 14772545, 23423);
-  public static EntityEntry ENT = createEntityEntry((Class)MoCEntityEnt.class, "Ent", 12623485, 16711680);
-  public static EntityEntry FOX = createEntityEntry((Class)MoCEntityFox.class, "Fox", 14772545, 5253242);
-  public static EntityEntry GOAT = createEntityEntry((Class)MoCEntityGoat.class, "Goat", 7434694, 6053069);
-  public static EntityEntry GRIZZLY_BEAR = createEntityEntry((Class)MoCEntityGrizzlyBear.class, "GrizzlyBear", 14772545, 1);
-  public static EntityEntry KITTY = createEntityEntry((Class)MoCEntityKitty.class, "Kitty", 12623485, 5253242);
-  public static EntityEntry KOMODO_DRAGON = createEntityEntry((Class)MoCEntityKomodo.class, "KomodoDragon", 16711680, 23423);
-  public static EntityEntry LEOGER = createEntityEntry((Class)MoCEntityLeoger.class, "Leoger", 14772545, 14772545);
-  public static EntityEntry LEOPARD = createEntityEntry((Class)MoCEntityLeopard.class, "Leopard", 13749760, 10);
-  public static EntityEntry LIARD = createEntityEntry((Class)MoCEntityLiard.class, "Liard", 15313474, 13749760);
-  public static EntityEntry LION = createEntityEntry((Class)MoCEntityLion.class, "Lion", 15313474, 13749760);
-  public static EntityEntry LIGER = createEntityEntry((Class)MoCEntityLiger.class, "Liger", 15313474, 12623485);
-  public static EntityEntry LITHER = createEntityEntry((Class)MoCEntityLither.class, "Lither", 15313474, 14772545);
-  public static EntityEntry MANTICORE_PET = createEntityEntry((Class)MoCEntityManticorePet.class, "ManticorePet");
-  public static EntityEntry MOLE = createEntityEntry((Class)MoCEntityMole.class, "Mole", 14020607, 16711680);
-  public static EntityEntry MOUSE = createEntityEntry((Class)MoCEntityMouse.class, "Mouse", 14772545, 0);
-  public static EntityEntry OSTRICH = createEntityEntry((Class)MoCEntityOstrich.class, "Ostrich", 14020607, 9639167);
-  public static EntityEntry PANDA_BEAR = createEntityEntry((Class)MoCEntityPandaBear.class, "PandaBear", 10, 9141102);
-  public static EntityEntry PANTHARD = createEntityEntry((Class)MoCEntityPanthard.class, "Panthard", 10, 13749760);
-  public static EntityEntry PANTHER = createEntityEntry((Class)MoCEntityPanther.class, "Panther", 10, 205);
-  public static EntityEntry PANTHGER = createEntityEntry((Class)MoCEntityPanthger.class, "Panthger", 10, 14772545);
-  public static EntityEntry PET_SCORPION = createEntityEntry((Class)MoCEntityPetScorpion.class, "PetScorpion");
-  public static EntityEntry POLAR_BEAR = createEntityEntry((Class)MoCEntityPolarBear.class, "WildPolarBear", 14020607, 9141102);
-  public static EntityEntry RACCOON = createEntityEntry((Class)MoCEntityRaccoon.class, "Raccoon", 14772545, 13749760);
-  public static EntityEntry SNAKE = createEntityEntry((Class)MoCEntitySnake.class, "Snake", 14020607, 13749760);
-  public static EntityEntry TIGER = createEntityEntry((Class)MoCEntityTiger.class, "Tiger", 14772545, 0);
-  public static EntityEntry TURTLE = createEntityEntry((Class)MoCEntityTurtle.class, "Turtle", 14772545, 9320590);
-  public static EntityEntry TURKEY = createEntityEntry((Class)MoCEntityTurkey.class, "Turkey", 14020607, 16711680);
-  public static EntityEntry WILDHORSE = createEntityEntry((Class)MoCEntityHorse.class, "WildHorse", 12623485, 15656192);
-  public static EntityEntry WYVERN = createEntityEntry((Class)MoCEntityWyvern.class, "Wyvern", 14772545, 65407);
+  public static EntityEntry BIRD = createEntityEntry(MoCEntityBird.class, "Bird", 14020607, 14020607);
+  public static EntityEntry BEAR = createEntityEntry(MoCEntityBlackBear.class, "BlackBear", 10, 1);
+  public static EntityEntry BOAR = createEntityEntry(MoCEntityBoar.class, "Boar", 14772545, 9141102);
+  public static EntityEntry BUNNY = createEntityEntry(MoCEntityBunny.class, "Bunny", 12623485, 9141102);
+  public static EntityEntry CROCODILE = createEntityEntry(MoCEntityCrocodile.class, "Crocodile", 16711680, 65407);
+  public static EntityEntry DUCK = createEntityEntry(MoCEntityDuck.class, "Duck", 14021607, 15656192);
+  public static EntityEntry DEER = createEntityEntry(MoCEntityDeer.class, "Deer", 14021607, 33023);
+  public static EntityEntry ELEPHANT = createEntityEntry(MoCEntityElephant.class, "Elephant", 14772545, 23423);
+  public static EntityEntry ENT = createEntityEntry(MoCEntityEnt.class, "Ent", 12623485, 16711680);
+  public static EntityEntry FOX = createEntityEntry(MoCEntityFox.class, "Fox", 14772545, 5253242);
+  public static EntityEntry GOAT = createEntityEntry(MoCEntityGoat.class, "Goat", 7434694, 6053069);
+  public static EntityEntry GRIZZLY_BEAR = createEntityEntry(MoCEntityGrizzlyBear.class, "GrizzlyBear", 14772545, 1);
+  public static EntityEntry KITTY = createEntityEntry(MoCEntityKitty.class, "Kitty", 12623485, 5253242);
+  public static EntityEntry KOMODO_DRAGON = createEntityEntry(MoCEntityKomodo.class, "KomodoDragon", 16711680, 23423);
+  public static EntityEntry LEOGER = createEntityEntry(MoCEntityLeoger.class, "Leoger", 14772545, 14772545);
+  public static EntityEntry LEOPARD = createEntityEntry(MoCEntityLeopard.class, "Leopard", 13749760, 10);
+  public static EntityEntry LIARD = createEntityEntry(MoCEntityLiard.class, "Liard", 15313474, 13749760);
+  public static EntityEntry LION = createEntityEntry(MoCEntityLion.class, "Lion", 15313474, 13749760);
+  public static EntityEntry LIGER = createEntityEntry(MoCEntityLiger.class, "Liger", 15313474, 12623485);
+  public static EntityEntry LITHER = createEntityEntry(MoCEntityLither.class, "Lither", 15313474, 14772545);
+  public static EntityEntry MANTICORE_PET = createEntityEntry(MoCEntityManticorePet.class, "ManticorePet");
+  public static EntityEntry MOLE = createEntityEntry(MoCEntityMole.class, "Mole", 14020607, 16711680);
+  public static EntityEntry MOUSE = createEntityEntry(MoCEntityMouse.class, "Mouse", 14772545, 0);
+  public static EntityEntry OSTRICH = createEntityEntry(MoCEntityOstrich.class, "Ostrich", 14020607, 9639167);
+  public static EntityEntry PANDA_BEAR = createEntityEntry(MoCEntityPandaBear.class, "PandaBear", 10, 9141102);
+  public static EntityEntry PANTHARD = createEntityEntry(MoCEntityPanthard.class, "Panthard", 10, 13749760);
+  public static EntityEntry PANTHER = createEntityEntry(MoCEntityPanther.class, "Panther", 10, 205);
+  public static EntityEntry PANTHGER = createEntityEntry(MoCEntityPanthger.class, "Panthger", 10, 14772545);
+  public static EntityEntry PET_SCORPION = createEntityEntry(MoCEntityPetScorpion.class, "PetScorpion");
+  public static EntityEntry POLAR_BEAR = createEntityEntry(MoCEntityPolarBear.class, "WildPolarBear", 14020607, 9141102);
+  public static EntityEntry RACCOON = createEntityEntry(MoCEntityRaccoon.class, "Raccoon", 14772545, 13749760);
+  public static EntityEntry SNAKE = createEntityEntry(MoCEntitySnake.class, "Snake", 14020607, 13749760);
+  public static EntityEntry TIGER = createEntityEntry(MoCEntityTiger.class, "Tiger", 14772545, 0);
+  public static EntityEntry TURTLE = createEntityEntry(MoCEntityTurtle.class, "Turtle", 14772545, 9320590);
+  public static EntityEntry TURKEY = createEntityEntry(MoCEntityTurkey.class, "Turkey", 14020607, 16711680);
+  public static EntityEntry WILDHORSE = createEntityEntry(MoCEntityHorse.class, "WildHorse", 12623485, 15656192);
+  public static EntityEntry WYVERN = createEntityEntry(MoCEntityWyvern.class, "Wyvern", 14772545, 65407);
 
 
 
 
-  public static EntityEntry CAVE_OGRE = createEntityEntry((Class)MoCEntityCaveOgre.class, "CaveOgre", 16711680, 33023);
-  public static EntityEntry FLAME_WRAITH = createEntityEntry((Class)MoCEntityFlameWraith.class, "FlameWraith", 16711680, 12623485);
-  public static EntityEntry FIRE_OGRE = createEntityEntry((Class)MoCEntityFireOgre.class, "FireOgre", 16711680, 9320595);
-  public static EntityEntry GREEN_OGRE = createEntityEntry((Class)MoCEntityGreenOgre.class, "GreenOgre", 16711680, 65407);
-  public static EntityEntry BIG_GOLEM = createEntityEntry((Class)MoCEntityGolem.class, "BigGolem", 16711680, 16622);
-  public static EntityEntry HORSEMOB = createEntityEntry((Class)MoCEntityHorseMob.class, "HorseMob", 16711680, 9320590);
-  public static EntityEntry HELLRAT = createEntityEntry((Class)MoCEntityHellRat.class, "HellRat", 16711680, 14772545);
-  public static EntityEntry MANTICORE = createEntityEntry((Class)MoCEntityManticore.class, "Manticore", 16711680, 0);
-  public static EntityEntry MINI_GOLEM = createEntityEntry((Class)MoCEntityMiniGolem.class, "MiniGolem", 16711680, 13749760);
-  public static EntityEntry RAT = createEntityEntry((Class)MoCEntityRat.class, "Rat", 16711680, 9141102);
-  public static EntityEntry SILVER_SKELETON = createEntityEntry((Class)MoCEntitySilverSkeleton.class, "SilverSkeleton", 16711680, 33023);
-  public static EntityEntry SCORPION = createEntityEntry((Class)MoCEntityScorpion.class, "Scorpion", 16711680, 6053069);
-  public static EntityEntry WEREWOLF = createEntityEntry((Class)MoCEntityWerewolf.class, "Werewolf", 16711680, 7434694);
-  public static EntityEntry WRAITH = createEntityEntry((Class)MoCEntityWraith.class, "Wraith", 16711680, 0);
-  public static EntityEntry WWOLF = createEntityEntry((Class)MoCEntityWWolf.class, "WWolf", 16711680, 13749760);
+  public static EntityEntry CAVE_OGRE = createEntityEntry(MoCEntityCaveOgre.class, "CaveOgre", 16711680, 33023);
+  public static EntityEntry FLAME_WRAITH = createEntityEntry(MoCEntityFlameWraith.class, "FlameWraith", 16711680, 12623485);
+  public static EntityEntry FIRE_OGRE = createEntityEntry(MoCEntityFireOgre.class, "FireOgre", 16711680, 9320595);
+  public static EntityEntry GREEN_OGRE = createEntityEntry(MoCEntityGreenOgre.class, "GreenOgre", 16711680, 65407);
+  public static EntityEntry BIG_GOLEM = createEntityEntry(MoCEntityGolem.class, "BigGolem", 16711680, 16622);
+  public static EntityEntry HORSEMOB = createEntityEntry(MoCEntityHorseMob.class, "HorseMob", 16711680, 9320590);
+  public static EntityEntry HELLRAT = createEntityEntry(MoCEntityHellRat.class, "HellRat", 16711680, 14772545);
+  public static EntityEntry MANTICORE = createEntityEntry(MoCEntityManticore.class, "Manticore", 16711680, 0);
+  public static EntityEntry MINI_GOLEM = createEntityEntry(MoCEntityMiniGolem.class, "MiniGolem", 16711680, 13749760);
+  public static EntityEntry RAT = createEntityEntry(MoCEntityRat.class, "Rat", 16711680, 9141102);
+  public static EntityEntry SILVER_SKELETON = createEntityEntry(MoCEntitySilverSkeleton.class, "SilverSkeleton", 16711680, 33023);
+  public static EntityEntry SCORPION = createEntityEntry(MoCEntityScorpion.class, "Scorpion", 16711680, 6053069);
+  public static EntityEntry WEREWOLF = createEntityEntry(MoCEntityWerewolf.class, "Werewolf", 16711680, 7434694);
+  public static EntityEntry WRAITH = createEntityEntry(MoCEntityWraith.class, "Wraith", 16711680, 0);
+  public static EntityEntry WWOLF = createEntityEntry(MoCEntityWWolf.class, "WWolf", 16711680, 13749760);
 
 
 
 
-  public static EntityEntry ANCHOVY = createEntityEntry((Class)MoCEntityAnchovy.class, "Anchovy", 5665535, 205);
-  public static EntityEntry ANGELFISH = createEntityEntry((Class)MoCEntityAngelFish.class, "AngelFish", 5665535, 7434694);
-  public static EntityEntry ANGLER = createEntityEntry((Class)MoCEntityAngler.class, "Angler", 5665535, 10);
-  public static EntityEntry BASS = createEntityEntry((Class)MoCEntityBass.class, "Bass", 33023, 2372490);
-  public static EntityEntry CLOWNFISH = createEntityEntry((Class)MoCEntityClownFish.class, "ClownFish", 5665535, 14772545);
-  public static EntityEntry COD = createEntityEntry((Class)MoCEntityCod.class, "Cod", 33023, 16622);
-  public static EntityEntry DOLPHIN = createEntityEntry((Class)MoCEntityDolphin.class, "Dolphin", 33023, 15631086);
-  public static EntityEntry FISHY = createEntityEntry((Class)MoCEntityFishy.class, "Fishy", 5665535, 65407);
-  public static EntityEntry GOLDFISH = createEntityEntry((Class)MoCEntityGoldFish.class, "GoldFish", 5665535, 15656192);
-  public static EntityEntry HIPPOTANG = createEntityEntry((Class)MoCEntityHippoTang.class, "HippoTang", 5665535, 2037680);
-  public static EntityEntry JELLYFISH = createEntityEntry((Class)MoCEntityJellyFish.class, "JellyFish", 33023, 14772545);
-  public static EntityEntry MANDERIN = createEntityEntry((Class)MoCEntityManderin.class, "Manderin", 5665535, 12623485);
-  public static EntityEntry PIRANHA = createEntityEntry((Class)MoCEntityPiranha.class, "Piranha", 33023, 16711680);
-  public static EntityEntry SALMON = createEntityEntry((Class)MoCEntitySalmon.class, "Salmon", 33023, 12623485);
-  public static EntityEntry MANTARAY = createEntityEntry((Class)MoCEntityMantaRay.class, "MantaRay", 33023, 9141102);
-  public static EntityEntry SHARK = createEntityEntry((Class)MoCEntityShark.class, "Shark", 33023, 9013643);
-  public static EntityEntry STINGRAY = createEntityEntry((Class)MoCEntityStingRay.class, "StingRay", 33023, 6053069);
+  public static EntityEntry ANCHOVY = createEntityEntry(MoCEntityAnchovy.class, "Anchovy", 5665535, 205);
+  public static EntityEntry ANGELFISH = createEntityEntry(MoCEntityAngelFish.class, "AngelFish", 5665535, 7434694);
+  public static EntityEntry ANGLER = createEntityEntry(MoCEntityAngler.class, "Angler", 5665535, 10);
+  public static EntityEntry BASS = createEntityEntry(MoCEntityBass.class, "Bass", 33023, 2372490);
+  public static EntityEntry CLOWNFISH = createEntityEntry(MoCEntityClownFish.class, "ClownFish", 5665535, 14772545);
+  public static EntityEntry COD = createEntityEntry(MoCEntityCod.class, "Cod", 33023, 16622);
+  public static EntityEntry DOLPHIN = createEntityEntry(MoCEntityDolphin.class, "Dolphin", 33023, 15631086);
+  public static EntityEntry FISHY = createEntityEntry(MoCEntityFishy.class, "Fishy", 5665535, 65407);
+  public static EntityEntry GOLDFISH = createEntityEntry(MoCEntityGoldFish.class, "GoldFish", 5665535, 15656192);
+  public static EntityEntry HIPPOTANG = createEntityEntry(MoCEntityHippoTang.class, "HippoTang", 5665535, 2037680);
+  public static EntityEntry JELLYFISH = createEntityEntry(MoCEntityJellyFish.class, "JellyFish", 33023, 14772545);
+  public static EntityEntry MANDERIN = createEntityEntry(MoCEntityManderin.class, "Manderin", 5665535, 12623485);
+  public static EntityEntry PIRANHA = createEntityEntry(MoCEntityPiranha.class, "Piranha", 33023, 16711680);
+  public static EntityEntry SALMON = createEntityEntry(MoCEntitySalmon.class, "Salmon", 33023, 12623485);
+  public static EntityEntry MANTARAY = createEntityEntry(MoCEntityMantaRay.class, "MantaRay", 33023, 9141102);
+  public static EntityEntry SHARK = createEntityEntry(MoCEntityShark.class, "Shark", 33023, 9013643);
+  public static EntityEntry STINGRAY = createEntityEntry(MoCEntityStingRay.class, "StingRay", 33023, 6053069);
 
 
 
 
-  public static EntityEntry ANT = createEntityEntry((Class)MoCEntityAnt.class, "Ant", 65407, 12623485);
-  public static EntityEntry BEE = createEntityEntry((Class)MoCEntityBee.class, "Bee", 65407, 15656192);
-  public static EntityEntry BUTTERFLY = createEntityEntry((Class)MoCEntityButterfly.class, "ButterFly", 65407, 7434694);
-  public static EntityEntry CRAB = createEntityEntry((Class)MoCEntityCrab.class, "Crab", 65407, 13749760);
-  public static EntityEntry CRICKET = createEntityEntry((Class)MoCEntityCricket.class, "Cricket", 65407, 16622);
-  public static EntityEntry DRAGONFLY = createEntityEntry((Class)MoCEntityDragonfly.class, "DragonFly", 65407, 14020607);
-  public static EntityEntry FIREFLY = createEntityEntry((Class)MoCEntityFirefly.class, "Firefly", 65407, 9320590);
-  public static EntityEntry FLY = createEntityEntry((Class)MoCEntityFly.class, "Fly", 65407, 1);
-  public static EntityEntry MAGGOT = createEntityEntry((Class)MoCEntityMaggot.class, "Maggot", 65407, 9141102);
-  public static EntityEntry SNAIL = createEntityEntry((Class)MoCEntitySnail.class, "Snail", 65407, 14772545);
-  public static EntityEntry ROACH = createEntityEntry((Class)MoCEntityRoach.class, "Roach", 65407, 13749760);
+  public static EntityEntry ANT = createEntityEntry(MoCEntityAnt.class, "Ant", 65407, 12623485);
+  public static EntityEntry BEE = createEntityEntry(MoCEntityBee.class, "Bee", 65407, 15656192);
+  public static EntityEntry BUTTERFLY = createEntityEntry(MoCEntityButterfly.class, "ButterFly", 65407, 7434694);
+  public static EntityEntry CRAB = createEntityEntry(MoCEntityCrab.class, "Crab", 65407, 13749760);
+  public static EntityEntry CRICKET = createEntityEntry(MoCEntityCricket.class, "Cricket", 65407, 16622);
+  public static EntityEntry DRAGONFLY = createEntityEntry(MoCEntityDragonfly.class, "DragonFly", 65407, 14020607);
+  public static EntityEntry FIREFLY = createEntityEntry(MoCEntityFirefly.class, "Firefly", 65407, 9320590);
+  public static EntityEntry FLY = createEntityEntry(MoCEntityFly.class, "Fly", 65407, 1);
+  public static EntityEntry MAGGOT = createEntityEntry(MoCEntityMaggot.class, "Maggot", 65407, 9141102);
+  public static EntityEntry SNAIL = createEntityEntry(MoCEntitySnail.class, "Snail", 65407, 14772545);
+  public static EntityEntry ROACH = createEntityEntry(MoCEntityRoach.class, "Roach", 65407, 13749760);
 
 
 
 
-  public static EntityEntry EGG = createEntityEntry((Class)MoCEntityEgg.class, "Egg");
-  public static EntityEntry KITTY_BED = createEntityEntry((Class)MoCEntityKittyBed.class, "KittyBed");
-  public static EntityEntry LITTERBOX = createEntityEntry((Class)MoCEntityLitterBox.class, "LitterBox");
-  public static EntityEntry TROCK = createEntityEntry((Class)MoCEntityThrowableRock.class, "TRock");
+  public static EntityEntry EGG = createEntityEntry(MoCEntityEgg.class, "Egg");
+  public static EntityEntry KITTY_BED = createEntityEntry(MoCEntityKittyBed.class, "KittyBed");
+  public static EntityEntry LITTERBOX = createEntityEntry(MoCEntityLitterBox.class, "LitterBox");
+  public static EntityEntry TROCK = createEntityEntry(MoCEntityThrowableRock.class, "TRock");
 
   @EventBusSubscriber(modid = "mocreatures")
   public static class RegistrationHandler
