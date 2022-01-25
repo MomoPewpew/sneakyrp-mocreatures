@@ -618,13 +618,13 @@ public class MoCTools
       return null;
     }
 
-    Biome Biome = biomeProvider.getBiome(pos);
+    Biome b = biomeProvider.getBiome(pos);
 
 
-    if (Biome == null) {
+    if (b == null) {
       return null;
     }
-    return Biome.getBiomeName();
+    return b.getBiomeName();
   }
 
 

@@ -18,7 +18,6 @@ public class MoCEntityData
   private boolean canSpawn = true;
   private int entityId;
   private List<BiomeDictionary.Type> biomeTypes;
-  @SideOnly(Side.CLIENT)
   private int frequency = 8;
   private int minGroup = 1;
   private int maxGroup = 1;
