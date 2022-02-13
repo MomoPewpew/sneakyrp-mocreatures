@@ -427,18 +427,18 @@ public abstract class MoCEntityAmbient
 
 
   public boolean getCanSpawnHere() {
-    if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
+    // if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
       return false;
-    }
-    BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
+    // }
+    // BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
 
-    String s = MoCTools.biomeName(this.world, pos);
+    // String s = MoCTools.biomeName(this.world, pos);
 
-    if (s.equals("Jungle") || s.equals("JungleHills")) {
-      return getCanSpawnHereJungle();
-    }
+    // if (s.equals("Jungle") || s.equals("JungleHills")) {
+    //   return getCanSpawnHereJungle();
+    // }
 
-    return super.getCanSpawnHere();
+    // return super.getCanSpawnHere();
   }
 
   public boolean getCanSpawnHereJungle() {
