@@ -434,7 +434,6 @@ public class MoCEntityManticore
 
 
   protected void dropFewItems(boolean flag, int x) {
-    BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
     int chance = MoCreatures.proxy.rareItemDropChance;
     if (this.rand.nextInt(100) < chance) {
       entityDropItem(new ItemStack((Item)MoCItems.mocegg, 1, getType() + 61), 0.0F);

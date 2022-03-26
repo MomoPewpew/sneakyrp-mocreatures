@@ -106,7 +106,6 @@ public class MoCProxy
   protected static final String CATEGORY_MOC_WATER_CREATURE_GENERAL_SETTINGS = "water-mob-general-settings";
   protected static final String CATEGORY_MOC_AMBIENT_GENERAL_SETTINGS = "ambient-general-settings";
   protected static final String CATEGORY_MOC_ID_SETTINGS = "custom-id-settings";
-  private static final String CATEGORY_OWNERSHIP_SETTINGS = "ownership-settings";
 
   public void resetAllData() {
     readGlobalConfigValues();

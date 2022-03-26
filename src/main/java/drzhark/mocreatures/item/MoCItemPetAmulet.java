@@ -73,7 +73,7 @@ public class MoCItemPetAmulet
     if (!world.isRemote) {
       initAndReadNBT(stack);
       if (this.spawnClass.isEmpty()) {
-        return new ActionResult(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
       }
       try {
         this.spawnClass = this.spawnClass.replace("mocreatures:", "").toLowerCase();
@@ -182,7 +182,7 @@ public class MoCItemPetAmulet
       }
     }
 
-    return new ActionResult(EnumActionResult.SUCCESS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
   }
 
   public void readFromNBT(NBTTagCompound nbt) {

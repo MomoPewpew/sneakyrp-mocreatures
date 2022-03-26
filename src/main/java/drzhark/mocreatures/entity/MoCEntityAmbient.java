@@ -400,70 +400,63 @@ public abstract class MoCEntityAmbient
     }
   }
 
-  public boolean getCanSpawnHereAnimal() {
-    int i = MathHelper.floor(this.posX);
-    int j = MathHelper.floor((getEntityBoundingBox()).minY);
-    int k = MathHelper.floor(this.posZ);
-    BlockPos pos = new BlockPos(i, j, k);
-    return (this.world.getBlockState(pos.down()).getBlock() == Blocks.GRASS && this.world.getLight(pos) > 8);
-  }
+  // public boolean getCanSpawnHereAnimal() {
+  //   int i = MathHelper.floor(this.posX);
+  //   int j = MathHelper.floor((getEntityBoundingBox()).minY);
+  //   int k = MathHelper.floor(this.posZ);
+  //   BlockPos pos = new BlockPos(i, j, k);
+  //   return (this.world.getBlockState(pos.down()).getBlock() == Blocks.GRASS && this.world.getLight(pos) > 8);
+  // }
 
-  public boolean getCanSpawnHereCreature() {
-    int i = MathHelper.floor(this.posX);
-    int j = MathHelper.floor((getEntityBoundingBox()).minY);
-    int k = MathHelper.floor(this.posZ);
-    return (getBlockPathWeight(new BlockPos(i, j, k)) >= 0.0F);
-  }
+  // public boolean getCanSpawnHereCreature() {
+  //   int i = MathHelper.floor(this.posX);
+  //   int j = MathHelper.floor((getEntityBoundingBox()).minY);
+  //   int k = MathHelper.floor(this.posZ);
+  //   return (getBlockPathWeight(new BlockPos(i, j, k)) >= 0.0F);
+  // }
 
-  public boolean getCanSpawnHereLiving() {
-    return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox()));
-  }
+  // public boolean getCanSpawnHereLiving() {
+  //   return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
+  //     !this.world.containsAnyLiquid(getEntityBoundingBox()));
+  // }
 
-  public boolean getCanSpawnHereAquatic() {
-    return this.world.checkNoEntityCollision(getEntityBoundingBox());
-  }
+  // public boolean getCanSpawnHereAquatic() {
+  //   return this.world.checkNoEntityCollision(getEntityBoundingBox());
+  // }
 
 
-  public boolean getCanSpawnHere() {
-    // if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
-      return false;
-    // }
-    // BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
+  // public boolean getCanSpawnHere() {
+  //   if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
+  //     return false;
+  //   }
 
-    // String s = MoCTools.biomeName(this.world, pos);
+  //   return super.getCanSpawnHere();
+  // }
 
-    // if (s.equals("Jungle") || s.equals("JungleHills")) {
-    //   return getCanSpawnHereJungle();
-    // }
+  // public boolean getCanSpawnHereJungle() {
+  //   if (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty() &&
+  //     !this.world.containsAnyLiquid(getEntityBoundingBox())) {
+  //     int var1 = MathHelper.floor(this.posX);
+  //     int var2 = MathHelper.floor((getEntityBoundingBox()).minY);
+  //     int var3 = MathHelper.floor(this.posZ);
 
-    // return super.getCanSpawnHere();
-  }
+  //     if (var2 < 63) {
+  //       return false;
+  //     }
 
-  public boolean getCanSpawnHereJungle() {
-    if (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty() &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox())) {
-      int var1 = MathHelper.floor(this.posX);
-      int var2 = MathHelper.floor((getEntityBoundingBox()).minY);
-      int var3 = MathHelper.floor(this.posZ);
+  //     BlockPos pos = new BlockPos(var1, var2, var3);
+  //     IBlockState blockstate = this.world.getBlockState(pos.down());
+  //     Block block = blockstate.getBlock();
 
-      if (var2 < 63) {
-        return false;
-      }
+  //     if (block == Blocks.GRASS || block == Blocks.LEAVES || block.isLeaves(blockstate, (IBlockAccess)this.world, pos.down())) {
+  //       return true;
+  //     }
+  //   }
 
-      BlockPos pos = new BlockPos(var1, var2, var3);
-      IBlockState blockstate = this.world.getBlockState(pos.down());
-      Block block = blockstate.getBlock();
-
-      if (block == Blocks.GRASS || block == Blocks.LEAVES || block.isLeaves(blockstate, (IBlockAccess)this.world, pos.down())) {
-        return true;
-      }
-    }
-
-    return false;
-  }
+  //   return false;
+  // }
 
 
   public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
@@ -655,18 +648,6 @@ public abstract class MoCEntityAmbient
     return false;
   }
 
-
-  private void followPlayer() {
-    EntityPlayer entityplayer1 = this.world.getClosestPlayerToEntity((Entity)this, 24.0D);
-    if (entityplayer1 == null) {
-      return;
-    }
-
-    ItemStack itemstack1 = entityplayer1.inventory.getCurrentItem();
-    if (itemstack1 != null && isMyFavoriteFood(itemstack1)) {
-      getNavigator().tryMoveToEntityLiving((Entity)entityplayer1, 1.0D);
-    }
-  }
 
   public boolean isOnAir() {
     return (this.world.isAirBlock(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY - 0.2D),

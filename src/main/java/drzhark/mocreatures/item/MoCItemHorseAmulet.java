@@ -41,7 +41,6 @@ public class MoCItemHorseAmulet
   private int edad;
   private int creatureType;
   private String spawnClass;
-  private boolean isGhost;
   private boolean rideable;
   private byte armor;
   private boolean adult;
@@ -60,7 +59,7 @@ public class MoCItemHorseAmulet
   public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand hand) {
     ItemStack stack = player.getHeldItem(hand);
     if (++this.ageCounter < 2) {
-      return new ActionResult(EnumActionResult.PASS, stack);
+      return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
     }
 
     if (!worldIn.isRemote) {
@@ -79,7 +78,6 @@ public class MoCItemHorseAmulet
         if (this.spawnClass.equalsIgnoreCase("Wyvern")) {
           MoCEntityWyvern moCEntityWyvern = new MoCEntityWyvern(worldIn);
           moCEntityWyvern.setIsGhost(true);
-          this.isGhost = true;
                     storedCreature = (MoCEntityTameableAnimal)moCEntityWyvern;
         } else if (this.spawnClass.equalsIgnoreCase("WildHorse")) {
           MoCEntityHorse moCEntityHorse = new MoCEntityHorse(worldIn);
@@ -87,7 +85,6 @@ public class MoCItemHorseAmulet
         } else {
           storedCreature = (MoCEntityTameableAnimal)EntityList.createEntityByIDFromName(new ResourceLocation("mocreatures:" + this.spawnClass.toLowerCase()), worldIn);
           if (storedCreature instanceof MoCEntityBigCat) {
-            this.isGhost = true;
             ((MoCEntityBigCat)storedCreature).setIsGhost(true);
           }
         }
@@ -184,7 +181,7 @@ public class MoCItemHorseAmulet
     }
     this.ageCounter = 0;
 
-    return new ActionResult(EnumActionResult.SUCCESS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
   }
 
   public void readFromNBT(NBTTagCompound nbt) {
@@ -197,7 +194,6 @@ public class MoCItemHorseAmulet
     if (spawnClassOld > 0) {
       if (spawnClassOld == 100) {
         this.spawnClass = "Wyvern";
-        this.isGhost = true;
       } else {
         this.spawnClass = "WildHorse";
       }

@@ -139,37 +139,6 @@ public class MoCEntityBird
   public void fall(float f, float f1) {}
 
 
-  private int[] FindTreeTop(int i, int j, int k) {
-    int l = i - 5;
-    int i1 = k - 5;
-    int j1 = i + 5;
-    int k1 = j + 7;
-    int l1 = k + 5;
-    for (int i2 = l; i2 < j1; i2++) {
-      for (int j2 = i1; j2 < l1; j2++) {
-        BlockPos pos = new BlockPos(i2, j, j2);
-        IBlockState blockstate = this.world.getBlockState(pos);
-        if (!blockstate.getBlock().isAir(blockstate, (IBlockAccess)this.world, pos) && blockstate.getMaterial() == Material.WOOD) {
-
-
-          int l2 = j;
-
-          while (l2 < k1) {
-
-
-            BlockPos pos1 = new BlockPos(i2, l2, j2);
-            IBlockState blockstate1 = this.world.getBlockState(pos1);
-            if (blockstate1.getBlock().isAir(blockstate1, (IBlockAccess)this.world, pos1)) {
-              return new int[] { i2, l2 + 2, j2 };
-            }
-            l2++;
-          }
-        }
-      }
-    }
-
-    return new int[] { 0, 0, 0 };
-  }
 
   private boolean FlyToNextEntity(Entity entity) {
     if (entity != null) {
@@ -207,42 +176,6 @@ public class MoCEntityBird
     return false;
   }
 
-
-
-  private boolean FlyToNextTree() {
-    int[] ai = ReturnNearestMaterialCoord((Entity)this, Material.LEAVES, Double.valueOf(20.0D));
-    int[] ai1 = FindTreeTop(ai[0], ai[1], ai[2]);
-    if (ai1[1] != 0) {
-      int i = ai1[0];
-      int j = ai1[1];
-      int k = ai1[2];
-      faceLocation(i, j, k, 30.0F);
-      if (j - MathHelper.floor(this.posY) > 2) {
-        this.motionY += 0.15D;
-      }
-      int l = 0;
-      int i1 = 0;
-      if (this.posX < i) {
-        l = i - MathHelper.floor(this.posX);
-        this.motionX += 0.05D;
-      } else {
-        l = MathHelper.floor(this.posX) - i;
-        this.motionX -= 0.05D;
-      }
-      if (this.posZ < k) {
-        i1 = k - MathHelper.floor(this.posZ);
-        this.motionZ += 0.05D;
-      } else {
-        i1 = MathHelper.floor(this.posX) - k;
-        this.motionZ -= 0.05D;
-      }
-      double d = (l + i1);
-      if (d < 3.0D) {
-        return true;
-      }
-    }
-    return false;
-  }
 
 
   protected Item getDropItem() {

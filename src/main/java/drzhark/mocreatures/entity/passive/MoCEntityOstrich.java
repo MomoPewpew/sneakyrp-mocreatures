@@ -851,9 +851,9 @@ public class MoCEntityOstrich
 
 
 
-  public boolean getCanSpawnHere() {
-    return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
+  // }
 
 
   public int nameYOffset() {

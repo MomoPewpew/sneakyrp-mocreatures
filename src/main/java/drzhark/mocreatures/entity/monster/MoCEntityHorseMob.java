@@ -349,12 +349,12 @@ public class MoCEntityHorseMob
   }
 
 
-  public boolean getCanSpawnHere() {
-    if (this.posY < 50.0D && !this.world.provider.doesWaterVaporize()) {
-      setType(32);
-    }
-    return super.getCanSpawnHere();
-  }
+  // public boolean getCanSpawnHere() {
+  //   if (this.posY < 50.0D && !this.world.provider.doesWaterVaporize()) {
+  //     setType(32);
+  //   }
+  //   return super.getCanSpawnHere();
+  // }
 
   public void UndeadFX() {
     MoCreatures.proxy.UndeadFX((Entity)this);

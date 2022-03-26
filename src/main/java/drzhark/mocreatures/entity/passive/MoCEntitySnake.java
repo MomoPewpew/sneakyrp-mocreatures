@@ -551,9 +551,9 @@ public class MoCEntitySnake
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
+  // }
 
 
   public boolean checkSpawningBiome() {

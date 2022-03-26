@@ -172,41 +172,41 @@ public abstract class MoCEntityMob
     this.dataManager.set(NAME_STR, String.valueOf(name));
   }
 
-  public boolean getCanSpawnHereLiving() {
-    return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox()));
-  }
+  // public boolean getCanSpawnHereLiving() {
+  //   return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
+  //     !this.world.containsAnyLiquid(getEntityBoundingBox()));
+  // }
 
-  public boolean getCanSpawnHereCreature() {
-    int i = MathHelper.floor(this.posX);
-    int j = MathHelper.floor((getEntityBoundingBox()).minY);
-    int k = MathHelper.floor(this.posZ);
-    return (getBlockPathWeight(new BlockPos(i, j, k)) >= 0.0F);
-  }
+  // public boolean getCanSpawnHereCreature() {
+  //   int i = MathHelper.floor(this.posX);
+  //   int j = MathHelper.floor((getEntityBoundingBox()).minY);
+  //   int k = MathHelper.floor(this.posZ);
+  //   return (getBlockPathWeight(new BlockPos(i, j, k)) >= 0.0F);
+  // }
 
 
-  public boolean getCanSpawnHere() {
-    return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && super.getCanSpawnHere());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && super.getCanSpawnHere());
+  // }
 
-  public boolean getCanSpawnHereMob() {
-    int i = MathHelper.floor(this.posX);
-    int j = MathHelper.floor((getEntityBoundingBox()).minY);
-    int k = MathHelper.floor(this.posZ);
-    BlockPos pos = new BlockPos(i, j, k);
-    if (this.world.getLightFor(EnumSkyBlock.SKY, pos) > this.rand.nextInt(32)) {
-      return false;
-    }
-    int l = this.world.getLightFromNeighbors(pos);
-    if (this.world.isThundering()) {
-      int i1 = this.world.getSkylightSubtracted();
-      this.world.setSkylightSubtracted(10);
-      l = this.world.getLightFromNeighbors(pos);
-      this.world.setSkylightSubtracted(i1);
-    }
-    return (l <= this.rand.nextInt(8));
-  }
+  // public boolean getCanSpawnHereMob() {
+  //   int i = MathHelper.floor(this.posX);
+  //   int j = MathHelper.floor((getEntityBoundingBox()).minY);
+  //   int k = MathHelper.floor(this.posZ);
+  //   BlockPos pos = new BlockPos(i, j, k);
+  //   if (this.world.getLightFor(EnumSkyBlock.SKY, pos) > this.rand.nextInt(32)) {
+  //     return false;
+  //   }
+  //   int l = this.world.getLightFromNeighbors(pos);
+  //   if (this.world.isThundering()) {
+  //     int i1 = this.world.getSkylightSubtracted();
+  //     this.world.setSkylightSubtracted(10);
+  //     l = this.world.getLightFromNeighbors(pos);
+  //     this.world.setSkylightSubtracted(i1);
+  //   }
+  //   return (l <= this.rand.nextInt(8));
+  // }
 
 
   protected EntityLivingBase getClosestEntityLiving(Entity entity, double d) {

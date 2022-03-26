@@ -134,9 +134,9 @@ public class MoCEntityInsect extends MoCEntityAmbient {
 
 
 
-  public boolean getCanSpawnHere() {
-    return (getCanSpawnHereAnimal() && getCanSpawnHereCreature());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (getCanSpawnHereAnimal() && getCanSpawnHereCreature());
+  // }
 
 
   public float getSizeFactor() {

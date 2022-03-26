@@ -908,9 +908,9 @@ public class MoCEntityElephant
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && getCanSpawnHereCreature() && getCanSpawnHereLiving());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && getCanSpawnHereCreature() && getCanSpawnHereLiving());
+  // }
 
 
   public void dropMyStuff() {

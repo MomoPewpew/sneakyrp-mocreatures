@@ -56,7 +56,6 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeProvider;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.world.BlockEvent;
@@ -65,19 +64,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -612,21 +598,6 @@ public class MoCTools
     return 0.0F;
   }
 
-  public static String biomeName(World world, BlockPos pos) {
-    BiomeProvider biomeProvider = world.getBiomeProvider();
-    if (biomeProvider == null) {
-      return null;
-    }
-
-    Biome b = biomeProvider.getBiome(pos);
-
-
-    if (b == null) {
-      return null;
-    }
-    return b.getBiomeName();
-  }
-
 
   public static Biome Biomekind(World world, BlockPos pos) {
     return world.getBiome(pos);
@@ -949,7 +920,7 @@ public class MoCTools
   }
 
 
-  public static int despawnVanillaAnimals(World world, List[] classList) {
+  public static int despawnVanillaAnimals(World world, List<Entity>[] classList) {
     int count = 0;
     for (int j = 0; j < world.loadedEntityList.size(); j++) {
       Entity entity = world.loadedEntityList.get(j);

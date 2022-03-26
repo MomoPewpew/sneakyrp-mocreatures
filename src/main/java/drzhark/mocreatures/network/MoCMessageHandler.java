@@ -21,7 +21,6 @@ import drzhark.mocreatures.network.message.MoCMessageTwoBytes;
 import drzhark.mocreatures.network.message.MoCMessageUpdatePetName;
 import drzhark.mocreatures.network.message.MoCMessageVanish;
 import java.util.List;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -29,6 +28,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class MoCMessageHandler
@@ -55,7 +55,7 @@ public class MoCMessageHandler
 
 
 
-  public static void handleMessage(IMessageHandler message, MessageContext ctx) {
+  public static void handleMessage(IMessageHandler<? extends IMessage, IMessage> message, MessageContext ctx) {
     if (ctx.side == Side.CLIENT) {
       FMLCommonHandler.instance().getWorldThread(FMLCommonHandler.instance().getClientToServerNetworkManager().getNetHandler()).addScheduledTask(new ClientPacketTask(message, ctx));
     }
@@ -65,14 +65,12 @@ public class MoCMessageHandler
   public static class ClientPacketTask
     implements Runnable
   {
-    private IMessageHandler message;
-
-    private MessageContext ctx;
+    private IMessageHandler<? extends IMessage, IMessage> message;
 
 
-    public ClientPacketTask(IMessageHandler message, MessageContext ctx) {
+
+    public ClientPacketTask(IMessageHandler<? extends IMessage, IMessage> message, MessageContext ctx) {
       this.message = message;
-      this.ctx = ctx;
     }
 
 

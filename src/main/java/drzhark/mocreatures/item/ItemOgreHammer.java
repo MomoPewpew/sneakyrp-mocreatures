@@ -84,7 +84,7 @@ public class ItemOgreHammer
         newPosZ = coordZ + Math.sin((MoCTools.realAngle(player.rotationYaw - 90.0F) / 57.29578F)) * Math.sin(((player.rotationPitch - 90.0F) / 57.29578F)) * (x - 1);
         pos = new BlockPos(MathHelper.floor(newPosX), MathHelper.floor(newPosY), MathHelper.floor(newPosZ));
         if (player.world.getBlockState(pos).getBlock() != Blocks.AIR) {
-          return new ActionResult(EnumActionResult.PASS, stack);
+          return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
         }
 
         int[] blockInfo = obtainBlockAndMetadataFromBelt(player, true);
@@ -98,10 +98,10 @@ public class ItemOgreHammer
           MoCreatures.proxy.hammerFX(player);
         }
 
-        return new ActionResult(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
       }
     }
-    return new ActionResult(EnumActionResult.PASS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
   }
 
 

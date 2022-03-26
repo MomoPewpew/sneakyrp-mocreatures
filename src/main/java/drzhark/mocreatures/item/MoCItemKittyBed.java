@@ -36,7 +36,7 @@ public class MoCItemKittyBed extends MoCItem {
         player.setHeldItem(hand, ItemStack.EMPTY);
       }
     }
-    return new ActionResult(EnumActionResult.SUCCESS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
   }
 }
 

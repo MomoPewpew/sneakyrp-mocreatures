@@ -5,13 +5,10 @@ import drzhark.mocreatures.MoCTools;
 import drzhark.mocreatures.MoCreatures;
 import drzhark.mocreatures.entity.ai.EntityAIMoverHelperMoC;
 import drzhark.mocreatures.entity.ai.PathNavigateFlyer;
-import drzhark.mocreatures.init.MoCBlocks;
 import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nullable;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityList;
@@ -42,7 +39,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 
@@ -580,68 +576,36 @@ public abstract class MoCEntityAnimal
 
 
 
-  public boolean getCanSpawnHereCreature() {
-    BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), MathHelper.floor(this.posZ));
-    return (getBlockPathWeight(pos) >= 0.0F);
-  }
+  // public boolean getCanSpawnHereCreature() {
+  //   BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), MathHelper.floor(this.posZ));
+  //   return (getBlockPathWeight(pos) >= 0.0F);
+  // }
 
-  public boolean getCanSpawnHereLiving() {
-    return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty() &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox()));
-  }
-
-
-  public boolean getCanSpawnHere() {
-    if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
-      return false;
-    }
-    if (this.world.provider.getDimensionType().getId() != 0) {
-      return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
-    }
-    BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
-
-    String s = MoCTools.biomeName(this.world, pos);
-
-    if (s.toLowerCase().contains("jungle")) {
-      return getCanSpawnHereJungle();
-    }
-    if (s.equals("WyvernBiome")) {
-      return getCanSpawnHereMoCBiome();
-    }
-    return super.getCanSpawnHere();
-  }
-
-  private boolean getCanSpawnHereMoCBiome() {
-    if (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty() &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox())) {
+  // public boolean getCanSpawnHereLiving() {
+  //   return (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty() &&
+  //     !this.world.containsAnyLiquid(getEntityBoundingBox()));
+  // }
 
 
-      BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), MathHelper.floor(this.posZ));
+  // public boolean getCanSpawnHere() {
+  //   if (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() <= 0) {
+  //   }
+  //   if (this.world.provider.getDimensionType().getId() != 0) {
+  //     return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
+  //   }
 
-      if (pos.getY() < 50) {
-        return false;
-      }
+  //   return super.getCanSpawnHere();
+  // }
 
-      IBlockState blockstate = this.world.getBlockState(pos.down());
-      Block block = blockstate.getBlock();
 
-      if (block == MoCBlocks.mocDirt || block == MoCBlocks.mocGrass || (block != null && block
-        .isLeaves(blockstate, (IBlockAccess)this.world, pos.down()))) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  public boolean getCanSpawnHereJungle() {
-    if (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty()) {
-      return true;
-    }
-    return false;
-  }
+  // public boolean getCanSpawnHereJungle() {
+  //   if (this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).isEmpty()) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
 
   public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
@@ -974,39 +938,6 @@ public abstract class MoCEntityAnimal
   public boolean isMyFavoriteFood(ItemStack par1ItemStack) {
     return false;
   }
-
-
-  private void followPlayer() {
-    EntityPlayer entityplayer1 = this.world.getClosestPlayerToEntity((Entity)this, 24.0D);
-    if (entityplayer1 == null) {
-      return;
-    }
-
-    ItemStack itemstack1 = entityplayer1.inventory.getCurrentItem();
-    if (itemstack1 != null && isMyFavoriteFood(itemstack1)) {
-      getNavigator().tryMoveToEntityLiving((Entity)entityplayer1, 1.0D);
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

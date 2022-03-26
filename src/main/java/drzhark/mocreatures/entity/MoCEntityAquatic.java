@@ -614,9 +614,9 @@ public abstract class MoCEntityAquatic
 
 
 
-  public boolean getCanSpawnHere() {
-    return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && this.world.checkNoEntityCollision(getEntityBoundingBox()));
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && this.world.checkNoEntityCollision(getEntityBoundingBox()));
+  // }
 
 
 

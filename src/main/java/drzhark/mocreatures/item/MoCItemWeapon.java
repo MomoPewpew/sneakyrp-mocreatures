@@ -145,7 +145,7 @@ public class MoCItemWeapon extends MoCItem {
   public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand hand) {
     ItemStack stack = player.getHeldItem(hand);
     player.setActiveHand(hand);
-    return new ActionResult(EnumActionResult.SUCCESS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
   }
 
 

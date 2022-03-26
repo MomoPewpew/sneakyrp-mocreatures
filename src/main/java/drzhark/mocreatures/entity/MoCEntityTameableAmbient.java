@@ -70,7 +70,7 @@ public class MoCEntityTameableAmbient
 
   @Nullable
   public UUID getOwnerId() {
-    return (UUID)((Optional)this.dataManager.get(OWNER_UNIQUE_ID)).orNull();
+    return (UUID)this.dataManager.get(OWNER_UNIQUE_ID).orNull();
   }
 
 

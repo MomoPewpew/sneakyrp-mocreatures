@@ -4,7 +4,6 @@ import drzhark.mocreatures.entity.IMoCTameable;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.UUID;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,18 +16,15 @@ public class MoCPetData
   private NBTTagList tamedList = new NBTTagList();
   private BitSet IDMap = new BitSet(1024);
 
-  private final UUID ownerUniqueId;
   private ArrayList<Integer> usedPetIds = new ArrayList<>();
 
   public MoCPetData(IMoCTameable pet) {
     this.ownerData.setTag("TamedList", (NBTBase)this.tamedList);
-    this.ownerUniqueId = MoCreatures.isServer() ? pet.getOwnerId() : (Minecraft.getMinecraft()).player.getUniqueID();
   }
 
   public MoCPetData(NBTTagCompound nbt, UUID owner) {
     this.ownerData = nbt;
     this.tamedList = nbt.getTagList("TamedList", 10);
-    this.ownerUniqueId = owner;
     loadPetDataMap(nbt.getCompoundTag("PetIdData"));
   }
 

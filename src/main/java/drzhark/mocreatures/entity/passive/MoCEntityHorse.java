@@ -206,7 +206,6 @@ public class MoCEntityHorse extends MoCEntityTameableAnimal {
     BlockPos pos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor((getEntityBoundingBox()).minY), this.posZ);
 
     Biome currentbiome = MoCTools.Biomekind(this.world, pos);
-    String s = MoCTools.biomeName(this.world, pos);
     try {
       if (BiomeDictionary.hasType(currentbiome, BiomeDictionary.Type.PLAINS) &&
         this.rand.nextInt(3) == 0) {
@@ -215,11 +214,6 @@ public class MoCEntityHorse extends MoCEntityTameableAnimal {
 
       if (BiomeDictionary.hasType(currentbiome, BiomeDictionary.Type.SANDY)) {
         setType(60);
-      }
-
-      if (s.toLowerCase().contains("prairie"))
-      {
-        setType(this.rand.nextInt(5) + 1);
       }
     } catch (Exception exception) {}
 

@@ -34,10 +34,10 @@ public class MoCEntityCaveOgre
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (!this.world.canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
-          MathHelper.floor(this.posZ))) && this.posY < 50.0D && super.getCanSpawnHere());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (!this.world.canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
+  //         MathHelper.floor(this.posZ))) && this.posY < 50.0D && super.getCanSpawnHere());
+  // }
 
 
   public float calculateMaxHealth() {

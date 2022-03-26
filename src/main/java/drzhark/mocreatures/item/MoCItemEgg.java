@@ -39,7 +39,7 @@ public class MoCItemEgg extends MoCItem {
       entityegg.motionX += ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.3F);
       entityegg.motionZ += ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.3F);
     }
-    return new ActionResult(EnumActionResult.SUCCESS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
   }
 
 

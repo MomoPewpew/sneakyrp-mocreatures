@@ -376,10 +376,10 @@ public class MoCEntityScorpion extends MoCEntityMob {
 
 
 
-  public boolean getCanSpawnHere() {
-    return (isValidLightLevel() && ((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && getCanSpawnHereLiving() &&
-      getCanSpawnHereCreature());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (isValidLightLevel() && ((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && getCanSpawnHereLiving() &&
+  //     getCanSpawnHereCreature());
+  // }
 
 
   public boolean checkSpawningBiome() {

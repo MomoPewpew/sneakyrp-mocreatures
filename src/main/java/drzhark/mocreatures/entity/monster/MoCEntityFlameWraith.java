@@ -3,7 +3,6 @@ package drzhark.mocreatures.entity.monster;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
@@ -11,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class MoCEntityFlameWraith
-  extends MoCEntityWraith implements IMob {
+  extends MoCEntityWraith {
   protected int burningTime;
 
   public MoCEntityFlameWraith(World world) {

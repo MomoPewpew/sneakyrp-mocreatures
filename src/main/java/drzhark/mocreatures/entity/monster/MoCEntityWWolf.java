@@ -126,11 +126,11 @@ public class MoCEntityWWolf
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (checkSpawningBiome() && this.world
-      .canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
-          MathHelper.floor(this.posZ))) && super.getCanSpawnHere());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (checkSpawningBiome() && this.world
+  //     .canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
+  //         MathHelper.floor(this.posZ))) && super.getCanSpawnHere());
+  // }
 
 
   public EntityLivingBase getClosestTarget(Entity entity, double d) {

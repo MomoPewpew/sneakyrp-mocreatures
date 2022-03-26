@@ -80,26 +80,26 @@ public class MoCItemCreaturePedia
           }  }
       }
       if (entityliving == null) {
-        return new ActionResult(EnumActionResult.PASS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
       }
 
       if (entityliving instanceof drzhark.mocreatures.entity.passive.MoCEntityHorse) {
         MoCreatures.showCreaturePedia(player, "/mocreatures/pedia/horse.png");
-        return new ActionResult(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
       }
 
       if (entityliving instanceof drzhark.mocreatures.entity.passive.MoCEntityTurtle) {
         MoCreatures.showCreaturePedia(player, "/mocreatures/pedia/turtle.png");
-        return new ActionResult(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
       }
 
       if (entityliving instanceof drzhark.mocreatures.entity.passive.MoCEntityBunny) {
         MoCreatures.showCreaturePedia(player, "/mocreatures/pedia/bunny.png");
-        return new ActionResult(EnumActionResult.SUCCESS, stack);
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
       }
     }
 
-    return new ActionResult(EnumActionResult.PASS, stack);
+    return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
   }
 }
 

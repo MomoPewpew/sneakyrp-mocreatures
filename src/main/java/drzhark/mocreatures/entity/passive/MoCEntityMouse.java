@@ -98,16 +98,16 @@ public class MoCEntityMouse extends MoCEntityAnimal {
   }
 
 
-  public boolean getCanSpawnHere() {
-    int i = MathHelper.floor(this.posX);
-    int j = MathHelper.floor((getEntityBoundingBox()).minY);
-    int k = MathHelper.floor(this.posZ);
-    BlockPos pos = new BlockPos(i, j, k);
-    Block block = this.world.getBlockState(pos.down()).getBlock();
-    return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
-      .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
-      !this.world.containsAnyLiquid(getEntityBoundingBox()) && (block == Blocks.COBBLESTONE || block == Blocks.PLANKS || block == Blocks.DIRT || block == Blocks.STONE || block == Blocks.GRASS));
-  }
+  // public boolean getCanSpawnHere() {
+  //   int i = MathHelper.floor(this.posX);
+  //   int j = MathHelper.floor((getEntityBoundingBox()).minY);
+  //   int k = MathHelper.floor(this.posZ);
+  //   BlockPos pos = new BlockPos(i, j, k);
+  //   Block block = this.world.getBlockState(pos.down()).getBlock();
+  //   return (((MoCEntityData)MoCreatures.entityMap.get(getClass())).getFrequency() > 0 && this.world.checkNoEntityCollision(getEntityBoundingBox()) && this.world
+  //     .getCollisionBoxes((Entity)this, getEntityBoundingBox()).size() == 0 &&
+  //     !this.world.containsAnyLiquid(getEntityBoundingBox()) && (block == Blocks.COBBLESTONE || block == Blocks.PLANKS || block == Blocks.DIRT || block == Blocks.STONE || block == Blocks.GRASS));
+  // }
 
 
 

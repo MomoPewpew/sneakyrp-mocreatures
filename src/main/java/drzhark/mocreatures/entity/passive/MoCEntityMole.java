@@ -1,5 +1,4 @@
 package drzhark.mocreatures.entity.passive;
-import drzhark.mocreatures.MoCTools;
 import drzhark.mocreatures.MoCreatures;
 import drzhark.mocreatures.entity.ai.EntityAIWanderMoC2;
 import drzhark.mocreatures.entity.MoCEntityTameableAnimal;
@@ -70,29 +69,6 @@ public class MoCEntityMole extends MoCEntityTameableAnimal {
 
   private boolean isDiggableBlock(int i) {
     return ((i == 2)) | ((i == 3)) | ((i == 12) ? true : false);
-  }
-
-
-
-
-
-  private void digForward() {
-    double coordY = this.posY;
-    double coordZ = this.posZ;
-    double coordX = this.posX;
-    int x = 1;
-    double newPosY = coordY - Math.cos(((this.rotationPitch - 90.0F) / 57.29578F)) * x;
-
-    double newPosX = coordX + Math.cos((MoCTools.realAngle(this.rotationYaw - 90.0F) / 57.29578F)) * Math.sin(((this.rotationPitch - 90.0F) / 57.29578F)) * x;
-
-    double newPosZ = coordZ + Math.sin((MoCTools.realAngle(this.rotationYaw - 90.0F) / 57.29578F)) * Math.sin(((this.rotationPitch - 90.0F) / 57.29578F)) * x;
-
-
-
-    Block block = this.world.getBlockState(new BlockPos(MathHelper.floor(newPosX), MathHelper.floor(newPosY), MathHelper.floor(newPosZ))).getBlock();
-    if (isDiggableBlock(Block.getIdFromBlock(block))) {
-      setPosition(newPosX, newPosY, newPosZ);
-    }
   }
 
 

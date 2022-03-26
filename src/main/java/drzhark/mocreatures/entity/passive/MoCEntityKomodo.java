@@ -95,9 +95,9 @@ public class MoCEntityKomodo extends MoCEntityTameableAnimal {
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (getCanSpawnHereCreature() && getCanSpawnHereLiving());
+  // }
 
 
   protected SoundEvent getDeathSound() {

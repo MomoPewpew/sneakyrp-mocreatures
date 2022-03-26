@@ -993,11 +993,11 @@ public class MoCEntityGolem extends MoCEntityMob implements IEntityAdditionalSpa
   }
 
 
-  public boolean getCanSpawnHere() {
-    return (super.getCanSpawnHere() && this.world
-      .canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
-          MathHelper.floor(this.posZ))) && this.posY > 50.0D);
-  }
+  // public boolean getCanSpawnHere() {
+  //   return (super.getCanSpawnHere() && this.world
+  //     .canBlockSeeSky(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.posY),
+  //         MathHelper.floor(this.posZ))) && this.posY > 50.0D);
+  // }
 }
 
 
