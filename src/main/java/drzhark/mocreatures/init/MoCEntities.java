@@ -452,8 +452,11 @@ public class MoCEntities
               Arrays.asList(new BiomeDictionary.Type[] {
                   BiomeDictionary.Type.SANDY, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.SNOWY, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.WASTELAND, BiomeDictionary.Type.NETHER,
                   BiomeDictionary.Type.DEAD, BiomeDictionary.Type.SPOOKY })));
+
+      MoCreatures.proxy.readMocConfigValues();
+
       for (MoCEntityData entityData : MoCreatures.mocEntityMap.values()) {
-        if (entityData.getEntityName().equals("Wyvern")) {
+        if (entityData.getEntityName().equals("Wyvern") || !entityData.getCanSpawn()) {
           continue;
         }
         Biome.SpawnListEntry spawnEntry = entityData.getSpawnListEntry();
@@ -466,7 +469,6 @@ public class MoCEntities
         }
       }
       MoCreatures.LOGGER.info("Entity registration complete.");
-      MoCreatures.proxy.readMocConfigValues();
     }
   }
 }
